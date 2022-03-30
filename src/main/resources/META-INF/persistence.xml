@@ -11,8 +11,7 @@
         <class>com.yaelev.sakilagui.entity.CountryEntity</class>
         <class>com.yaelev.sakilagui.entity.CustomerEntity</class>
         <class>com.yaelev.sakilagui.entity.FilmEntity</class>
-        <class>com.yaelev.sakilagui.entity.FilmActorEntity</class>
-        <class>com.yaelev.sakilagui.entity.FilmCategoryEntity</class>
+       
         <class>com.yaelev.sakilagui.entity.FilmTextEntity</class>
         <class>com.yaelev.sakilagui.entity.InventoryEntity</class>
         <class>com.yaelev.sakilagui.entity.LanguageEntity</class>
