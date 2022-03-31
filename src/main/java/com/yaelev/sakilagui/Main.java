@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-// timmar vi lagt såhär långt är ca 5Timmar * 3 
+// timmar vi lagt såhär långt är ca 5Timmar * 3
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
