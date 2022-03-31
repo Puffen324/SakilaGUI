@@ -17,6 +17,9 @@
                                 <TableView layoutX="2.0" prefHeight="362.0" prefWidth="1058.0">
                                     <columns>
                                         <TableColumn prefWidth="75.0" text="C1" />
+                                        <!--Tanken är att vi kanske måste ha flera olika TABPanes uppbyggnad för att
+                                        de olika entiteterna har ju som sagt fler // färre parametrar
+                                        Så gissnings vis måste vi ha 16 olika lösningar på Create Funktionalliteten-->
                                         <TableColumn prefWidth="75.0" text="C2" />
                                     </columns>
                                 </TableView>
