@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "actor")
@@ -25,6 +26,7 @@ public class ActorEntity {
     public ActorEntity(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.lastUpdate = Timestamp.from(Instant.now());
     }
 
     public ActorEntity() {

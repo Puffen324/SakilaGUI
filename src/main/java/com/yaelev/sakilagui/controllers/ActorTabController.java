@@ -1,5 +1,6 @@
 package com.yaelev.sakilagui.controllers;
 
+import com.yaelev.sakilagui.dao.ActorDAO;
 import com.yaelev.sakilagui.dao.DataEntityManger;
 import com.yaelev.sakilagui.entity.ActorEntity;
 import javafx.collections.FXCollections;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
@@ -31,12 +33,14 @@ public class ActorTabController implements Initializable {
 
         @FXML
         private TableColumn<ActorEntity, Timestamp> actorLastUpdateColumn;
-
-
+        @FXML
+        private TextField actorFirstNameConstr;
+        @FXML
+        private TextField actorLastNameConstr;
 
 
         public void updateActorEntityTableView(){
-                actorTableView.setItems(FXCollections.observableList(new DataEntityManger().read()));
+                actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));
                 actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
                 actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
                 actorFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -53,11 +57,28 @@ public class ActorTabController implements Initializable {
 
         public void updateActorFirstName(TableColumn.CellEditEvent<ActorEntity, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setFirstName(actorStringCellEditEvent.getNewValue());
-                new DataEntityManger().update(actorTableView.getSelectionModel().getSelectedItem());
+                new ActorDAO().update(actorTableView.getSelectionModel().getSelectedItem());
+                updateActorEntityTableView();
         }
         public void updateActorLastName(TableColumn.CellEditEvent<ActorEntity, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setLastName(actorStringCellEditEvent.getNewValue());
-                new DataEntityManger().update(actorTableView.getSelectionModel().getSelectedItem());
+                new ActorDAO().update(actorTableView.getSelectionModel().getSelectedItem());
+                updateActorEntityTableView();
+        }
+        public void createActor(){
+                if(actorFirstNameConstr != null && actorLastNameConstr != null){
+                        ActorEntity actorEntity = new ActorEntity(actorFirstNameConstr.getText(), actorLastNameConstr.getText());
+                        new ActorDAO().create(actorEntity);
+                        updateActorEntityTableView();
+                        actorFirstNameConstr.setText("");
+                        actorLastNameConstr.setText("");
+                }
+
+        }
+        public void deleteActor(){
+                ActorEntity actorEntity = actorTableView.getSelectionModel().getSelectedItem();
+                new ActorDAO().delete(actorEntity);
+                updateActorEntityTableView();
         }
 
 }
