@@ -39,14 +39,14 @@ public class ActorTabController implements Initializable {
 
 
         public void updateActorEntityTableView(){
-                actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));
-                actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
-                actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-                actorFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-                actorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-                actorLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-                actorLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-                actorTableView.getItems().addAll();
+                        actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));
+                        actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
+                        actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+                        actorFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+                        actorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+                        actorLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+                        actorLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
+                        actorTableView.getItems().addAll();
         }
 
         @Override
