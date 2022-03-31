@@ -80,6 +80,7 @@ public class ActorTabController implements Initializable {
                 new ActorDAO().delete(actorEntity);
                 updateActorEntityTableView();
         }
+
 }
 
 

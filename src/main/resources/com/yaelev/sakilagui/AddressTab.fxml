@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -10,5 +11,51 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.yaelev.sakilagui.controllers.AddressTabController"
             prefHeight="400.0" prefWidth="600.0">
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.AddressTabContoller">
+    <children>
+        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Addresser">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
+                            <children>
+                                <TableView fx:id="actorTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
+                                    <columns>
+                                        <TableColumn fx:id="addressIdColumn" prefWidth="38.0" text="ID" />
+                                        <TableColumn fx:id="addressNameColumn" onEditCommit="#updateAddress" prefWidth="145.0" text="Adress" />
+                                        <TableColumn fx:id="districtColumn" onEditCommit="#updateDistrict" prefWidth="95.0" text="Ort" />
+                                        <TableColumn fx:id="city_idColumn" onEditCommit="#updateCity_id" prefWidth="63.0" text="Stads_ID" />
+                              <TableColumn fx:id="postalCodeColumn1" onEditCommit="#updatePostalCode" prefWidth="63.0" text="Postkod" />
+                              <TableColumn fx:id="phoneColumn11" maxWidth="5001.0" onEditCommit="#updatePhone" prefWidth="152.0" text="Telefon" />
+                              <TableColumn fx:id="locationColumn111" onEditCommit="#updateLocation" prefWidth="100.0" text="Plats" />
+                              <TableColumn fx:id="addressLastUpdateColumn1111" maxWidth="1.7976931348623157E308" onEditCommit="#updateLastUpdate" prefWidth="136.0" text="uppdaterad" />
+                                    </columns>
+                                </TableView>
+                                <TextField layoutX="15.0" layoutY="453.0" promptText="Telefon" />
+                                <TextField layoutX="15.0" layoutY="415.0" promptText="Postkod" />
+                                <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till Address" />
+                                <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort vald Address" />
+                        <TextField layoutX="15.0" layoutY="380.0" promptText="Adress" />
+                        <TextField layoutX="506.0" layoutY="415.0" promptText="Plats" />
+                        <TextField layoutX="177.0" layoutY="415.0" promptText="Ort" />
+                        <ComboBox layoutX="340.0" layoutY="415.0" prefWidth="150.0" promptText="Stads_ID" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+
 
 </AnchorPane>
