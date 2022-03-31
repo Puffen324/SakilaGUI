@@ -26,10 +26,10 @@
                               <TableColumn fx:id="actorLastUpdateColumn" prefWidth="180.0" text="Senast uppdatering" />
                           </columns>
                         </TableView>
-                        <TextField layoutX="15.0" layoutY="427.0" promptText="Förnamn" />
-                        <TextField layoutX="15.0" layoutY="467.0" promptText="Efternamn" />
-                        <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till skådespelare" />
-                        <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort vald skådespelare" />
+                        <TextField fx:id="actorFirstNameConstr" layoutX="15.0" layoutY="427.0" promptText="Förnamn" />
+                        <TextField fx:id="actorLastNameConstr" layoutX="15.0" layoutY="467.0" promptText="Efternamn" />
+                        <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#createActor" text="Lägg till skådespelare" />
+                        <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteActor" text="Ta bort vald skådespelare" />
                      </children>
                   </AnchorPane>
             </content>

@@ -23,17 +23,31 @@
                     <fx:include fx:id="CategoryTab" source="CategoryTab.fxml" />
                 </content></Tab>
 
-            <Tab text="Adress" />
+            <Tab text="Adress" >
+            <content>
+                <fx:include fx:id="AdressTab" source="AddressTab.fxml" />
+            </content></Tab>
+
             <Tab text="Stad" />
+
             <Tab text="Land" />
+
             <Tab text="Kunder" />
+
             <Tab text="Lagerstatus" />
+
             <Tab text="Språk" />
+
             <Tab text="Betalning" />
+
             <Tab text="Uthyrning" />
+
             <Tab text="Personal" />
+
             <Tab text="Butik" />
+
             <Tab text="Lagerstatus" />
+
         </tabs>
       </TabPane>
    </children>
