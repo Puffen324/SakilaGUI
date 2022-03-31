@@ -21,6 +21,17 @@ public class ActorEntity {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+
+
+    public ActorEntity(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public ActorEntity() {
+
+    }
+
     public int getActorId() {
         return actorId;
     }
