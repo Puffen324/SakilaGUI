@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.ActorTabController">
    <children>
-      <TabPane layoutX="-1.0" layoutY="-1.0" prefHeight="638.0" prefWidth="1058.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Actor">
+          <Tab text="Skådespelare">
+               <content>
+                   <fx:include fx:id="ActorTab" source="ActorTab.fxml" />
+               </content></Tab>
+            
+            <Tab text="Filmer" >
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="169.0" layoutY="376.0" mnemonicParsing="false" text="Create" />
-                        <Button layoutX="503.0" layoutY="376.0" mnemonicParsing="false" text="Update" />
-                        <Button layoutX="860.0" layoutY="376.0" mnemonicParsing="false" text="Delete" />
-                        <TableView layoutX="2.0" prefHeight="362.0" prefWidth="1058.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
+                <fx:include fx:id="FilmTab" source="FilmTab.fxml" />
+            </content></Tab>
+
+            <Tab text="Kategori">
+                <content>
+                    <fx:include fx:id="CategoryTab" source="CategoryTab.fxml" />
+                </content></Tab>
+
+            <Tab text="Adress" />
+            <Tab text="Stad" />
+            <Tab text="Land" />
+            <Tab text="Kunder" />
+            <Tab text="Lagerstatus" />
+            <Tab text="Språk" />
+            <Tab text="Betalning" />
+            <Tab text="Uthyrning" />
+            <Tab text="Personal" />
+            <Tab text="Butik" />
+            <Tab text="Lagerstatus" />
         </tabs>
       </TabPane>
    </children>
