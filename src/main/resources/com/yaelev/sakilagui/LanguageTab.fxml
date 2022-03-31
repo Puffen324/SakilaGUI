@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.LanguageTabController">
+    <children>
+        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+
+                <Tab text="Språk">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
+                            <children>
+                                <TableView prefHeight="355.0" prefWidth="800.0">
+                                    <columns>
+                                        <TableColumn fx:id="launguageIdColumn" prefWidth="133.0" text="ID" />
+                                        <TableColumn fx:id="langColumn" onEditCommit="#updateLanguage" prefWidth="376.0" text="Språk" />
+                                        <TableColumn fx:id="lastUpdateColumn" minWidth="0.0" onEditCommit="#updateLastUpdate" prefWidth="290.0" text="Senast uppdatering" />
+                                    </columns>
+                                </TableView>
+                                <TextField layoutX="6.0" layoutY="467.0" promptText="språk" />
+                                <Button layoutX="28.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till Språk" />
+                                <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Radera makerad Språk" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+        </TabPane>
+    </children>
+
+
+</AnchorPane>

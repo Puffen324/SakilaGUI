@@ -34,9 +34,11 @@
 
             <Tab text="Kunder" />
 
-            <Tab text="Lagerstatus" />
-
-            <Tab text="Språk" />
+            <Tab text="Språk" >
+                <content>
+                    <fx:include fx:id="LanguageTab" source="LanguageTab.fxml"/>
+                </content>
+            </Tab>
 
             <Tab text="Betalning" />
 
