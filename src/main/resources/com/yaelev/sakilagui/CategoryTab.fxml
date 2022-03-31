@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CategoryTabController">
+
+    <children>
+        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Kategori">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
+                            <children>
+                                <TableView prefHeight="355.0" prefWidth="800.0">
+                                    <columns>
+                                        <TableColumn prefWidth="133.0" text="ID" />
+                                        <TableColumn prefWidth="376.0" text="Titel" />
+                                        <TableColumn minWidth="0.0" prefWidth="290.0" text="Senast uppdatering" />
+                                    </columns>
+                                </TableView>
+                                <TextField layoutX="6.0" layoutY="467.0" promptText="Kategori" />
+                                <Button layoutX="28.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till kategori" />
+                                <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Radera makerad kategori" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Filmer">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
+                            <children>
+                                <TableView prefHeight="355.0" prefWidth="800.0">
+                                    <columns>
+                                        <TableColumn prefWidth="201.0" text="Kategori ID" />
+                                        <TableColumn prefWidth="302.0" text="Film ID" />
+                                        <TableColumn prefWidth="296.0" text="Senast uppdatering" />
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="36.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till koppling" />
+                                <Button layoutX="681.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort koppling" />
+                                <ChoiceBox layoutX="14.0" layoutY="422.0" prefWidth="150.0" />
+                                <ChoiceBox layoutX="15.0" layoutY="476.0" prefWidth="150.0" />
+                                <Label layoutX="57.0" layoutY="405.0" text="Välj kategori" />
+                                <Label layoutX="68.0" layoutY="459.0" text="Välj film" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+
+
+</AnchorPane>
