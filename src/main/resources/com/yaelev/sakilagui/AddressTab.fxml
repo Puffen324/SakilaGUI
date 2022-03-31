@@ -6,10 +6,10 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.AddressTabContoller">
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab text="Addresser">
-                    <content>
+
+
+
+
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
                                 <TableView fx:id="actorTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
@@ -34,10 +34,10 @@
                         <ComboBox layoutX="340.0" layoutY="415.0" prefWidth="150.0" promptText="Stads_ID" />
                             </children>
                         </AnchorPane>
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
+
+
+
+
     </children>
 
 
