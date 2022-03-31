@@ -34,7 +34,11 @@
             <Tab text="Språk" />
             <Tab text="Betalning" />
             <Tab text="Uthyrning" />
-            <Tab text="Personal" />
+            <Tab text="Personal" >
+                    <content>
+                        <fx:include fx:id="StaffTab" source="StaffTab.fxml" />
+                    </content>
+            </Tab>
             <Tab text="Butik" />
             <Tab text="Lagerstatus" />
         </tabs>
