@@ -1,7 +1,6 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.entity.RentalEntity;
-import com.yaelev.sakilagui.entity.StaffEntity;
+import com.yaelev.sakilagui.entity.Rental;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -17,21 +16,21 @@ public class RentalTabController implements Initializable {
     @FXML
     Label todaysDate;
     @FXML
-    private TableView<RentalEntity> rentalEntityTableView;
+    private TableView<Rental> rentalEntityTableView;
     @FXML
-    private TableColumn<RentalEntity, Integer> rentalIdColumn;
+    private TableColumn<Rental, Integer> rentalIdColumn;
     @FXML
-    private TableColumn<RentalEntity, Timestamp> rentalDateColumn;
+    private TableColumn<Rental, Timestamp> rentalDateColumn;
     @FXML
-    private TableColumn<RentalEntity,Integer> inventoryIdColumn;
+    private TableColumn<Rental,Integer> inventoryIdColumn;
     @FXML
-    private TableColumn<RentalEntity,Integer> customerIdColumn;
+    private TableColumn<Rental,Integer> customerIdColumn;
     @FXML
-    private TableColumn<RentalEntity,Timestamp> returnDateColumn;
+    private TableColumn<Rental,Timestamp> returnDateColumn;
     @FXML
-    private TableColumn<RentalEntity,Integer> staffIdColumn;
+    private TableColumn<Rental,Integer> staffIdColumn;
     @FXML
-    private TableColumn<RentalEntity,Timestamp> latestUpdateColumn;
+    private TableColumn<Rental,Timestamp> latestUpdateColumn;
 
     public void updateStaffEntityTableView(){
         //Backended ÄR inte klart ännu

@@ -54,7 +54,11 @@
                     </content>
             </Tab>
 
-            <Tab text="Butik" />
+            <Tab text="Butik" >
+                <content>
+                    <fx:include fx:id="StoreTab" source="StoreTab.fxml"/>
+                </content>
+            </Tab>
 
             <Tab text="Lagerstatus" />
 
