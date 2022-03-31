@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 public class DataEntityManger implements DataAccessObject {
-    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("hibernate");
+    public static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("hibernate");
 
     public void create2(ActorEntity actor) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
@@ -81,6 +81,11 @@ public class DataEntityManger implements DataAccessObject {
 
     @Override
     public void update(Object object) {
+
+    }
+
+
+    public void update(ActorEntity actor) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         try{
@@ -89,7 +94,7 @@ public class DataEntityManger implements DataAccessObject {
 
      /*       ActorEntity actor = entityManager.find(ActorEntity.class,object);*/
             // förändring här vad vi nu skall ha
-            entityManager.merge(object);
+            entityManager.merge(actor);
             transaction.commit();
         }catch (Exception e){
             if(transaction != null){

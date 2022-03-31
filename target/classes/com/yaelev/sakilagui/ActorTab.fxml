@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.ActorTabController">
    <children>
       <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
@@ -19,12 +18,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
-                        <TableView prefHeight="355.0" prefWidth="800.0">
+                        <TableView fx:id="actorTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="248.0" text="Förnamn" />
-                              <TableColumn prefWidth="239.0" text="Efternamn" />
-                              <TableColumn prefWidth="237.0" text="Senast uppdatering" />
+                            <TableColumn fx:id="actorIdColumn" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="actorFirstNameColumn" onEditCommit="#updateActorFirstName" prefWidth="248.0" text="Förnamn" />
+                              <TableColumn fx:id="actorLastNameColumn" onEditCommit="#updateActorLastName" prefWidth="296.0" text="Efternamn" />
+                              <TableColumn fx:id="actorLastUpdateColumn" prefWidth="180.0" text="Senast uppdatering" />
                           </columns>
                         </TableView>
                         <TextField layoutX="15.0" layoutY="427.0" promptText="Förnamn" />
