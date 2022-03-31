@@ -23,7 +23,10 @@
                     <fx:include fx:id="CategoryTab" source="CategoryTab.fxml" />
                 </content></Tab>
 
-            <Tab text="Adress" />
+            <Tab text="Address">
+            <content>
+                <fx:include fx:id="AddressTab" source="AddressTab.fxml" />
+            </content></Tab>
             <Tab text="Stad" />
             <Tab text="Land" />
             <Tab text="Kunder" />

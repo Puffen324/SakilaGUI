@@ -59,6 +59,7 @@ public class ActorTabController implements Initializable {
                 actorTableView.getSelectionModel().getSelectedItem().setLastName(actorStringCellEditEvent.getNewValue());
                 new DataEntityManger().update(actorTableView.getSelectionModel().getSelectedItem());
         }
+
 }
 
 
