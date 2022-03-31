@@ -2,15 +2,14 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
-@Table(name = "language")
-public class LanguageEntity {
+@Table(name = "category")
+public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "language_id")
-    private int languageId;
+    @Column(name = "category_id")
+    private int categoryId;
     @Basic
     @Column(name = "name")
     private String name;
@@ -18,12 +17,12 @@ public class LanguageEntity {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public int getLanguageId() {
-        return languageId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setLanguageId(int languageId) {
-        this.languageId = languageId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {

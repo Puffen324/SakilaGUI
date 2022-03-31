@@ -1,8 +1,7 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.ActorDAO;
-import com.yaelev.sakilagui.dao.DataEntityManger;
-import com.yaelev.sakilagui.entity.ActorEntity;
+import com.yaelev.sakilagui.entity.Actor;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,19 +19,19 @@ public class ActorTabController implements Initializable {
 
 
         @FXML
-        private TableView<ActorEntity> actorTableView;
+        private TableView<Actor> actorTableView;
 
         @FXML
-        private TableColumn<ActorEntity, String> actorFirstNameColumn;
+        private TableColumn<Actor, String> actorFirstNameColumn;
 
         @FXML
-        private TableColumn<ActorEntity, Integer> actorIdColumn;
+        private TableColumn<Actor, Integer> actorIdColumn;
 
         @FXML
-        private TableColumn<ActorEntity, String> actorLastNameColumn;
+        private TableColumn<Actor, String> actorLastNameColumn;
 
         @FXML
-        private TableColumn<ActorEntity, Timestamp> actorLastUpdateColumn;
+        private TableColumn<Actor, Timestamp> actorLastUpdateColumn;
         @FXML
         private TextField actorFirstNameConstr;
         @FXML
@@ -55,20 +54,20 @@ public class ActorTabController implements Initializable {
                 updateActorEntityTableView();
         }
 
-        public void updateActorFirstName(TableColumn.CellEditEvent<ActorEntity, String> actorStringCellEditEvent){
+        public void updateActorFirstName(TableColumn.CellEditEvent<Actor, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setFirstName(actorStringCellEditEvent.getNewValue());
                 new ActorDAO().update(actorTableView.getSelectionModel().getSelectedItem());
                 updateActorEntityTableView();
         }
-        public void updateActorLastName(TableColumn.CellEditEvent<ActorEntity, String> actorStringCellEditEvent){
+        public void updateActorLastName(TableColumn.CellEditEvent<Actor, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setLastName(actorStringCellEditEvent.getNewValue());
                 new ActorDAO().update(actorTableView.getSelectionModel().getSelectedItem());
                 updateActorEntityTableView();
         }
         public void createActor(){
                 if(actorFirstNameConstr != null && actorLastNameConstr != null){
-                        ActorEntity actorEntity = new ActorEntity(actorFirstNameConstr.getText(), actorLastNameConstr.getText());
-                        new ActorDAO().create(actorEntity);
+                        Actor actor = new Actor(actorFirstNameConstr.getText(), actorLastNameConstr.getText());
+                        new ActorDAO().create(actor);
                         updateActorEntityTableView();
                         actorFirstNameConstr.setText("");
                         actorLastNameConstr.setText("");
@@ -76,8 +75,8 @@ public class ActorTabController implements Initializable {
 
         }
         public void deleteActor(){
-                ActorEntity actorEntity = actorTableView.getSelectionModel().getSelectedItem();
-                new ActorDAO().delete(actorEntity);
+                Actor actor = actorTableView.getSelectionModel().getSelectedItem();
+                new ActorDAO().delete(actor);
                 updateActorEntityTableView();
         }
 

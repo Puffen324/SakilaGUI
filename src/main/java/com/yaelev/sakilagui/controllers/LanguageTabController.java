@@ -1,7 +1,6 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.entity.LanguageEntity;
-import com.yaelev.sakilagui.entity.StaffEntity;
+import com.yaelev.sakilagui.entity.Language;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -13,11 +12,11 @@ import java.util.ResourceBundle;
 
 public class LanguageTabController implements Initializable {
     @FXML
-    private TableView<LanguageEntity> languageEntityTableView;
+    private TableView<Language> languageEntityTableView;
     @FXML
-    private TableColumn<LanguageEntity, Integer> langColumn;
+    private TableColumn<Language, Integer> langColumn;
     @FXML
-    private TableColumn<LanguageEntity, Timestamp> lastUpdateColumn;
+    private TableColumn<Language, Timestamp> lastUpdateColumn;
 
     public void updateStaffEntityTableView(){
         //Backended ÄR inte klart ännu
