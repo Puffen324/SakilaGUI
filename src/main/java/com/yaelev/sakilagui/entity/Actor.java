@@ -6,7 +6,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "actor")
-public class ActorEntity {
+public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "actor_id")
@@ -23,13 +23,13 @@ public class ActorEntity {
 
 
 
-    public ActorEntity(String firstName, String lastName) {
+    public Actor(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastUpdate = Timestamp.from(Instant.now());
     }
 
-    public ActorEntity() {
+    public Actor() {
 
     }
 

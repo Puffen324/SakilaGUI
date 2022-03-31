@@ -3,11 +3,10 @@ package com.yaelev.sakilagui.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "payment")
-public class PaymentEntity {
+public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "payment_id")

@@ -1,8 +1,6 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.entity.ActorEntity;
-import com.yaelev.sakilagui.entity.AddressEntity;
-import com.yaelev.sakilagui.entity.StaffEntity;
+import com.yaelev.sakilagui.entity.Staff;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -12,27 +10,27 @@ import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
-public class SaffTabContorller implements Initializable {
+public class StaffTabContorller implements Initializable {
     @FXML
-    private TableView<StaffEntity> staffEntityTableView;
+    private TableView<Staff> staffEntityTableView;
     @FXML
-    private TableColumn<StaffEntity, Integer> staffIdColumn;
+    private TableColumn<Staff, Integer> staffIdColumn;
     @FXML
-    private TableColumn<StaffEntity,String> staffNameColumn;
+    private TableColumn<Staff,String> staffNameColumn;
     @FXML
-    private TableColumn<StaffEntity,String> staffLastnameColumn;
+    private TableColumn<Staff,String> staffLastnameColumn;
     @FXML
-    private TableColumn<StaffEntity,Integer> address_idColumn;
+    private TableColumn<Staff,Integer> address_idColumn;
     @FXML
-    private TableColumn<StaffEntity,String> staffEmailColumn1;
+    private TableColumn<Staff,String> staffEmailColumn1;
     @FXML
-    private TableColumn<StaffEntity,Integer>store_IdColumn;
+    private TableColumn<Staff,Integer>store_IdColumn;
     @FXML
-    private TableColumn<StaffEntity,String> userColumn;
+    private TableColumn<Staff,String> userColumn;
     @FXML
-    private TableColumn<StaffEntity,String> passwordColumn;
+    private TableColumn<Staff,String> passwordColumn;
     @FXML
-    private TableColumn<StaffEntity, Timestamp> staffLastUpdateColumn;
+    private TableColumn<Staff, Timestamp> staffLastUpdateColumn;
 
     public void updateStaffEntityTableView(){
         //Backended ÄR inte klart ännu

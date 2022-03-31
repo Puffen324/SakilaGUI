@@ -2,11 +2,10 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "rental")
-public class RentalEntity {
+public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "rental_id")

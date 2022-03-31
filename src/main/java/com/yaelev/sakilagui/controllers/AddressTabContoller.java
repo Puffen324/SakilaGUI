@@ -1,7 +1,6 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.entity.ActorEntity;
-import com.yaelev.sakilagui.entity.AddressEntity;
+import com.yaelev.sakilagui.entity.Address;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -13,26 +12,26 @@ import java.util.ResourceBundle;
 
 public class AddressTabContoller  implements Initializable {
     @FXML
-    private TableView<AddressEntity> addressEntityTableView;
+    private TableView<Address> addressEntityTableView;
 
     @FXML
-    private TableColumn<AddressEntity, Integer> addressIdColumn;
+    private TableColumn<Address, Integer> addressIdColumn;
 
     @FXML
-    private TableColumn<AddressEntity, String> addressNameColumn;
+    private TableColumn<Address, String> addressNameColumn;
 
     @FXML
-    private TableColumn<AddressEntity, String> districtColumn;
+    private TableColumn<Address, String> districtColumn;
     @FXML
-    private TableColumn<AddressEntity, Integer> city_idColumn;
+    private TableColumn<Address, Integer> city_idColumn;
     @FXML
-    private TableColumn<AddressEntity, Integer> postalCodeColumn1;
+    private TableColumn<Address, Integer> postalCodeColumn1;
     @FXML
-    private TableColumn<AddressEntity, Integer> phoneColumn11;
+    private TableColumn<Address, Integer> phoneColumn11;
     @FXML
-    private TableColumn<AddressEntity, Integer> locationColumn111;
+    private TableColumn<Address, Integer> locationColumn111;
     @FXML
-    private TableColumn<AddressEntity, Timestamp> actorLastUpdateColumn;
+    private TableColumn<Address, Timestamp> actorLastUpdateColumn;
 
     public void updateAddressEntityTableView(){
         //Backended ÄR inte klart ännu

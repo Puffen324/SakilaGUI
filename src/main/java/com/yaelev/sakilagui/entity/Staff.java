@@ -2,12 +2,10 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Objects;
 
 @Entity
 @Table(name = "staff")
-public class StaffEntity {
+public class Staff {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "staff_id")

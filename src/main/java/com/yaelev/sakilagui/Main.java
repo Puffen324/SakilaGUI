@@ -1,7 +1,5 @@
 package com.yaelev.sakilagui;
 
-import com.yaelev.sakilagui.dao.DataEntityManger;
-import com.yaelev.sakilagui.entity.ActorEntity;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
