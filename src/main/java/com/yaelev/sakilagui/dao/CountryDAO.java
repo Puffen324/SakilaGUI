@@ -16,7 +16,7 @@ public class CountryDAO extends GenericDAO<Country> {
 
     }
 
-    public List<City> read() {
+    public List<Country> read() {
         return entityManager.createNativeQuery("SELECT * FROM Country", Country.class).getResultList();
     }
 
