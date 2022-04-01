@@ -45,7 +45,8 @@ public class ActorTabController implements Initializable {
                 updateActorTableView();
         }
 
-        public void updateActorTableView(){
+
+        public void updateActorTableView() {
                 actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));
                 actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
                 actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -55,6 +56,7 @@ public class ActorTabController implements Initializable {
                 actorLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
                 actorTableView.getItems().addAll();
         }
+      
         public void updateActorFirstName(TableColumn.CellEditEvent<Actor, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setFirstName(actorStringCellEditEvent.getNewValue());
                 actorTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
@@ -101,6 +103,3 @@ public class ActorTabController implements Initializable {
 
         }
 }
-
-
-

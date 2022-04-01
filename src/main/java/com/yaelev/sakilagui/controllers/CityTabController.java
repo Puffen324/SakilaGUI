@@ -1,4 +1,5 @@
 package com.yaelev.sakilagui.controllers;
+
 import com.yaelev.sakilagui.entity.City;
 import com.yaelev.sakilagui.entity.Country;
 import javafx.fxml.FXML;
@@ -41,5 +42,9 @@ public class CityTabController implements Initializable {
     public void updateLastUpdate(){
 
     }
+
+
+
+public class CityTabController {
 
 }
