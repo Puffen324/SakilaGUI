@@ -20,14 +20,14 @@
                     <content>
                         <fx:include fx:id="FilmTab" source="FilmTab.fxml"/>
                     </content>
-                 </Tab>
+                </Tab>
 
-                 <Tab text="Land" >
+                <Tab text="Land">
 
-                <content>
-                    <fx:include fx:id="CountryTab" source="CountryTab.fxml" />
-                </content></Tab>
-
+                    <content>
+                        <fx:include fx:id="CountryTab" source="CountryTab.fxml"/>
+                    </content>
+                </Tab>
 
                 <Tab text="Kategori">
                     <content>
@@ -41,7 +41,6 @@
                     </content>
                 </Tab>
 
-
                 <Tab text="Stad">
                     <content>
                         <fx:include fx:id="CityTab" source="CityTab.fxml"/>
@@ -49,9 +48,7 @@
                 </Tab>
 
 
-
                 <Tab text="Kunder">
-
                     <content>
                         <fx:include fx:id="CustomerTab" source="CustomerTab.fxml"/>
                     </content>
@@ -87,13 +84,11 @@
                     </content>
                 </Tab>
 
-
-            <Tab text="Lagerstatus" >
-                <content>
-                    <fx:include fx:id="InventoryTab" source="InventoryTab.fxml"/>
-                </content>
-            </Tab>
-
+                <Tab text="Lagerstatus">
+                    <content>
+                        <fx:include fx:id="InventoryTab" source="InventoryTab.fxml"/>
+                    </content>
+                </Tab>
             </tabs>
         </TabPane>
     </children>

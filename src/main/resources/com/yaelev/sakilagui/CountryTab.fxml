@@ -17,8 +17,8 @@
                                 <TableView fx:id="countryTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn fx:id="countryIdColumn" prefWidth="75.0" text="Land Id" />
-                                        <TableColumn fx:id="countryNameColumn" prefWidth="248.0" text="Land" />
-                                        <TableColumn fx:id="countryLastUpdateColumn" prefWidth="180.0" text="Senast uppdatering" />
+                                        <TableColumn fx:id="countryNameColumn" prefWidth="425.0" text="Land" />
+                                        <TableColumn fx:id="countryLastUpdateColumn" prefWidth="299.0" text="Senast uppdatering" />
                                     </columns>
                                 </TableView>
                             </children>
