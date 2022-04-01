@@ -117,4 +117,17 @@ public class Staff {
     }
 
 
+    @Override
+    public String toString() {
+        return
+               staffId +
+                " " + firstName +
+                " " + lastName +
+                " " + addressId +
+                " " + email +
+                " " + storeId +
+                " " + active +
+                " " + username;
+
+    }
 }

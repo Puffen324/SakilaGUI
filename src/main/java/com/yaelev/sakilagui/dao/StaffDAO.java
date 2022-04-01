@@ -17,7 +17,7 @@ public class StaffDAO extends GenericDAO<Staff>{
 
     }
 
-    public List<City> read() {
+    public List<Staff> read() {
         return entityManager.createNativeQuery("SELECT * FROM Staff", Staff.class).getResultList();
     }
 

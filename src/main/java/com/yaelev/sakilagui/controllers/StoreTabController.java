@@ -3,9 +3,11 @@ package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.ActorDAO;
 import com.yaelev.sakilagui.dao.AddressDAO;
+import com.yaelev.sakilagui.dao.StaffDAO;
 import com.yaelev.sakilagui.dao.StoreDAO;
 import com.yaelev.sakilagui.entity.Actor;
 import com.yaelev.sakilagui.entity.Address;
+import com.yaelev.sakilagui.entity.Staff;
 import com.yaelev.sakilagui.entity.Store;
 
 import javafx.collections.FXCollections;
@@ -38,6 +40,8 @@ public class StoreTabController implements Initializable {
     @FXML
     private ComboBox <Address> addressComboBox;
     @FXML
+    private ComboBox <Staff> managerCombobox;
+    @FXML
     private Button deleteStoreBtn;
     public void deleteBtn(){
         deleteStore();
@@ -53,6 +57,8 @@ public class StoreTabController implements Initializable {
             storeTableView.getItems().addAll();
             addressComboBox.setItems((FXCollections.observableList(new AddressDAO().read())));
             addressComboBox.getItems().addAll();
+            managerCombobox.setItems((FXCollections.observableList(new StaffDAO().read())));
+            managerCombobox.getItems().addAll();
 
     }
     @Override

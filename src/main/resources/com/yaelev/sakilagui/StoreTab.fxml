@@ -21,8 +21,8 @@
                     </columns>
                 </TableView>
                 <Button layoutX="14.0" layoutY="435.0" mnemonicParsing="false" text="Lägg till Butik" />
-                <Button fx:id="deleteStoreBtn" layoutX="651.0" layoutY="435.0" mnemonicParsing="false" onAction="#deleteBtn" text="Ta bort vald Butik" />
-                <ComboBox layoutX="228.0" layoutY="380.0" prefHeight="25.0" prefWidth="106.0" promptText="Chefs ID" />
+                <Button layoutX="651.0" layoutY="435.0" mnemonicParsing="false" text="Ta bort vald Butik" />
+                <ComboBox fx:id="managerCombobox" layoutX="228.0" layoutY="380.0" prefHeight="25.0" prefWidth="106.0" promptText="Chefs ID" />
             <ComboBox fx:id="addressComboBox" layoutX="457.0" layoutY="380.0" prefHeight="25.0" prefWidth="106.0" promptText="Address_ID" />
             </children>
         </AnchorPane>
