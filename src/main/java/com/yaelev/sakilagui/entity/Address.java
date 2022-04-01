@@ -97,4 +97,15 @@ public class Address {
     }
 
 
+    @Override
+    public String toString() {
+        return
+                 addressId +
+                " " + address +
+                " " + address2 +
+                " " + district +
+                " " + cityId +
+                " " + postalCode;
+
+    }
 }
