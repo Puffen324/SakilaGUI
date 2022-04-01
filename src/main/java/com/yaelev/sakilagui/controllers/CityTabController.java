@@ -23,28 +23,31 @@ public class CityTabController implements Initializable {
     @FXML
     private TableColumn<City, Timestamp> cityLastUpdateColumn;
 
-    public void updateAddressEntityTableView(){
+    public void updateAddressEntityTableView() {
         //Backended ÄR inte klart ännu
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-    public void updateCity_id(){
 
-    }
-    public void updateCity(){
-
-    }
-    public void updateCountry_id(){
-
-    }
-    public void updateLastUpdate(){
+    public void updateCity_id() {
 
     }
 
+    public void updateCity() {
 
+    }
 
-public class CityTabController {
+    public void updateCountry_id() {
 
+    }
+
+    public void updateLastUpdate() {
+
+    }
 }
+
+
+
