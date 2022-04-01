@@ -42,11 +42,15 @@ public class StoreTabController implements Initializable {
     @FXML
     private ComboBox <Staff> managerCombobox;
     @FXML
-    private Button deleteStoreBtn;
-    public void deleteBtn(){
-        deleteStore();
-    }
+    private Button deleteStoreBtn,createStoreBtn;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        updateStoreEntityTableView();
+        updateAddressBox();
+        updateManagerBox();
+    }
     public void updateStoreEntityTableView(){
 
             storeTableView.setItems(FXCollections.observableList(new StoreDAO().read()));
@@ -55,17 +59,29 @@ public class StoreTabController implements Initializable {
             addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
             latestUpdateColumn111.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
             storeTableView.getItems().addAll();
-            addressComboBox.setItems((FXCollections.observableList(new AddressDAO().read())));
-            addressComboBox.getItems().addAll();
-            managerCombobox.setItems((FXCollections.observableList(new StaffDAO().read())));
-            managerCombobox.getItems().addAll();
+
 
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void updateAddressBox(){
+        addressComboBox.setItems((FXCollections.observableList(new AddressDAO().read())));
+        addressComboBox.getItems().addAll();
+    }
+    public void updateManagerBox(){
+        managerCombobox.setItems((FXCollections.observableList(new StaffDAO().read())));
+        managerCombobox.getItems().addAll();
 
+    }
+    public void createStoreBtn(){}
+    public void deleteBtn(){
+        deleteStore();
+    }
+    public void createStore(){
+        Store store = new Store(managerCombobox.getSelectionModel().getSelectedItem().getStaffId()
+                ,addressComboBox.getSelectionModel().getSelectedItem().getAddressId());
+        new StoreDAO().create(store);
         updateStoreEntityTableView();
     }
+
     public void deleteStore(){
         Store store = storeTableView.getSelectionModel().getSelectedItem();
         new StoreDAO().delete(store);
