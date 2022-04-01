@@ -2,6 +2,9 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 
 @Entity
 @Table(name = "address")
@@ -31,6 +34,33 @@ public class Address {
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+    static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+    public Address(){}
+// location Verkar behövas det är EN TYP BLOB vad nu det är :|
+    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone) {
+        this.addressId = addressId;
+        this.address = address;
+        this.address2 = address2;
+        this.district = district;
+        this.cityId = cityId;
+        this.postalCode = postalCode;
+        this.phone = phone;
+        this.lastUpdate = Timestamp.from(Instant.now());
+    }
+
+    public Address(String address, String district, int cityId, String postalCode, String phone) {
+        java.util.Date date = new Date();
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String nowTime = simpleDateFormat.format(date);
+        Timestamp dates = Timestamp.valueOf(nowTime);
+        this.address = address;
+        this.district = district;
+        this.cityId = cityId;
+        this.postalCode = postalCode;
+        this.phone = phone;
+        this.lastUpdate = dates;
+
+    }
 
     public int getAddressId() {
         return addressId;

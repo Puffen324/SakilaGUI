@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.AddressTabContoller">
     <children>
@@ -24,14 +27,14 @@
                               <TableColumn fx:id="addressLastUpdateColumn1111" maxWidth="1.7976931348623157E308" onEditCommit="#updateLastUpdate" prefWidth="136.0" text="uppdaterad" />
                                     </columns>
                                 </TableView>
-                                <TextField layoutX="15.0" layoutY="453.0" promptText="Telefon" />
-                                <TextField layoutX="15.0" layoutY="415.0" promptText="Postkod" />
-                                <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till Address" />
-                                <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort vald Address" />
-                        <TextField layoutX="15.0" layoutY="380.0" promptText="Adress" />
-                        <TextField layoutX="506.0" layoutY="415.0" promptText="Plats" />
-                        <TextField layoutX="177.0" layoutY="415.0" promptText="Ort" />
-                        <ComboBox layoutX="340.0" layoutY="415.0" prefWidth="150.0" promptText="Stads_ID" />
+                                <TextField fx:id="phoneTextfield" layoutX="15.0" layoutY="453.0" promptText="Telefon" />
+                                <TextField fx:id="postalCodeTextfield" layoutX="15.0" layoutY="415.0" promptText="Postkod" />
+                                <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#createAddress" text="Lägg till Address" />
+                                <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteAddress" text="Ta bort vald Address" />
+                        <TextField fx:id="addressTextField" layoutX="15.0" layoutY="380.0" promptText="Adress" />
+                        <TextField fx:id="locationTextfield" layoutX="506.0" layoutY="415.0" promptText="Plats" />
+                        <TextField fx:id="districtTextfield" layoutX="177.0" layoutY="415.0" promptText="Ort" />
+                        <ComboBox fx:id="cityComboBox" layoutX="340.0" layoutY="415.0" prefWidth="150.0" promptText="Stads_ID" />
                             </children>
                         </AnchorPane>
 
