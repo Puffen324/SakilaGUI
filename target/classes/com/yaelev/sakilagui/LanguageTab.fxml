@@ -10,10 +10,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.LanguageTabController">
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
 
-                <Tab text="Språk">
-                    <content>
+
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
                                 <TableView prefHeight="355.0" prefWidth="800.0">
@@ -28,10 +26,7 @@
                                 <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Radera makerad Språk" />
                             </children>
                         </AnchorPane>
-                    </content>
-                </Tab>
 
-        </TabPane>
     </children>
 
 

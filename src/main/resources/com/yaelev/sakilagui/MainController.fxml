@@ -42,7 +42,11 @@
 
             <Tab text="Betalning" />
 
-            <Tab text="Uthyrning" />
+            <Tab text="Uthyrning" >
+                <content>
+                    <fx:include fx:id="RentalTab" source="RentalTab.fxml"/>
+                </content>
+            </Tab>
 
             <Tab text="Personal" >
                     <content>
@@ -50,7 +54,11 @@
                     </content>
             </Tab>
 
-            <Tab text="Butik" />
+            <Tab text="Butik" >
+                <content>
+                    <fx:include fx:id="StoreTab" source="StoreTab.fxml"/>
+                </content>
+            </Tab>
 
             <Tab text="Lagerstatus" />
 
