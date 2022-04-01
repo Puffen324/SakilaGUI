@@ -1,8 +1,6 @@
 package com.yaelev.sakilagui.dao;
 
-
 import com.yaelev.sakilagui.entity.Store;
-
 import java.util.List;
 
 public class StoreDAO extends GenericDAO<Store>{

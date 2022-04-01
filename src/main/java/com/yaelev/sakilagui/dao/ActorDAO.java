@@ -4,7 +4,6 @@ import com.yaelev.sakilagui.entity.Actor;
 import java.util.List;
 
 public class ActorDAO extends GenericDAO<Actor> {
-
     public ActorDAO() {
         super();
     }

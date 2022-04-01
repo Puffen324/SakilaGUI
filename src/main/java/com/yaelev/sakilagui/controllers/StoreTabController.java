@@ -32,16 +32,16 @@ public class StoreTabController implements Initializable {
 
 
     public void updateStoreEntityTableView(){
-        try{
+        //try{
             storeTableView.setItems(FXCollections.observableList(new StoreDAO().read()));
             storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
             managerStaffIdColumn1.setCellValueFactory(new PropertyValueFactory<>("managerStaffId"));
             addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
             latestUpdateColumn111.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
             storeTableView.getItems().addAll();
-        }catch(Exception e){
+        /*}catch(Exception e){
             System.out.println(e);
-        }
+        }*/
 
 
     }
