@@ -3,8 +3,12 @@ package com.yaelev.sakilagui.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-@Entity
+@Entity(name = "Actor")
 @Table(name = "actor")
 public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

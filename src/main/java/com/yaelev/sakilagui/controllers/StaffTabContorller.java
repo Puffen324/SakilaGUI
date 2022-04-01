@@ -41,12 +41,28 @@ public class StaffTabContorller implements Initializable {
 
         //updateStaffEntityTableView();
     }
-    public void updateStaffName(){}
-    public void updateStaffLastName(){}
-    public void updateStaffaddress_id(){}
-    public void updateStaffEmail(){}
-    public void updateStoreID(){}
-    public void updateUser(){}
-    public void updatePassword(){}
-    public void updateLastUpdate(){}
+    public void updateStaffName(){
+
+    }
+    public void updateStaffLastName(){
+
+    }
+    public void updateStaffaddress_id(){
+
+    }
+    public void updateStaffEmail(){
+
+    }
+    public void updateStoreID(){
+
+    }
+    public void updateUser(){
+
+    }
+    public void updatePassword(){
+
+    }
+    public void updateLastUpdate(){
+
+    }
 }
