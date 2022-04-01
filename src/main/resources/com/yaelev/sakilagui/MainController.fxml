@@ -68,7 +68,12 @@
                 </content>
             </Tab>
 
-            <Tab text="Lagerstatus" />
+            <Tab text="Lagerstatus" >
+                <content>
+                    <fx:include fx:id="InventoryTab" source="InventoryTab.fxml"/>
+                </content>
+            </Tab>
+
 
         </tabs>
       </TabPane>
