@@ -34,15 +34,15 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Filmroller">
+            <Tab onSelectionChanged="#updateActorFilmTableView" text="Filmroller">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
-                        <TableView prefHeight="355.0" prefWidth="800.0">
+                        <TableView fx:id="actorFilmTableView" prefHeight="355.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn prefWidth="201.0" text="Skådespelare ID" />
-                              <TableColumn prefWidth="302.0" text="Film ID" />
-                              <TableColumn prefWidth="296.0" text="Senast uppdatering" />
+                              <TableColumn fx:id="actorFilmIdColumn" prefWidth="201.0" text="Skådespelare ID" />
+                              <TableColumn fx:id="filmActorIdColumn" prefWidth="302.0" text="Film ID" />
+                              <TableColumn fx:id="actorFilmLastUpdateColumn" prefWidth="296.0" text="Senast uppdatering" />
                            </columns>
                         </TableView>
                         <Button layoutX="36.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till koppling" />
