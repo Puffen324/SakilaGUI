@@ -45,18 +45,8 @@ public class ActorTabController implements Initializable {
                 updateActorTableView();
         }
 
-<<<<<<< HEAD
-        public void updateActorEntityTableView(){
-                        actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));
-                        actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
-                        actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-                        actorFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-                        actorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-                        actorLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-                        actorLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-                        actorTableView.getItems().addAll();
-=======
-        public void updateActorTableView(){
+
+        public void updateActorTableView() {
                 actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));
                 actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
                 actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -65,8 +55,8 @@ public class ActorTabController implements Initializable {
                 actorLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
                 actorLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
                 actorTableView.getItems().addAll();
->>>>>>> b028a28497c76381093ced434d25dc4e2655bdf4
         }
+      
         public void updateActorFirstName(TableColumn.CellEditEvent<Actor, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setFirstName(actorStringCellEditEvent.getNewValue());
                 actorTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
@@ -113,6 +103,3 @@ public class ActorTabController implements Initializable {
 
         }
 }
-
-
-
