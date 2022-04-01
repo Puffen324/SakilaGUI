@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CountryTabController">
+    <children>
+        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Land">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
+                            <children>
+                                <TableView fx:id="countryTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
+                                    <columns>
+                                        <TableColumn fx:id="countryIdColumn" prefWidth="75.0" text="Land Id" />
+                                        <TableColumn fx:id="countryNameColumn" prefWidth="248.0" text="Land" />
+                                        <TableColumn fx:id="countryLastUpdateColumn" prefWidth="180.0" text="Senast uppdatering" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

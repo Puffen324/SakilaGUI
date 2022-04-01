@@ -34,7 +34,11 @@
                         <fx:include fx:id="CityTab" source="CityTab.fxml" />
                     </content></Tab>
 
-            <Tab text="Land" />
+            <Tab text="Land" >
+
+                <content>
+                    <fx:include fx:id="CountryTab" source="CountryTab.fxml" />
+                </content></Tab>
 
             <Tab text="Kunder" />
 
