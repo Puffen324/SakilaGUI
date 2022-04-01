@@ -1,12 +1,18 @@
 package com.yaelev.sakilagui.controllers;
 
 
+import com.yaelev.sakilagui.dao.ActorDAO;
+import com.yaelev.sakilagui.dao.AddressDAO;
 import com.yaelev.sakilagui.dao.StoreDAO;
+import com.yaelev.sakilagui.entity.Actor;
+import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Store;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,7 +35,13 @@ public class StoreTabController implements Initializable {
     @FXML
     private TableColumn<Store, Timestamp> latestUpdateColumn111;
 
-
+    @FXML
+    private ComboBox <Address> addressComboBox;
+    @FXML
+    private Button deleteStoreBtn;
+    public void deleteBtn(){
+        deleteStore();
+    }
 
     public void updateStoreEntityTableView(){
 
@@ -39,13 +51,18 @@ public class StoreTabController implements Initializable {
             addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
             latestUpdateColumn111.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
             storeTableView.getItems().addAll();
-
-
+            addressComboBox.setItems((FXCollections.observableList(new AddressDAO().read())));
+            addressComboBox.getItems().addAll();
 
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        updateStoreEntityTableView();
+    }
+    public void deleteStore(){
+        Store store = storeTableView.getSelectionModel().getSelectedItem();
+        new StoreDAO().delete(store);
         updateStoreEntityTableView();
     }
     public void managerStaffIdUpdate(){}
