@@ -4,73 +4,84 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TabPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Skådespelare">
-               <content>
-                   <fx:include fx:id="ActorTab" source="ActorTab.fxml" />
-               </content></Tab>
-            
-            <Tab text="Filmer">
-            <content>
-                <fx:include fx:id="FilmTab" source="FilmTab.fxml" />
-            </content></Tab>
-
-            <Tab text="Kategori">
-                <content>
-                    <fx:include fx:id="CategoryTab" source="CategoryTab.fxml" />
-                </content></Tab>
-            
-            <Tab text="Address">
-            <content>
-                <fx:include fx:id="AddressTab" source="AddressTab.fxml" />
-            </content></Tab>
-
-
-            <Tab text="Stad">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TabPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Skådespelare">
                     <content>
-                        <fx:include fx:id="CityTab" source="CityTab.fxml" />
-                    </content></Tab>
-
-            <Tab text="Land" />
-
-            <Tab text="Kunder" />
-
-            <Tab text="Språk">
-                <content>
-                    <fx:include fx:id="LanguageTab" source="LanguageTab.fxml" />
-                </content>
-            </Tab>
-
-            <Tab text="Betalning">
-                <content>
-                    <fx:include fx:id="PaymentTab" source="PaymentTab.fxml" />
-                </content>
-            </Tab>
-
-            <Tab text="Uthyrning">
-                <content>
-                    <fx:include fx:id="RentalTab" source="RentalTab.fxml" />
-                </content>
-            </Tab>
-
-            <Tab text="Personal">
-                    <content>
-                        <fx:include fx:id="StaffTab" source="StaffTab.fxml" />
+                        <fx:include fx:id="ActorTab" source="ActorTab.fxml"/>
                     </content>
-            </Tab>
+                </Tab>
 
-            <Tab text="Butik">
-                <content>
-                    <fx:include fx:id="StoreTab" source="StoreTab.fxml" />
-                </content>
-            </Tab>
+                <Tab text="Filmer">
+                    <content>
+                        <fx:include fx:id="FilmTab" source="FilmTab.fxml"/>
+                    </content>
+                </Tab>
 
-            <Tab text="Lagerstatus" />
+                <Tab text="Kategori">
+                    <content>
+                        <fx:include fx:id="CategoryTab" source="CategoryTab.fxml"/>
+                    </content>
+                </Tab>
 
-        </tabs>
-      </TabPane>
-   </children>
+                <Tab text="Address">
+                    <content>
+                        <fx:include fx:id="AddressTab" source="AddressTab.fxml"/>
+                    </content>
+                </Tab>
+
+
+                <Tab text="Stad">
+                    <content>
+                        <fx:include fx:id="CityTab" source="CityTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Land"/>
+
+                <Tab text="Kunder">
+
+                    <content>
+                        <fx:include fx:id="CustomerTab" source="CustomerTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Språk">
+                    <content>
+                        <fx:include fx:id="LanguageTab" source="LanguageTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Betalning">
+                    <content>
+                        <fx:include fx:id="PaymentTab" source="PaymentTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Uthyrning">
+                    <content>
+                        <fx:include fx:id="RentalTab" source="RentalTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Personal">
+                    <content>
+                        <fx:include fx:id="StaffTab" source="StaffTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Butik">
+                    <content>
+                        <fx:include fx:id="StoreTab" source="StoreTab.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab text="Lagerstatus"/>
+
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>

@@ -22,12 +22,12 @@
             <TableColumn prefWidth="153.0" text="Senast uppdaterad" />
         </columns>
       </TableView>
-      <Button layoutX="654.0" layoutY="561.0" mnemonicParsing="false" text="Radera markerad köphistorik" />
-      <Button layoutX="14.0" layoutY="561.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Registrera nytt köp" />
+      <Button layoutX="654.0" layoutY="530.0" mnemonicParsing="false" text="Radera markerad köphistorik" />
+      <Button layoutX="14.0" layoutY="530.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Registrera nytt köp" />
       <ChoiceBox layoutX="17.0" layoutY="421.0" prefWidth="150.0" />
       <ChoiceBox layoutX="17.0" layoutY="463.0" prefWidth="150.0" />
       <Label layoutX="67.0" layoutY="404.0" text="Välj kund" />
       <Label layoutX="58.0" layoutY="446.0" text="Välj personal" />
-      <TextField layoutX="17.0" layoutY="505.0" promptText="Belopp" />
+      <TextField layoutX="17.0" layoutY="498.0" promptText="Belopp" />
    </children>
 </AnchorPane>
