@@ -56,7 +56,7 @@ public class ActorTabController implements Initializable {
                 actorLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
                 actorTableView.getItems().addAll();
         }
-      
+
         public void updateActorFirstName(TableColumn.CellEditEvent<Actor, String> actorStringCellEditEvent){
                 actorTableView.getSelectionModel().getSelectedItem().setFirstName(actorStringCellEditEvent.getNewValue());
                 actorTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
