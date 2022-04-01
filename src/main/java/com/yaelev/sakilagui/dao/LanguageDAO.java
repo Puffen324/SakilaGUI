@@ -17,7 +17,7 @@ public class LanguageDAO extends GenericDAO<Language>{
 
     }
 
-    public List<City> read() {
+    public List<Language> read() {
         return entityManager.createNativeQuery("SELECT * FROM Language", Language.class).getResultList();
     }
 
