@@ -42,9 +42,4 @@ public class CityTabController implements Initializable {
     public void updateLastUpdate(){
 
     }
-
-
-
-public class CityTabController {
-
 }
