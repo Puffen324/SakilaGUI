@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "store")
@@ -19,6 +20,16 @@ public class Store {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    public Store( int managerStaffId, int addressId) {
+        this.managerStaffId = managerStaffId;
+        this.addressId = addressId;
+        this.lastUpdate = Timestamp.from(Instant.now());
+    }
+
+    public Store() {
+
+    }
 
     public int getStoreId() {
         return storeId;

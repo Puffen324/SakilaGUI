@@ -101,6 +101,3 @@ public class ActorTabController implements Initializable {
 
         }
 }
-
-
-
