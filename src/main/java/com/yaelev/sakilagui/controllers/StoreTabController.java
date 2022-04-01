@@ -67,7 +67,7 @@ public class StoreTabController implements Initializable {
         addressComboBox.getItems().addAll();
     }
     public void updateManagerBox(){
-        managerCombobox.setItems((FXCollections.observableList(new StaffDAO().read())));
+        managerCombobox.setItems((FXCollections.observableList(new StaffDAO().read().stream().filter(staff -> !staff.isActive()).toList())));
         managerCombobox.getItems().addAll();
 
     }
@@ -79,6 +79,8 @@ public class StoreTabController implements Initializable {
         Store store = new Store(managerCombobox.getSelectionModel().getSelectedItem().getStaffId()
                 ,addressComboBox.getSelectionModel().getSelectedItem().getAddressId());
         new StoreDAO().create(store);
+        managerCombobox.getSelectionModel().getSelectedItem().setActive(true);
+        updateManagerBox();
         updateStoreEntityTableView();
     }
 
