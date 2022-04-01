@@ -13,7 +13,7 @@
                    <fx:include fx:id="ActorTab" source="ActorTab.fxml" />
                </content></Tab>
             
-            <Tab text="Filmer" >
+            <Tab text="Filmer">
             <content>
                 <fx:include fx:id="FilmTab" source="FilmTab.fxml" />
             </content></Tab>
@@ -34,29 +34,33 @@
 
             <Tab text="Kunder" />
 
-            <Tab text="Språk" >
+            <Tab text="Språk">
                 <content>
-                    <fx:include fx:id="LanguageTab" source="LanguageTab.fxml"/>
+                    <fx:include fx:id="LanguageTab" source="LanguageTab.fxml" />
                 </content>
             </Tab>
 
-            <Tab text="Betalning" />
-
-            <Tab text="Uthyrning" >
+            <Tab text="Betalning">
                 <content>
-                    <fx:include fx:id="RentalTab" source="RentalTab.fxml"/>
+                    <fx:include fx:id="PaymentTab" source="PaymentTab.fxml" />
                 </content>
             </Tab>
 
-            <Tab text="Personal" >
+            <Tab text="Uthyrning">
+                <content>
+                    <fx:include fx:id="RentalTab" source="RentalTab.fxml" />
+                </content>
+            </Tab>
+
+            <Tab text="Personal">
                     <content>
                         <fx:include fx:id="StaffTab" source="StaffTab.fxml" />
                     </content>
             </Tab>
 
-            <Tab text="Butik" >
+            <Tab text="Butik">
                 <content>
-                    <fx:include fx:id="StoreTab" source="StoreTab.fxml"/>
+                    <fx:include fx:id="StoreTab" source="StoreTab.fxml" />
                 </content>
             </Tab>
 

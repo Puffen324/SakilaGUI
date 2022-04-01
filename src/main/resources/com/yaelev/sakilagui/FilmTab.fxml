@@ -70,7 +70,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView prefHeight="355.0" prefWidth="800.0">
+                                <TableView prefHeight="463.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn prefWidth="201.0" text="Film ID" />
                                         <TableColumn prefWidth="103.0" text="Hyresperiod" />
@@ -80,12 +80,6 @@
                               <TableColumn prefWidth="102.0" text="Senast uppdatering" />
                                     </columns>
                                 </TableView>
-                                <Button layoutX="36.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till koppling" />
-                                <Button layoutX="681.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort koppling" />
-                                <ChoiceBox layoutX="14.0" layoutY="422.0" prefWidth="150.0" />
-                                <ChoiceBox layoutX="15.0" layoutY="476.0" prefWidth="150.0" />
-                                <Label layoutX="43.0" layoutY="405.0" text="Välj skådespelare" />
-                                <Label layoutX="68.0" layoutY="459.0" text="Välj film" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -94,18 +88,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
-                        <TableView prefHeight="355.0" prefWidth="800.0">
+                        <TableView prefHeight="473.0" prefWidth="800.0">
                            <columns>
                               <TableColumn prefWidth="148.0" text="Film ID" />
                               <TableColumn prefWidth="646.0" text="Beskrivning" />
                            </columns>
                         </TableView>
-                        <Button layoutX="36.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till koppling" />
-                        <Button layoutX="681.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort koppling" />
-                        <ChoiceBox layoutX="14.0" layoutY="422.0" prefWidth="150.0" />
-                        <ChoiceBox layoutX="15.0" layoutY="476.0" prefWidth="150.0" />
-                        <Label layoutX="43.0" layoutY="405.0" text="Välj skådespelare" />
-                        <Label layoutX="68.0" layoutY="459.0" text="Välj film" />
                      </children>
                   </AnchorPane>
                </content>
