@@ -30,8 +30,9 @@ public class InventoryTabController implements Initializable {
     public void updateInventoryTableView(){
         inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
         inventoryIdColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
-        filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("film_id"));
-        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("store_id"));
+        //dessa 3 verkar inte fungera vet inte än varför det verkar ju som att de är som de andra
+        //filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("film_id"));
+        //storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("store_id"));
         //latestUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("last_update"));
         inventoryTableView.getItems().addAll();
 
