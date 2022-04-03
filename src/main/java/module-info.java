@@ -4,6 +4,7 @@ module com.yaelev.sakilagui {
     requires java.sql;
     requires java.persistence;
     requires org.hibernate.orm.core;
+    requires jts;
 
 
     opens com.yaelev.sakilagui to javafx.fxml;
