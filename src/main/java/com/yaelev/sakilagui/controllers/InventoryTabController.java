@@ -1,10 +1,14 @@
 package com.yaelev.sakilagui.controllers;
 
+import com.yaelev.sakilagui.dao.ActorDAO;
+import com.yaelev.sakilagui.dao.InventoryDAO;
 import com.yaelev.sakilagui.entity.Inventory;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Timestamp;
@@ -24,12 +28,17 @@ public class InventoryTabController implements Initializable {
     private TableColumn<Inventory, Timestamp> latestUpdateColumn;
 
     public void updateInventoryTableView(){
-        //Backended ÄR inte klart ännu
+        inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
+        inventoryIdColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
+        filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("film_id"));
+        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("store_id"));
+        //latestUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("last_update"));
+        inventoryTableView.getItems().addAll();
 
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        updateInventoryTableView();
     }
     public void filmIdUpdate(){}
     public void storeIdUpdate(){}
