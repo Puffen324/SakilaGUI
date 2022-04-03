@@ -1,6 +1,5 @@
 package com.yaelev.sakilagui.dao;
 
-import com.yaelev.sakilagui.entity.Actor;
 import com.yaelev.sakilagui.entity.Address;
 
 import java.util.List;

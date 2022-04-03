@@ -1,7 +1,5 @@
 package com.yaelev.sakilagui.dao;
 
-import com.yaelev.sakilagui.entity.City;
-import com.yaelev.sakilagui.entity.Language;
 import com.yaelev.sakilagui.entity.Payment;
 
 import java.util.List;
@@ -17,7 +15,7 @@ public class PaymentDAO extends GenericDAO<Payment> {
 
     }
 
-    public List<City> read() {
+    public List<Payment> read() {
         return entityManager.createNativeQuery("SELECT * FROM Payment", Payment.class).getResultList();
     }
 
