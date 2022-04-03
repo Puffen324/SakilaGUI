@@ -15,25 +15,25 @@
 
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView fx:id="addressEntityTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
+                                <TableView fx:id="addressTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn fx:id="addressIdColumn" prefWidth="38.0" text="ID" />
                                         <TableColumn fx:id="addressNameColumn" onEditCommit="#updateAddress" prefWidth="145.0" text="Adress" />
                                         <TableColumn fx:id="districtColumn" onEditCommit="#updateDistrict" prefWidth="95.0" text="Ort" />
-                                        <TableColumn fx:id="city_idColumn" onEditCommit="#updateCity_id" prefWidth="63.0" text="Stads_ID" />
-                              <TableColumn fx:id="postalCodeColumn1" onEditCommit="#updatePostalCode" prefWidth="63.0" text="Postkod" />
-                              <TableColumn fx:id="phoneColumn11" maxWidth="5001.0" onEditCommit="#updatePhone" prefWidth="152.0" text="Telefon" />
-                              <TableColumn fx:id="locationColumn111" onEditCommit="#updateLocation" prefWidth="100.0" text="Plats" />
-                              <TableColumn fx:id="addressLastUpdateColumn1111" maxWidth="1.7976931348623157E308" onEditCommit="#updateLastUpdate" prefWidth="136.0" text="uppdaterad" />
+                                        <TableColumn fx:id="cityIdColumn" onEditCommit="#updateCity_id" prefWidth="63.0" text="Stad ID" />
+                              <TableColumn fx:id="postalCodeColumn" onEditCommit="#updatePostalCode" prefWidth="63.0" text="Postkod" />
+                              <TableColumn fx:id="phoneColumn" maxWidth="5001.0" onEditCommit="#updatePhone" prefWidth="152.0" text="Telefon" />
+                              <TableColumn fx:id="locationColumn" onEditCommit="#updateLocation" prefWidth="100.0" text="Plats" />
+                              <TableColumn fx:id="addressLastUpdateColumn" maxWidth="1.7976931348623157E308" prefWidth="136.0" text="uppdaterad" />
                                     </columns>
                                 </TableView>
-                                <TextField fx:id="phoneTextfield" layoutX="15.0" layoutY="453.0" promptText="Telefon" />
-                                <TextField fx:id="postalCodeTextfield" layoutX="15.0" layoutY="415.0" promptText="Postkod" />
+                                <TextField fx:id="phoneTextField" layoutX="15.0" layoutY="453.0" promptText="Telefon" />
+                                <TextField fx:id="postalCodeTextField" layoutX="15.0" layoutY="415.0" promptText="Postkod" />
                                 <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#createAddress" text="Lägg till Address" />
                                 <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteAddress" text="Ta bort vald Address" />
                         <TextField fx:id="addressTextField" layoutX="15.0" layoutY="380.0" promptText="Adress" />
-                        <TextField fx:id="locationTextfield" layoutX="506.0" layoutY="415.0" promptText="Plats" />
-                        <TextField fx:id="districtTextfield" layoutX="177.0" layoutY="415.0" promptText="Ort" />
+                        <TextField fx:id="locationTextField" layoutX="506.0" layoutY="415.0" promptText="Plats" />
+                        <TextField fx:id="districtTextField" layoutX="177.0" layoutY="415.0" promptText="Ort" />
                         <ComboBox fx:id="cityComboBox" layoutX="340.0" layoutY="415.0" prefWidth="150.0" promptText="Stads_ID" />
                             </children>
                         </AnchorPane>

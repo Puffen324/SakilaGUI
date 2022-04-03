@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.AddressDAO;
 import com.yaelev.sakilagui.dao.CityDAO;
+import com.yaelev.sakilagui.dao.PaymentDAO;
 import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.City;
 import javafx.collections.FXCollections;
@@ -15,16 +16,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AddressTabContoller  implements Initializable {
     @FXML
-    private TableView<Address> addressEntityTableView;
+    private TableView<Address> addressTableView;
     @FXML
     private TableColumn<Address, Integer> addressIdColumn;
     @FXML
@@ -32,67 +28,75 @@ public class AddressTabContoller  implements Initializable {
     @FXML
     private TableColumn<Address, String> districtColumn;
     @FXML
-    private TableColumn<Address, Integer> city_idColumn;
+    private TableColumn<Address, Integer> cityIdColumn;
     @FXML
-    private TableColumn<Address, Integer> postalCodeColumn1;
+    private TableColumn<Address, Integer> postalCodeColumn;
     @FXML
-    private TableColumn<Address, Integer> phoneColumn11;
+    private TableColumn<Address, Integer> phoneColumn;
     @FXML
-    private TableColumn<Address, Integer> locationColumn111;
-    @FXML
-    private TableColumn<Address, Timestamp> addressLastUpdateColumn1111;
+    private TableColumn<Address, Timestamp> addressLastUpdateColumn;
     @FXML
     private ComboBox<City> cityComboBox;
     @FXML
-    private TextField addressTextField ,districtTextfield,phoneTextfield,postalCodeTextfield,locationTextfield;
+    private TextField addressTextField;
+    @FXML
+    private TextField districtTextField;
+    @FXML
+    private TextField phoneTextField;
+    @FXML
+    private TextField postalCodeTextField;
 
-    public void updateAddressEntityTableView(){
-        addressEntityTableView.setItems(FXCollections.observableList(new AddressDAO().read()));
+    public void setUpAddressTableView(){
+        addressTableView.setItems(FXCollections.observableList(new AddressDAO().read()));
         addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
         addressNameColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         districtColumn.setCellValueFactory(new PropertyValueFactory<>("district"));
-        city_idColumn.setCellValueFactory(new PropertyValueFactory<>("cityId"));
-        postalCodeColumn1.setCellValueFactory(new PropertyValueFactory<>("cityId"));
-        phoneColumn11.setCellValueFactory(new PropertyValueFactory<>("cityId"));
-        locationColumn111.setCellValueFactory(new PropertyValueFactory<>("cityId"));
-        addressLastUpdateColumn1111.setCellValueFactory(new PropertyValueFactory<>("cityId"));
-        addressEntityTableView.getItems().addAll();
-
+        cityIdColumn.setCellValueFactory(new PropertyValueFactory<>("cityId"));
+        postalCodeColumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        addressLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
+        addressTableView.getItems().addAll();
     }
+
+    public void updateAddressTableView(){
+        addressTableView.setItems(FXCollections.observableList(new AddressDAO().read()));
+        addressTableView.getItems().addAll();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        updateAddressEntityTableView();
+        setUpAddressTableView();
         updateCityBox();
     }
+
     public void updateCityBox(){
         cityComboBox.setItems(FXCollections.observableList(new CityDAO().read()));
         cityComboBox.getItems().addAll();
     }
+
+    // Avvaktar svar från Fredde/Tompa. Fokusera på annat tills vi vet mer.
     public void createAddress(){
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String nowTime = simpleDateFormat.format(date);
-        Timestamp dates = Timestamp.valueOf(nowTime);
 
-
-        if(addressTextField !=null && cityComboBox !=null){
+        if(addressTextField != null && cityComboBox != null){
             Address address = new Address(addressTextField.getText(),
-                    districtTextfield.getText(),
+                    districtTextField.getText(),
                     cityComboBox.getSelectionModel().getSelectedItem().getCityId(),
-                    postalCodeTextfield.getText(),
-                    phoneTextfield.getText());
+                    postalCodeTextField.getText(),
+                    phoneTextField.getText());
             new AddressDAO().create(address);
-            updateAddressEntityTableView();
+            updateAddressTableView();
             addressTextField.setText("");
-            districtTextfield.setText("");
+            districtTextField.setText("");
             cityComboBox.setItems(null);
-            postalCodeTextfield.setText("");
-            phoneTextfield.setText("");
+            postalCodeTextField.setText("");
+            phoneTextField.setText("");
         }
     }
     public void deleteAddress(){
-
+        Address address = addressTableView.getSelectionModel().getSelectedItem();
+        new AddressDAO().delete(address);
+        updateAddressTableView();
     }
     public void updateAddress(){
 
@@ -112,9 +116,7 @@ public class AddressTabContoller  implements Initializable {
     public void updateLocation(){
 
     }
-    public void updateLastUpdate(){
-        LocalDateTime dateTime = LocalDateTime.now();
-    }
+
 }
 
 
