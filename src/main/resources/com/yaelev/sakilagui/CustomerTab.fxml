@@ -12,17 +12,17 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CustomerTabController">
    <children>
-      <TableView prefHeight="419.0" prefWidth="800.0">
+      <TableView fx:id="customerTableViews" prefHeight="419.0" prefWidth="800.0">
         <columns>
-          <TableColumn prefWidth="53.0" text="Kund ID" />
-          <TableColumn prefWidth="52.0" text="Butik ID" />
-            <TableColumn prefWidth="85.0" text="Förnamn" />
+          <TableColumn fx:id="customerIdColumn" prefWidth="53.0" text="KundID" />
+          <TableColumn fx:id="storeIdColumn" prefWidth="52.0" text="ButikID" />
+            <TableColumn fx:id="customerForNameColumnn" prefWidth="85.0" text="Fornamn" />
             <TableColumn prefWidth="90.0" text="Efternamn" />
             <TableColumn prefWidth="185.0" text="Epost" />
-            <TableColumn prefWidth="59.0" text="Adress ID" />
+            <TableColumn prefWidth="59.0" text="AdressID" />
             <TableColumn prefWidth="49.0" text="Aktiv" />
             <TableColumn prefWidth="99.0" text="Skapad" />
-            <TableColumn prefWidth="127.0" text="Senast uppdaterad" />
+            <TableColumn fx:id="lastupdateColumn" prefWidth="127.0" text="Senast uppdaterad" />
         </columns>
       </TableView>
       <TextField layoutX="14.0" layoutY="431.0" promptText="Förnamn" />

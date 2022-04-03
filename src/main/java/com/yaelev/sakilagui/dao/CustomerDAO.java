@@ -17,7 +17,7 @@ public class CustomerDAO extends GenericDAO<Customer> {
 
     }
 
-    public List<City> read() {
+    public List<Customer> read() {
         return entityManager.createNativeQuery("SELECT * FROM Customer", Customer.class).getResultList();
     }
 
