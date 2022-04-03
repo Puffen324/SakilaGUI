@@ -1,6 +1,6 @@
 package com.yaelev.sakilagui.entity;
 
-import com.vividsolutions.jts.geom.Geometry;
+
 
 import javax.persistence.*;
 import java.sql.Timestamp;

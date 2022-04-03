@@ -17,7 +17,7 @@ public class InventoryDAO extends GenericDAO<Inventory>{
 
     }
 
-    public List<City> read() {
+    public List<Inventory> read() {
         return entityManager.createNativeQuery("SELECT * FROM Inventory", Inventory.class).getResultList();
     }
 

@@ -20,6 +20,16 @@ public class Inventory {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    public Inventory() {
+    }
+
+    public Inventory(int inventoryId, int filmId, int storeId, Timestamp lastUpdate) {
+        this.inventoryId = inventoryId;
+        this.filmId = filmId;
+        this.storeId = storeId;
+        this.lastUpdate = lastUpdate;
+    }
+
     public int getInventoryId() {
         return inventoryId;
     }
