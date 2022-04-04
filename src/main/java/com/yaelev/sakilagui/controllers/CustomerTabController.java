@@ -25,6 +25,16 @@ public class CustomerTabController implements Initializable {
     private TableColumn<Customer,String> customerForNameColumnn;
     @FXML
     private TableColumn<Customer, Timestamp> lastupdateColumn;
+    @FXML
+    private TableColumn<Customer,String> customerLastNameColumn;
+    @FXML
+    private TableColumn<Customer,String> emailColumn;
+    @FXML
+    private TableColumn<Customer,Integer> addressIdColumn;
+    @FXML
+    private TableColumn<Customer,Boolean> activColumn;
+    @FXML
+    private TableColumn<Customer,Timestamp> creatDateColumn;
 
 
 
@@ -32,11 +42,14 @@ public class CustomerTabController implements Initializable {
 
     public void updateCustomerTable(){
         customerTableViews.setItems(FXCollections.observableList(new CustomerDAO().read()));
-        customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("KundID"));
-        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("ButikID"));
-        //actorFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        customerForNameColumnn.setCellValueFactory(new PropertyValueFactory<>("Fornamn"));
-        //actorLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
+        customerForNameColumnn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        customerLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
+        activColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
+        creatDateColumn.setCellValueFactory(new PropertyValueFactory<>("createDate"));
         lastupdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         customerTableViews.getItems().addAll();
     }
