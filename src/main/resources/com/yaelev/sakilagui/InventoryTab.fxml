@@ -22,7 +22,7 @@
                 </TableView>
                 <Button layoutX="14.0" layoutY="435.0" mnemonicParsing="false" text="Lägg till Film" />
                 <Button layoutX="651.0" layoutY="435.0" mnemonicParsing="false" text="Ta bort vald FIlm" />
-            <ComboBox layoutX="100.0" layoutY="377.0" prefHeight="25.0" prefWidth="620.0" promptText="Film" />
+            <ComboBox fx:id="filmComboBox" layoutX="100.0" layoutY="377.0" prefHeight="25.0" prefWidth="620.0" promptText="Film" />
             </children>
         </AnchorPane>
 
