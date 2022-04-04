@@ -27,13 +27,13 @@ public class Film {
     @Basic
     @Column(name = "language_id")
     private int languageId;
+
+    //@Column(name = "original_language_id")
+   // private int originalLanguageId;
     @Basic
-    @Column(name = "original_language_id")
-    private int originalLanguageId;
-    @Basic
-    @Column(name = "rental_duration")
-    private int rentalDuration;
-    @Basic
+   // @Column(name = "rental_duration")
+   // private int rentalDuration;
+    //@Basic
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
     @Basic
@@ -44,13 +44,40 @@ public class Film {
     private BigDecimal replacementCost;
     @Basic
     @Column(name = "rating")
-    private int rating;
+    private String rating;
     @Basic
     @Column(name = "special_features")
-    private int specialFeatures;
+    private String specialFeatures;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    public Film(){}
+    public Film(int filmId,
+                String title,
+                String description,
+                int releaseYear,
+                int languageId,
+                //int originalLanguageId,
+       //         int rentalDuration,
+                BigDecimal rentalRate,
+                int length,
+                BigDecimal replacementCost,
+                String rating,
+                String specialFeatures) {
+        this.filmId = filmId;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.languageId = languageId;
+        //this.originalLanguageId = originalLanguageId;
+        //this.rentalDuration = rentalDuration;
+        this.rentalRate = rentalRate;
+        this.length = length;
+        this.replacementCost = replacementCost;
+        this.rating = rating;
+        this.specialFeatures = specialFeatures;
+    }
 
 
     public int getFilmId() {
@@ -93,21 +120,21 @@ public class Film {
         this.languageId = languageId;
     }
 
-    public Object getOriginalLanguageId() {
-        return originalLanguageId;
-    }
+   // public Object getOriginalLanguageId() {
+      //  return originalLanguageId;
+    //}
 
-    public void setOriginalLanguageId(int originalLanguageId) {
-        this.originalLanguageId = originalLanguageId;
-    }
+  //  public void setOriginalLanguageId(int originalLanguageId) {
+    //    this.originalLanguageId = originalLanguageId;
+    //}
 
-    public int getRentalDuration() {
-        return rentalDuration;
-    }
+    //public int getRentalDuration() {
+      //  return rentalDuration;
+    //}
 
-    public void setRentalDuration(int rentalDuration) {
-        this.rentalDuration = rentalDuration;
-    }
+    //public void setRentalDuration(int rentalDuration) {
+      //  this.rentalDuration = rentalDuration;
+    //}
 
     public BigDecimal getRentalRate() {
         return rentalRate;
@@ -133,19 +160,19 @@ public class Film {
         this.replacementCost = replacementCost;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public int getSpecialFeatures() {
+    public String getSpecialFeatures() {
         return specialFeatures;
     }
 
-    public void setSpecialFeatures(int specialFeatures) {
+    public void setSpecialFeatures(String specialFeatures) {
         this.specialFeatures = specialFeatures;
     }
 
@@ -158,4 +185,21 @@ public class Film {
     }
 
 
+    @Override
+    public String toString() {
+        return  filmId +
+                "," + title +
+                "," + description +
+                "," + releaseYear +
+                "," + languageId +
+               // "," + originalLanguageId +
+              //  "," + rentalDuration +
+                "," + rentalRate +
+                "," + length +
+                "," + replacementCost +
+                "," + rating +
+                "," + specialFeatures +
+                "," + lastUpdate;
+
+    }
 }

@@ -18,7 +18,7 @@ public class FilmDAO extends GenericDAO<Film>{
 
     }
 
-    public List<City> read() {
+    public List<Film> read() {
         return entityManager.createNativeQuery("SELECT * FROM Film", Film.class).getResultList();
     }
 

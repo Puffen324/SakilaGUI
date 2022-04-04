@@ -1,11 +1,14 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.ActorDAO;
+import com.yaelev.sakilagui.dao.FilmDAO;
 import com.yaelev.sakilagui.dao.InventoryDAO;
+import com.yaelev.sakilagui.entity.Film;
 import com.yaelev.sakilagui.entity.Inventory;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,23 +28,29 @@ public class InventoryTabController implements Initializable {
     @FXML
     private TableColumn<Inventory,Integer> storeIdColumn;
     @FXML
+    private ComboBox<Film> filmComboBox;
+    @FXML
     private TableColumn<Inventory, Timestamp> latestUpdateColumn;
 
     public void updateInventoryTableView(){
         inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
         inventoryIdColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
-        //dessa 3 verkar inte fungera vet inte än varför det verkar ju som att de är som de andra
-        //filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("film_id"));
-        //storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("store_id"));
-        //latestUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("last_update"));
+        filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
+        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
+        latestUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         inventoryTableView.getItems().addAll();
 
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateInventoryTableView();
+        updateFilmComboBox();
     }
     public void filmIdUpdate(){}
     public void storeIdUpdate(){}
     public void latestUpdate(){}
+    public void updateFilmComboBox(){
+        filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmComboBox.getItems().addAll();
+    }
 }
