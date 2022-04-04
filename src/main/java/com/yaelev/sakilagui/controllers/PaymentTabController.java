@@ -1,8 +1,9 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.PaymentDAO;
-import com.yaelev.sakilagui.entity.Actor;
+import com.yaelev.sakilagui.entity.Customer;
 import com.yaelev.sakilagui.entity.Payment;
+import com.yaelev.sakilagui.entity.Staff;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 public class PaymentTabController implements Initializable {
 
     @FXML
-    private TableColumn<Payment, Integer> paymentCustomerIdColumn;
+    private TableColumn<Payment, Customer> paymentCustomerColumn;
 
     @FXML
     private TableColumn<Payment, Timestamp> paymentDateColumn;
@@ -36,7 +37,7 @@ public class PaymentTabController implements Initializable {
     private TableColumn<Payment, Integer> paymentRentalIdColumn;
 
     @FXML
-    private TableColumn<Payment, Integer> paymentStaffIdColumn;
+    private TableColumn<Payment, Staff> paymentStaffColumn;
 
     @FXML
     private TableColumn<Payment, BigDecimal> paymentSumColumn;
@@ -53,8 +54,8 @@ public class PaymentTabController implements Initializable {
     public void setUpTableView(){
         paymentTableView.setItems(FXCollections.observableList(new PaymentDAO().read()));
         paymentIdColumn.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
-        paymentCustomerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
-        paymentStaffIdColumn.setCellValueFactory(new PropertyValueFactory<>("staffId"));
+        paymentCustomerColumn.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        paymentStaffColumn.setCellValueFactory(new PropertyValueFactory<>("staff"));
         paymentRentalIdColumn.setCellValueFactory(new PropertyValueFactory<>("rentalId"));
         paymentSumColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         paymentSumColumn.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));

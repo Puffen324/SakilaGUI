@@ -18,9 +18,9 @@
                                         <TableColumn fx:id="staffIdColumn" prefWidth="38.0" text="ID" />
                                         <TableColumn fx:id="staffNameColumn" onEditCommit="#updateStaffName" prefWidth="87.0" text="Namn" />
                                         <TableColumn fx:id="staffLastnameColumn" onEditCommit="#updateStaffLastName" prefWidth="117.0" text="Efternamn" />
-                                        <TableColumn fx:id="address_idColumn" onEditCommit="#updateStaffaddress_id" prefWidth="96.0" text="Address_id" />
+                                        <TableColumn fx:id="addressColumn" onEditCommit="#updateStaffaddress_id" prefWidth="96.0" text="Address_id" />
                                         <TableColumn fx:id="staffEmailColumn1" onEditCommit="#updateStaffEmail" prefWidth="123.0" text="e_mail" />
-                                        <TableColumn fx:id="store_IdColumn" maxWidth="5001.0" onEditCommit="#updateStoreID" prefWidth="68.0" text="Store_ID" />
+                                        <TableColumn fx:id="storeColumn" maxWidth="5001.0" onEditCommit="#updateStoreID" prefWidth="68.0" text="Store_ID" />
                                         <TableColumn fx:id="userColumn" onEditCommit="#updateUser" prefWidth="79.0" text="Användare" />
                                         <TableColumn fx:id="passwordColumn" maxWidth="1.7976931348623157E308" onEditCommit="#updatePassword" prefWidth="109.0" text="Lösenord" />
                               <TableColumn fx:id="staffLastUpdateColumn" maxWidth="1.7976931348623157E308" onEditCommit="#updateLastUpdate" prefWidth="82.0" text="Uppdaterad" />

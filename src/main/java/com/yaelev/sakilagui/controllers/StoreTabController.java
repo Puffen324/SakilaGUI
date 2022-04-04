@@ -1,11 +1,9 @@
 package com.yaelev.sakilagui.controllers;
 
 
-import com.yaelev.sakilagui.dao.ActorDAO;
 import com.yaelev.sakilagui.dao.AddressDAO;
 import com.yaelev.sakilagui.dao.StaffDAO;
 import com.yaelev.sakilagui.dao.StoreDAO;
-import com.yaelev.sakilagui.entity.Actor;
 import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Staff;
 import com.yaelev.sakilagui.entity.Store;
@@ -31,9 +29,9 @@ public class StoreTabController implements Initializable {
     private TableColumn<Store, Integer> storeIdColumn;
 
     @FXML
-    private TableColumn<Store, Integer> managerStaffIdColumn1;
+    private TableColumn<Store, Staff> staffColumn;
     @FXML
-    private TableColumn<Store, Integer> addressIdColumn;
+    private TableColumn<Store, Address> addressColumn;
     @FXML
     private TableColumn<Store, Timestamp> latestUpdateColumn111;
 
@@ -55,8 +53,8 @@ public class StoreTabController implements Initializable {
 
             storeTableView.setItems(FXCollections.observableList(new StoreDAO().read()));
             storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
-            managerStaffIdColumn1.setCellValueFactory(new PropertyValueFactory<>("managerStaffId"));
-            addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
+            staffColumn.setCellValueFactory(new PropertyValueFactory<>("staff"));
+            addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
             latestUpdateColumn111.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
             storeTableView.getItems().addAll();
 
@@ -76,8 +74,8 @@ public class StoreTabController implements Initializable {
         deleteStore();
     }
     public void createStore(){
-        Store store = new Store(managerCombobox.getSelectionModel().getSelectedItem().getStaffId()
-                ,addressComboBox.getSelectionModel().getSelectedItem().getAddressId());
+        Store store = new Store(managerCombobox.getSelectionModel().getSelectedItem()
+                ,addressComboBox.getSelectionModel().getSelectedItem());
         new StoreDAO().create(store);
         managerCombobox.getSelectionModel().getSelectedItem().setActive(true);
         updateManagerBox();

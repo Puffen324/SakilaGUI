@@ -1,10 +1,10 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.dao.ActorDAO;
 import com.yaelev.sakilagui.dao.FilmDAO;
 import com.yaelev.sakilagui.dao.InventoryDAO;
 import com.yaelev.sakilagui.entity.Film;
 import com.yaelev.sakilagui.entity.Inventory;
+import com.yaelev.sakilagui.entity.Store;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +26,7 @@ public class InventoryTabController implements Initializable {
     @FXML
     private TableColumn<Inventory,Integer> filmIdColumn;
     @FXML
-    private TableColumn<Inventory,Integer> storeIdColumn;
+    private TableColumn<Inventory, Store> storeColumn;
     @FXML
     private ComboBox<Film> filmComboBox;
     @FXML
@@ -36,7 +36,7 @@ public class InventoryTabController implements Initializable {
         inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
         inventoryIdColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
         filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
-        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
+        storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
         latestUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         inventoryTableView.getItems().addAll();
 
@@ -46,9 +46,18 @@ public class InventoryTabController implements Initializable {
         updateInventoryTableView();
         updateFilmComboBox();
     }
-    public void filmIdUpdate(){}
-    public void storeIdUpdate(){}
-    public void latestUpdate(){}
+    public void filmIdUpdate(){
+
+    }
+
+    public void storeIdUpdate(){
+
+    }
+
+    public void latestUpdate(){
+
+    }
+
     public void updateFilmComboBox(){
         filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
         filmComboBox.getItems().addAll();
