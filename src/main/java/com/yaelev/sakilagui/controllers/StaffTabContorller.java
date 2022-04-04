@@ -1,8 +1,9 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.dao.AddressDAO;
 import com.yaelev.sakilagui.dao.StaffDAO;
+import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Staff;
+import com.yaelev.sakilagui.entity.Store;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,11 +25,11 @@ public class StaffTabContorller implements Initializable {
     @FXML
     private TableColumn<Staff,String> staffLastnameColumn;
     @FXML
-    private TableColumn<Staff,Integer> address_idColumn;
+    private TableColumn<Staff, Address> addressColumn;
     @FXML
     private TableColumn<Staff,String> staffEmailColumn1;
     @FXML
-    private TableColumn<Staff,Integer>store_IdColumn;
+    private TableColumn<Staff, Store> storeColumn;
     @FXML
     private TableColumn<Staff,String> userColumn;
     @FXML
@@ -41,9 +42,9 @@ public class StaffTabContorller implements Initializable {
         staffIdColumn.setCellValueFactory(new PropertyValueFactory<>("staffId"));
         staffNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         staffLastnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        address_idColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         staffEmailColumn1.setCellValueFactory(new PropertyValueFactory<>("email"));
-        store_IdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
+        storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
         userColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
         staffLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));

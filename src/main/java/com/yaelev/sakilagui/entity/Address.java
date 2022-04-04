@@ -2,9 +2,12 @@ package com.yaelev.sakilagui.entity;
 
 
 
+
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 
 
 @Entity
@@ -36,6 +39,17 @@ public class Address {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL)
+    private List<Store> stores;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL)
+    private List<Customer> customers;
+
+
+    @Override
+    public String toString() {
+        return address;
+    }
 
     public Address(){}
 
@@ -60,6 +74,23 @@ public class Address {
         this.lastUpdate = Timestamp.from(Instant.now());
 
     }
+
+    public List<Store> getStores() {
+        return this.stores;
+    }
+
+    public void setStores(List<Store> stores) {
+        this.stores = stores;
+    }
+
+    public List<Customer> getCustomers() {
+        return this.customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
 
     public int getAddressId() {
         return addressId;
@@ -126,15 +157,4 @@ public class Address {
     }
 
 
-    @Override
-    public String toString() {
-        return
-                 addressId +
-                " " + address +
-                " " + address2 +
-                " " + district +
-                " " + cityId +
-                " " + postalCode;
-
-    }
 }

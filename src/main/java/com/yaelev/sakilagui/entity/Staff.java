@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "staff")
@@ -10,35 +11,50 @@ public class Staff {
     @Id
     @Column(name = "staff_id")
     private int staffId;
-    @Basic
+
     @Column(name = "first_name")
     private String firstName;
-    @Basic
+
     @Column(name = "last_name")
     private String lastName;
-    @Basic
-    @Column(name = "address_id")
-    private int addressId;
 
     @Column(name = "email")
     private String email;
-    @Basic
-    @Column(name = "store_id")
-    private int storeId;
 
-
-    @Basic
     @Column(name = "active")
     private boolean active;
-    @Basic
+
     @Column(name = "username")
     private String username;
-    @Basic
+
     @Column(name = "password")
     private String password;
-    @Basic
+
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff", cascade = CascadeType.ALL)
+    private List<Payment> paymentList;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff", cascade = CascadeType.ALL)
+    private List<Rental> rentalList;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff", cascade = CascadeType.ALL)
+    private List<Store> storeList;
+
+    public Staff() {
+    }
+
 
     public int getStaffId() {
         return staffId;
@@ -64,28 +80,12 @@ public class Staff {
         this.lastName = lastName;
     }
 
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
     }
 
     public boolean isActive() {return active;}
@@ -116,6 +116,29 @@ public class Staff {
         this.lastUpdate = lastUpdate;
     }
 
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Payment> getPaymentList() {
+        return paymentList;
+    }
+
+    public void setPaymentList(List<Payment> paymentList) {
+        this.paymentList = paymentList;
+    }
 
     @Override
     public String toString() {
@@ -123,9 +146,9 @@ public class Staff {
                staffId +
                 " " + firstName +
                 " " + lastName +
-                " " + addressId +
+                " " + address +
                 " " + email +
-                " " + storeId +
+                " " + store +
                 " " + active +
                 " " + username;
 

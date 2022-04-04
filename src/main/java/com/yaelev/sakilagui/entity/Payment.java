@@ -12,12 +12,6 @@ public class Payment {
     @Column(name = "payment_id")
     private int paymentId;
     @Basic
-    @Column(name = "customer_id")
-    private int customerId;
-    @Basic
-    @Column(name = "staff_id")
-    private int staffId;
-    @Basic
     @Column(name = "rental_id")
     private Integer rentalId;
     @Basic
@@ -30,6 +24,24 @@ public class Payment {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "staff_id")
+    private Staff staff;
+
+
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
     public int getPaymentId() {
         return paymentId;
     }
@@ -38,20 +50,12 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public int getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Integer getRentalId() {

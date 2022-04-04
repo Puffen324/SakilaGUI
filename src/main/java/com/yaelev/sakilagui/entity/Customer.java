@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -10,9 +11,6 @@ public class Customer {
     @Id
     @Column(name = "customer_id")
     private int customerId;
-    @Basic
-    @Column(name = "store_id")
-    private int storeId;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -23,9 +21,6 @@ public class Customer {
     @Column(name = "email")
     private String email;
     @Basic
-    @Column(name = "address_id")
-    private int addressId;
-    @Basic
     @Column(name = "active")
     private byte active;
     @Basic
@@ -34,17 +29,62 @@ public class Customer {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    public Customer(){}
-    public Customer(int customerId, int storeId, String firstName, String lastName, String email, int addressId, byte active, Timestamp createDate, Timestamp lastUpdate) {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Payment> payments;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Rental> rentals;
+
+
+    public Customer(){
+
+    }
+
+    public Customer(int customerId, Store store, String firstName, String lastName, String email, Address address, byte active, Timestamp createDate, Timestamp lastUpdate) {
         this.customerId = customerId;
-        this.storeId = storeId;
+        this.store = store;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.addressId = addressId;
+        this.address = address;
         this.active = active;
         this.createDate = createDate;
         this.lastUpdate = lastUpdate;
+    }
+
+    public Customer(String firstName, String lastName, String email, Address address, Store store, byte active) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.active = active;
+        this.store = store;
+    }
+
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     public int getCustomerId() {
@@ -55,12 +95,12 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public int getStoreId() {
-        return storeId;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public String getFirstName() {
@@ -87,12 +127,12 @@ public class Customer {
         this.email = email;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public byte getActive() {

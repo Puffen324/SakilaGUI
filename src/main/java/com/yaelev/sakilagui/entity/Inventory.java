@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "inventory")
@@ -13,20 +14,33 @@ public class Inventory {
     @Basic
     @Column(name = "film_id")
     private int filmId;
-    @Basic
-    @Column(name = "store_id")
-    private int storeId;
+
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "inventory", cascade = CascadeType.ALL)
+    private List<Rental> rentalList;
+
+    public List<Rental> getRentalList() {
+        return rentalList;
+    }
+
+    public void setRentalList(List<Rental> rentalList) {
+        this.rentalList = rentalList;
+    }
+
     public Inventory() {
     }
 
-    public Inventory(int inventoryId, int filmId, int storeId, Timestamp lastUpdate) {
+    public Inventory(int inventoryId, int filmId, Store store, Timestamp lastUpdate) {
         this.inventoryId = inventoryId;
         this.filmId = filmId;
-        this.storeId = storeId;
+        this.store = store;
         this.lastUpdate = lastUpdate;
     }
 
@@ -46,12 +60,12 @@ public class Inventory {
         this.filmId = filmId;
     }
 
-    public int getStoreId() {
-        return storeId;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public Timestamp getLastUpdate() {

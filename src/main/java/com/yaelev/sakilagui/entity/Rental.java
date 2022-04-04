@@ -13,21 +13,26 @@ public class Rental {
     @Basic
     @Column(name = "rental_date")
     private Timestamp rentalDate;
-    @Basic
-    @Column(name = "inventory_id")
-    private int inventoryId;
-    @Basic
-    @Column(name = "customer_id")
-    private int customerId;
+
     @Basic
     @Column(name = "return_date")
     private Timestamp returnDate;
-    @Basic
-    @Column(name = "staff_id")
-    private int staffId;
+
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "staff_id")
+    private Staff staff;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public int getRentalId() {
         return rentalId;
@@ -45,20 +50,28 @@ public class Rental {
         this.rentalDate = rentalDate;
     }
 
-    public int getInventoryId() {
-        return inventoryId;
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
+    public void setInventory(Inventory inventoryId) {
+        this.inventory = inventoryId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomerId() {
+        return customer;
+    }
+
+    public void setCustomerId(Customer customerId) {
+        this.customer = customerId;
     }
 
     public Timestamp getReturnDate() {
@@ -69,20 +82,20 @@ public class Rental {
         this.returnDate = returnDate;
     }
 
-    public int getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
-    }
-
     public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
 

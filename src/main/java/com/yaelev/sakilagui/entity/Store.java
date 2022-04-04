@@ -3,6 +3,7 @@ package com.yaelev.sakilagui.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name = "store")
@@ -11,24 +12,41 @@ public class Store {
     @Id
     @Column(name = "store_id")
     private int storeId;
-    @Basic
-    @Column(name = "manager_staff_id")
-    private int managerStaffId;
-    @Basic
-    @Column(name = "address_id")
-    private int addressId;
-    @Basic
+
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Store( int managerStaffId, int addressId) {
-        this.managerStaffId = managerStaffId;
-        this.addressId = addressId;
-        this.lastUpdate = Timestamp.from(Instant.now());
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_staff_id")
+    private Staff staff;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Inventory> inventoryList;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Staff> staffList;
+
+
 
     public Store() {
 
+    }
+
+    public Store(Staff staff, Address address) {
+        this.staff = staff;
+        this.address = address;
+        this.lastUpdate = Timestamp.from(Instant.now());
+    }
+
+
+
+    @Override
+    public String toString() {
+        return storeId + "";
     }
 
     public int getStoreId() {
@@ -39,20 +57,20 @@ public class Store {
         this.storeId = storeId;
     }
 
-    public int getManagerStaffId() {
-        return managerStaffId;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setManagerStaffId(int managerStaffId) {
-        this.managerStaffId = managerStaffId;
+    public void setStaff(Staff managerStaffId) {
+        this.staff = managerStaffId;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Timestamp getLastUpdate() {
@@ -63,5 +81,19 @@ public class Store {
         this.lastUpdate = lastUpdate;
     }
 
+    public List<Staff> getStaffList() {
+        return staffList;
+    }
 
+    public void setStaffList(List<Staff> staffList) {
+        this.staffList = staffList;
+    }
+
+    public List<Inventory> getInventoryList() {
+        return inventoryList;
+    }
+
+    public void setInventoryList(List<Inventory> inventoryList) {
+        this.inventoryList = inventoryList;
+    }
 }

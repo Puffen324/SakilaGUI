@@ -13,8 +13,8 @@
       <TableView fx:id="paymentTableView" editable="true" prefHeight="398.0" prefWidth="800.0">
         <columns>
           <TableColumn fx:id="paymentIdColumn" prefWidth="93.0" text="Betalnings ID" />
-          <TableColumn fx:id="paymentCustomerIdColumn" prefWidth="69.0" text="Kund ID" />
-            <TableColumn fx:id="paymentStaffIdColumn" prefWidth="83.0" text="Personal ID" />
+          <TableColumn fx:id="paymentCustomerColumn" prefWidth="69.0" text="Kund ID" />
+            <TableColumn fx:id="paymentStaffColumn" prefWidth="83.0" text="Personal ID" />
             <TableColumn fx:id="paymentRentalIdColumn" prefWidth="88.0" text="Hyrnings ID" />
             <TableColumn fx:id="paymentSumColumn" onEditCommit="#editAmount" prefWidth="91.0" text="Belopp" />
             <TableColumn fx:id="paymentDateColumn" prefWidth="192.0" text="Betalningsdatum" />
