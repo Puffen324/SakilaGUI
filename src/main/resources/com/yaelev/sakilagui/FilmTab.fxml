@@ -20,16 +20,16 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView prefHeight="355.0" prefWidth="800.0">
+                                <TableView fx:id="filmTableView" prefHeight="355.0" prefWidth="800.0">
                                     <columns>
-                                        <TableColumn prefWidth="41.0" text="ID" />
-                                        <TableColumn prefWidth="115.0" text="Titel" />
-                                        <TableColumn prefWidth="107.0" text="Beskrivning" />
-                              <TableColumn prefWidth="109.0" text="Språk" />
-                                        <TableColumn prefWidth="139.0" text="Lanseringsår" />
-                              <TableColumn prefWidth="103.0" text="Speltid" />
-                              <TableColumn prefWidth="71.0" text="Rating" />
-                              <TableColumn prefWidth="114.0" text="Senast uppdaterad" />
+                                        <TableColumn fx:id="filmIdColumn" prefWidth="41.0" text="ID" />
+                                        <TableColumn fx:id="titleColumn" prefWidth="115.0" text="Titel" />
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="107.0" text="Beskrivning" />
+                                        <TableColumn fx:id="languageColumn" prefWidth="109.0" text="Språk" />
+                                        <TableColumn fx:id="releaseYearColumn" prefWidth="139.0" text="Lanseringsår" />
+                                        <TableColumn fx:id="playTimeColumn" prefWidth="103.0" text="Speltid" />
+                                        <TableColumn fx:id="ratingColumn" prefWidth="71.0" text="Rating" />
+                                     <TableColumn fx:id="lastUpdateColumn" prefWidth="114.0" text="Senast uppdaterad" />
                                     </columns>
                                 </TableView>
                                 <TextField layoutX="178.0" layoutY="395.0" promptText="Speltid" />
