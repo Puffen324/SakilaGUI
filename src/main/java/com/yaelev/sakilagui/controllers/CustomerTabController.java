@@ -35,11 +35,7 @@ public class CustomerTabController implements Initializable {
     private TableColumn<Customer,Boolean> activColumn;
     @FXML
     private TableColumn<Customer,Timestamp> creatDateColumn;
-
-
-
-
-
+    
     public void updateCustomerTable(){
         customerTableViews.setItems(FXCollections.observableList(new CustomerDAO().read()));
         customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
