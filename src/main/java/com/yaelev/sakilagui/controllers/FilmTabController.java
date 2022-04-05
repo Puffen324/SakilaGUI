@@ -66,10 +66,11 @@ public class FilmTabController implements Initializable {
     private TableColumn<Film,Integer> lenghtColumn;
     @FXML
     private TableColumn<Film,Timestamp> rentalLastUpdateColumn;
+
     public void updateRentalDetailstTableView(){
         rentalDetailsTableViews.setItems(FXCollections.observableList(new FilmDAO().read()));
         filmidRentDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
-        rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDuration"));
+       // rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDuration"));
         rentalCostColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
         lenghtColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
         rentalLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));

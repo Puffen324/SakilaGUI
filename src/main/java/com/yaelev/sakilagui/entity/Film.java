@@ -30,9 +30,11 @@ public class Film {
 
     //@Column(name = "original_language_id")
    // private int originalLanguageId;
+
     @Basic
     @Column(name = "rental_duration")
     private int rentalDuration;
+
     @Basic
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
