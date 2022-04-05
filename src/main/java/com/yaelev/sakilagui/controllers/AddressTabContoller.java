@@ -88,7 +88,6 @@ public class AddressTabContoller  implements Initializable {
             updateAddressTableView();
             addressTextField.setText("");
             districtTextField.setText("");
-            cityComboBox.setItems(null);
             postalCodeTextField.setText("");
             phoneTextField.setText("");
         }
