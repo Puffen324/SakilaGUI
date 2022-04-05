@@ -88,10 +88,10 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
-                        <TableView prefHeight="473.0" prefWidth="800.0">
+                        <TableView fx:id="filmDescriptionTableView" prefHeight="473.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn prefWidth="148.0" text="Film ID" />
-                              <TableColumn prefWidth="646.0" text="Beskrivning" />
+                              <TableColumn fx:id="filmDescriptionFilmIdColumn" prefWidth="148.0" text="Film ID" />
+                              <TableColumn fx:id="filmDescriptionColumn" prefWidth="646.0" text="Beskrivning" />
                            </columns>
                         </TableView>
                      </children>

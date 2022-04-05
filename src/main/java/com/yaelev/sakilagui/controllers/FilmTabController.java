@@ -39,6 +39,7 @@ public class FilmTabController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateFilmTableView();
         updateRentalDetailstTableView();
+        filmDescriptionTalbeViewUpdate();
     }
     public void updateFilmTableView(){
         filmTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
@@ -71,5 +72,18 @@ public class FilmTabController implements Initializable {
         //rentalCostColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDate"));
         rentalLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         rentalDetailsTableViews.getItems().addAll();
+    }
+    @FXML
+    private TableView<Film> filmDescriptionTableView;
+    @FXML
+    private TableColumn<Film,Integer> filmDescriptionFilmIdColumn;
+    @FXML
+    private TableColumn<Film,String> filmDescriptionColumn;
+    public void filmDescriptionTalbeViewUpdate(){
+        filmDescriptionTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmDescriptionFilmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
+        filmDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        filmDescriptionTableView.getItems().addAll();
+
     }
 }
