@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.math.BigInteger;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
@@ -54,22 +55,23 @@ public class FilmTabController implements Initializable {
         filmTableView.getItems().addAll();
     }
     @FXML
-    private TableView<Rental> rentalDetailsTableViews;
+    private TableView<Film> rentalDetailsTableViews;
     @FXML
-    private TableColumn<Rental,Integer> filmidRentDetailsColumn;
+    private TableColumn<Film,Integer> filmidRentDetailsColumn;
     @FXML
-    private TableColumn<Rental,Timestamp> rentalPeriodColumn;
+    private TableColumn<Film,Integer> rentalPeriodColumn;
     @FXML
-    private TableColumn<Rental,Float> rentalCostColumn;
+    private TableColumn<Film, BigInteger> rentalCostColumn;
     @FXML
-    private TableColumn<Rental,Integer> lenghtColumn;
+    private TableColumn<Film,Integer> lenghtColumn;
     @FXML
-    private TableColumn<Rental,Timestamp> rentalLastUpdateColumn;
+    private TableColumn<Film,Timestamp> rentalLastUpdateColumn;
     public void updateRentalDetailstTableView(){
-        rentalDetailsTableViews.setItems(FXCollections.observableList(new RentalDAO().read()));
-        filmidRentDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("rentalId"));
-        rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDate"));
-        //rentalCostColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDate"));
+        rentalDetailsTableViews.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmidRentDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
+        rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDuration"));
+        rentalCostColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
+        lenghtColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
         rentalLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         rentalDetailsTableViews.getItems().addAll();
     }

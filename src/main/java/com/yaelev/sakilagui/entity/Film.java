@@ -31,9 +31,9 @@ public class Film {
     //@Column(name = "original_language_id")
    // private int originalLanguageId;
     @Basic
-   // @Column(name = "rental_duration")
-   // private int rentalDuration;
-    //@Basic
+    @Column(name = "rental_duration")
+    private int rentalDuration;
+    @Basic
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
     @Basic
@@ -59,7 +59,7 @@ public class Film {
                 int releaseYear,
                 int languageId,
                 //int originalLanguageId,
-       //         int rentalDuration,
+                int rentalDuration,
                 BigDecimal rentalRate,
                 int length,
                 BigDecimal replacementCost,
@@ -71,7 +71,7 @@ public class Film {
         this.releaseYear = releaseYear;
         this.languageId = languageId;
         //this.originalLanguageId = originalLanguageId;
-        //this.rentalDuration = rentalDuration;
+        this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;
         this.replacementCost = replacementCost;
@@ -193,7 +193,7 @@ public class Film {
                 "," + releaseYear +
                 "," + languageId +
                // "," + originalLanguageId +
-              //  "," + rentalDuration +
+                 "," + rentalDuration +
                 "," + rentalRate +
                 "," + length +
                 "," + replacementCost +
