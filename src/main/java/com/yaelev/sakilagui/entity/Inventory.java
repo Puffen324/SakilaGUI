@@ -23,7 +23,7 @@ public class Inventory {
     @JoinColumn(name = "store_id")
     private Store store;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "inventory", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "inventory")
     private List<Rental> rentalList;
 
     public List<Rental> getRentalList() {

@@ -1,9 +1,8 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.FilmDAO;
-import com.yaelev.sakilagui.dao.RentalDAO;
 import com.yaelev.sakilagui.entity.Film;
-import com.yaelev.sakilagui.entity.Rental;
+import com.yaelev.sakilagui.entity.Language;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,9 +25,9 @@ public class FilmTabController implements Initializable {
     @FXML
     private TableColumn<Film,String> descriptionColumn;
     @FXML
-    private TableColumn<Film,String> languageColumn;
+    private TableColumn<Film, Language> languageColumn;
     @FXML
-    private TableColumn<Film,Integer>releaseYearColumn;
+    private TableColumn<Film,Integer> releaseYearColumn;
     @FXML
     private TableColumn<Film,Integer> playTimeColumn;
     @FXML
@@ -39,15 +38,15 @@ public class FilmTabController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateFilmTableView();
-        updateRentalDetailstTableView();
-        filmDescriptionTalbeViewUpdate();
+        updateRentalDetailsTableView();
+        updateFilmDescriptionTableView();
     }
     public void updateFilmTableView(){
         filmTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
         filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        languageColumn.setCellValueFactory(new PropertyValueFactory<>("languageId"));
+        languageColumn.setCellValueFactory(new PropertyValueFactory<>("language"));
         releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
         playTimeColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
@@ -57,22 +56,22 @@ public class FilmTabController implements Initializable {
     @FXML
     private TableView<Film> rentalDetailsTableViews;
     @FXML
-    private TableColumn<Film,Integer> filmidRentDetailsColumn;
+    private TableColumn<Film,Integer> filmIdRentDetailsColumn;
     @FXML
     private TableColumn<Film,Integer> rentalPeriodColumn;
     @FXML
     private TableColumn<Film, BigInteger> rentalCostColumn;
     @FXML
-    private TableColumn<Film,Integer> lenghtColumn;
+    private TableColumn<Film,Integer> lengthColumn;
     @FXML
     private TableColumn<Film,Timestamp> rentalLastUpdateColumn;
 
-    public void updateRentalDetailstTableView(){
+    public void updateRentalDetailsTableView(){
         rentalDetailsTableViews.setItems(FXCollections.observableList(new FilmDAO().read()));
-        filmidRentDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
-       // rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDuration"));
+        filmIdRentDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
+        rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDuration"));
         rentalCostColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
-        lenghtColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
+        lengthColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
         rentalLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         rentalDetailsTableViews.getItems().addAll();
     }
@@ -82,7 +81,9 @@ public class FilmTabController implements Initializable {
     private TableColumn<Film,Integer> filmDescriptionFilmIdColumn;
     @FXML
     private TableColumn<Film,String> filmDescriptionColumn;
-    public void filmDescriptionTalbeViewUpdate(){
+
+
+    public void updateFilmDescriptionTableView(){
         filmDescriptionTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
         filmDescriptionFilmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
         filmDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
