@@ -10,17 +10,17 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CityTabController">
    <children>
-      <TableView fx:id="cityTableView" prefHeight="388.0" prefWidth="800.0">
+      <TableView fx:id="cityTableView" editable="true" prefHeight="388.0" prefWidth="800.0">
         <columns>
           <TableColumn fx:id="cityIdColumn" prefWidth="75.0" text="Stad ID" />
-          <TableColumn fx:id="cityNameColumn" prefWidth="324.0" text="Stad" />
-            <TableColumn fx:id="countryIdColumn" prefWidth="175.0" text="Land ID" />
+          <TableColumn fx:id="cityNameColumn" onEditCommit="#editCityName" prefWidth="324.0" text="Stad" />
+            <TableColumn fx:id="countryColumn" prefWidth="175.0" text="Land ID" />
             <TableColumn fx:id="cityLastUpdateColumn" prefWidth="225.0" text="Senast uppdatering" />
         </columns>
       </TableView>
-      <Button layoutX="56.0" layoutY="494.0" mnemonicParsing="false" text="Lägg till stad" />
-      <Button layoutX="652.0" layoutY="513.0" mnemonicParsing="false" text="Ta bort markerad stad" />
-      <TextField layoutX="24.0" layoutY="408.0" promptText="Stad" />
+      <Button layoutX="56.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#createCity" text="Lägg till stad" />
+      <Button layoutX="652.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#deleteCity" text="Ta bort markerad stad" />
+      <TextField fx:id="cityTextField" layoutX="24.0" layoutY="408.0" promptText="Stad" />
       <ChoiceBox fx:id="countryChoiceBox" layoutX="24.0" layoutY="454.0" prefWidth="150.0" />
       <Label layoutX="75.0" layoutY="433.0" text="Välj land" />
 
