@@ -9,10 +9,14 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sakila?serverTimezone=UTC"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
+<<<<<<< HEAD
 
             <property name="javax.persistence.jdbc.password" value="root"/>
 
             <property name="javax.persistence.jdbc.password" value="rootroot"/>
+=======
+            <property name="javax.persistence.jdbc.password" value="Banan123"/>
+>>>>>>> 79c036feabfa199352f2137a206bccb1f90ac1da
             <property name="hibernate.show_sql" value="true"/>
         </properties>
 

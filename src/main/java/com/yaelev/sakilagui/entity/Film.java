@@ -70,6 +70,19 @@ public class Film {
         this.specialFeatures = specialFeatures;
     }
 
+    @Override
+    public String toString() {
+        return filmId +
+                "," + title  +
+                ", " +releaseYear +
+                ", " +language +
+                ", " + length +
+                ", " + replacementCost +
+                ", " + rating +
+                ", " + specialFeatures;
+
+
+    }
 
     public int getFilmId() {
         return filmId;
