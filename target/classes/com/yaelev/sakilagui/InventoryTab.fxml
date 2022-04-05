@@ -15,8 +15,8 @@
                 <TableView fx:id="inventoryTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
                     <columns>
                         <TableColumn fx:id="inventoryIdColumn" prefWidth="139.0" text="ID" />
-                        <TableColumn fx:id="filmIdColumn" onEditCommit="#filmIdUpdate" prefWidth="159.0" text="Film ID" />
-                        <TableColumn fx:id="storeColumn" onEditCommit="#storeIdUpdate" prefWidth="203.0" text="Store ID" />
+                        <TableColumn fx:id="filmIdColumn"  prefWidth="159.0" text="Film ID" />
+                        <TableColumn fx:id="storeColumn"  prefWidth="203.0" text="Store ID" />
                         <TableColumn fx:id="latestUpdateColumn"  prefWidth="297.0" text="Senast Uppdaterad" />
 
                     </columns>
