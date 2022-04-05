@@ -3,6 +3,7 @@ package com.yaelev.sakilagui.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "payment")
@@ -32,7 +33,15 @@ public class Payment {
     @JoinColumn(name = "staff_id")
     private Staff staff;
 
+    public Payment() {
+    }
 
+    public Payment(BigDecimal amount, Customer customer, Staff staff) {
+        this.amount = amount;
+        this.customer = customer;
+        this.staff = staff;
+        this.lastUpdate = Timestamp.from(Instant.now());
+    }
 
     public Staff getStaff() {
         return staff;

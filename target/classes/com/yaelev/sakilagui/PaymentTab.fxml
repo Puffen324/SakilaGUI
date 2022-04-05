@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.PaymentTabController">
    <children>
@@ -22,11 +23,16 @@
         </columns>
       </TableView>
       <Button layoutX="617.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#deletePayment" text="Radera markerad köphistorik" />
-      <Button layoutX="14.0" layoutY="530.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Registrera nytt köp" />
-      <ChoiceBox layoutX="17.0" layoutY="421.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="17.0" layoutY="463.0" prefWidth="150.0" />
+      <Button layoutX="14.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#createPayment" prefHeight="25.0" prefWidth="155.0" text="Registrera nytt köp" />
+      <ChoiceBox fx:id="customerChoiceBox" layoutX="17.0" layoutY="421.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="staffChoiceBox" layoutX="17.0" layoutY="463.0" prefWidth="150.0" />
       <Label layoutX="67.0" layoutY="404.0" text="Välj kund" />
       <Label layoutX="58.0" layoutY="446.0" text="Välj personal" />
-      <TextField layoutX="17.0" layoutY="498.0" promptText="Belopp" />
+      <TextField fx:id="amountTextField" layoutX="17.0" layoutY="498.0" promptText="Belopp" />
+      <Label fx:id="ExceptionLabel" layoutX="175.0" layoutY="502.0" prefHeight="17.0" prefWidth="119.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -1,14 +1,15 @@
 package com.yaelev.sakilagui.controllers;
 
+import com.yaelev.sakilagui.dao.CustomerDAO;
 import com.yaelev.sakilagui.dao.PaymentDAO;
+import com.yaelev.sakilagui.dao.StaffDAO;
 import com.yaelev.sakilagui.entity.Customer;
 import com.yaelev.sakilagui.entity.Payment;
 import com.yaelev.sakilagui.entity.Staff;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.BigDecimalStringConverter;
@@ -16,42 +17,47 @@ import javafx.util.converter.BigDecimalStringConverter;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.time.Instant;
 import java.util.ResourceBundle;
 
 public class PaymentTabController implements Initializable {
 
     @FXML
+    private TableView<Payment> paymentTableView;
+    @FXML
     private TableColumn<Payment, Customer> paymentCustomerColumn;
-
     @FXML
     private TableColumn<Payment, Timestamp> paymentDateColumn;
-
     @FXML
     private TableColumn<Payment, Integer> paymentIdColumn;
-
     @FXML
     private TableColumn<Payment, Timestamp> paymentLastUpdateColumn;
-
     @FXML
     private TableColumn<Payment, Integer> paymentRentalIdColumn;
-
     @FXML
     private TableColumn<Payment, Staff> paymentStaffColumn;
-
     @FXML
     private TableColumn<Payment, BigDecimal> paymentSumColumn;
-
     @FXML
-    private TableView<Payment> paymentTableView;
+    private ChoiceBox<Customer> customerChoiceBox;
+    @FXML
+    private ChoiceBox<Staff> staffChoiceBox;
+    @FXML
+    private TextField amountTextField;
+    @FXML
+    private Label ExceptionLabel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateCustomerChoiceBox();
+        updateStaffChoiceBox();
         setUpTableView();
 
     }
 
-    public void setUpTableView(){
+    public void setUpTableView() {
         paymentTableView.setItems(FXCollections.observableList(new PaymentDAO().read()));
         paymentIdColumn.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
         paymentCustomerColumn.setCellValueFactory(new PropertyValueFactory<>("customer"));
@@ -76,7 +82,23 @@ public class PaymentTabController implements Initializable {
     }
 
     public void createPayment() {
+        ExceptionLabel.setText("");
+        if (customerChoiceBox.getSelectionModel().getSelectedItem() != null &&
+                staffChoiceBox.getSelectionModel().getSelectedItem() != null &&
+                amountTextField.getText().length() > 0) {
+            try{
+                Payment payment = new Payment(BigDecimal.valueOf(Long.parseLong(amountTextField.getText())), customerChoiceBox.getSelectionModel().getSelectedItem(),
+                        staffChoiceBox.getSelectionModel().getSelectedItem());
+                new PaymentDAO().create(payment);
+            }catch (Exception e){
+                e.printStackTrace();
+                ExceptionLabel.setText("Felaktig inmatning!");
+            }
 
+
+            updatePaymentTableView();
+            amountTextField.setText("");
+        }
     }
 
     public void editAmount(TableColumn.CellEditEvent<Payment, BigDecimal> paymentBigDecimalCellEditEvent) {
@@ -88,6 +110,13 @@ public class PaymentTabController implements Initializable {
         }
     }
 
+    public void updateCustomerChoiceBox() {
+        customerChoiceBox.setItems(FXCollections.observableArrayList(new CustomerDAO().read()));
+    }
+
+    public void updateStaffChoiceBox() {
+        staffChoiceBox.setItems(FXCollections.observableArrayList(new StaffDAO().read()));
+    }
 
 }
 

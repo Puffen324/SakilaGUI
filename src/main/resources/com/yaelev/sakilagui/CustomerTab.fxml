@@ -15,7 +15,7 @@
         <columns>
           <TableColumn fx:id="customerIdColumn" prefWidth="50.0" text="Kund ID" />
           <TableColumn fx:id="storeColumn" prefWidth="55.0" text="Butik ID" />
-            <TableColumn fx:id="customerFirstNameColumnn" onEditCommit="#editFirstName" prefWidth="74.0" text="Förnamn" />
+            <TableColumn fx:id="customerFirstNameColumn" onEditCommit="#editFirstName" prefWidth="74.0" text="Förnamn" />
             <TableColumn fx:id="customerLastNameColumn" onEditCommit="#editLastName" text="Efternamn" />
             <TableColumn fx:id="emailColumn" onEditCommit="#editEmail" prefWidth="130.0" text="Epost" />
             <TableColumn fx:id="addressColumn" onEditCommit="#editAddress" prefWidth="122.0" text="Adress" />
@@ -25,7 +25,7 @@
         </columns>
       </TableView>
       <TextField fx:id="firstNameConstructor" layoutX="14.0" layoutY="431.0" promptText="Förnamn" />
-      <TextField fx:id="lastNameConscturctor" layoutX="14.0" layoutY="472.0" promptText="Efternamn" />
+      <TextField fx:id="lastNameConstructor" layoutX="14.0" layoutY="472.0" promptText="Efternamn" />
       <TextField fx:id="emailConstructor" layoutX="14.0" layoutY="510.0" promptText="epost@epost.com" />
       <ChoiceBox fx:id="storeChoiceBox" layoutX="180.0" layoutY="440.0" prefWidth="150.0" />
       <Button layoutX="141.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#createCustomer" text="Skapa kund" />

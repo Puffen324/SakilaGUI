@@ -6,19 +6,13 @@ import com.yaelev.sakilagui.dao.StoreDAO;
 import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Customer;
 import com.yaelev.sakilagui.entity.Store;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.Timestamp;
@@ -35,7 +29,7 @@ public class CustomerTabController implements Initializable {
     @FXML
     private TableColumn<Customer, Store> storeColumn;
     @FXML
-    private TableColumn<Customer, String> customerFirstNameColumnn;
+    private TableColumn<Customer, String> customerFirstNameColumn;
     @FXML
     private TableColumn<Customer, Timestamp> lastUpdateColumn;
     @FXML
@@ -53,7 +47,7 @@ public class CustomerTabController implements Initializable {
     @FXML
     private TextField firstNameConstructor;
     @FXML
-    private TextField lastNameConscturctor;
+    private TextField lastNameConstructor;
     @FXML
     private TextField emailConstructor;
     @FXML
@@ -79,8 +73,8 @@ public class CustomerTabController implements Initializable {
         customerTableView.setEditable(true);
         customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
-        customerFirstNameColumnn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        customerFirstNameColumnn.setCellFactory(TextFieldTableCell.forTableColumn());
+        customerFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        customerFirstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
         customerLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         customerLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -106,11 +100,11 @@ public class CustomerTabController implements Initializable {
 
     public void createCustomer() {
         if (firstNameConstructor != null &&
-                lastNameConscturctor != null &&
+                lastNameConstructor != null &&
                 storeChoiceBox != null &&
                 addressChoiceBox != null) {
             Customer customer = new Customer(firstNameConstructor.getText(),
-                    lastNameConscturctor.getText(),
+                    lastNameConstructor.getText(),
                     emailConstructor.getText(),
                     addressChoiceBox.getSelectionModel().getSelectedItem(),
                     storeChoiceBox.getSelectionModel().getSelectedItem(),
@@ -119,7 +113,7 @@ public class CustomerTabController implements Initializable {
             new CustomerDAO().create(customer);
             updateCustomerTableView();
             firstNameConstructor.setText("");
-            lastNameConscturctor.setText("");
+            lastNameConstructor.setText("");
             emailConstructor.setText("");
         }
 
