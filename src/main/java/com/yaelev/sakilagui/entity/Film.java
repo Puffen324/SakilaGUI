@@ -3,10 +3,6 @@ package com.yaelev.sakilagui.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "film")
@@ -24,16 +20,16 @@ public class Film {
     @Basic
     @Column(name = "release_year")
     private int releaseYear;
-    @Basic
-    @Column(name = "language_id")
-    private int languageId;
 
-    //@Column(name = "original_language_id")
-   // private int originalLanguageId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "language_id")
+    private Language language;
+
     @Basic
-   // @Column(name = "rental_duration")
-   // private int rentalDuration;
-    //@Basic
+    @Column(name = "rental_duration")
+    private int rentalDuration;
+
+    @Basic
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
     @Basic
@@ -52,26 +48,21 @@ public class Film {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Film(){}
-    public Film(int filmId,
-                String title,
-                String description,
-                int releaseYear,
-                int languageId,
-                //int originalLanguageId,
-       //         int rentalDuration,
-                BigDecimal rentalRate,
-                int length,
-                BigDecimal replacementCost,
-                String rating,
-                String specialFeatures) {
+    public Film() {
+
+    }
+
+    public Film(int filmId, String title, String description,
+                int releaseYear, Language languageId, int rentalDuration,
+                BigDecimal rentalRate, int length, BigDecimal replacementCost,
+                String rating, String specialFeatures)
+    {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
-        this.languageId = languageId;
-        //this.originalLanguageId = originalLanguageId;
-        //this.rentalDuration = rentalDuration;
+        this.language = languageId;
+        this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;
         this.replacementCost = replacementCost;
@@ -112,29 +103,21 @@ public class Film {
         this.releaseYear = releaseYear;
     }
 
-    public Object getLanguageId() {
-        return languageId;
+    public Object getLanguage() {
+        return language;
     }
 
-    public void setLanguageId(int languageId) {
-        this.languageId = languageId;
+    public void setLanguage(Language languageId) {
+        this.language = languageId;
     }
 
-   // public Object getOriginalLanguageId() {
-      //  return originalLanguageId;
-    //}
+    public int getRentalDuration() {
+        return rentalDuration;
+    }
 
-  //  public void setOriginalLanguageId(int originalLanguageId) {
-    //    this.originalLanguageId = originalLanguageId;
-    //}
-
-    //public int getRentalDuration() {
-      //  return rentalDuration;
-    //}
-
-    //public void setRentalDuration(int rentalDuration) {
-      //  this.rentalDuration = rentalDuration;
-    //}
+    public void setRentalDuration(int rentalDuration) {
+        this.rentalDuration = rentalDuration;
+    }
 
     public BigDecimal getRentalRate() {
         return rentalRate;
@@ -185,21 +168,5 @@ public class Film {
     }
 
 
-    @Override
-    public String toString() {
-        return  filmId +
-                "," + title +
-                "," + description +
-                "," + releaseYear +
-                "," + languageId +
-               // "," + originalLanguageId +
-              //  "," + rentalDuration +
-                "," + rentalRate +
-                "," + length +
-                "," + replacementCost +
-                "," + rating +
-                "," + specialFeatures +
-                "," + lastUpdate;
 
-    }
 }

@@ -72,12 +72,11 @@
                             <children>
                                 <TableView fx:id="rentalDetailsTableViews" prefHeight="463.0" prefWidth="800.0">
                                     <columns>
-                                        <TableColumn fx:id="filmidRentDetailsColumn" prefWidth="201.0" text="Film ID" />
-                                        <TableColumn fx:id="rentalPeriodColumn" prefWidth="103.0" text="Hyresperiod" />
-                                        <TableColumn fx:id="rentalCostColumn" prefWidth="102.0" text="Hyreskostnad" />
-                              <TableColumn fx:id="lenghtColumn" prefWidth="102.0" text="Längd" />
-                              <TableColumn fx:id="rentalLastUpdateColumn" prefWidth="102.0" text="Senast uppdatering" />
-                              <TableColumn prefWidth="102.0" text="Senast uppdatering" />
+                                        <TableColumn fx:id="filmIdRentDetailsColumn" prefWidth="97.0" text="Film ID" />
+                                        <TableColumn fx:id="rentalPeriodColumn" prefWidth="183.0" text="Hyresperiod" />
+                                        <TableColumn fx:id="rentalCostColumn" prefWidth="138.0" text="Hyreskostnad" />
+                              <TableColumn fx:id="lengthColumn" prefWidth="160.0" text="Längd" />
+                              <TableColumn fx:id="rentalLastUpdateColumn" prefWidth="221.0" text="Senast uppdatering" />
                                     </columns>
                                 </TableView>
                             </children>

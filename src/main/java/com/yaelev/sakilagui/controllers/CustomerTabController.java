@@ -6,16 +6,25 @@ import com.yaelev.sakilagui.dao.StoreDAO;
 import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Customer;
 import com.yaelev.sakilagui.entity.Store;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerTabController implements Initializable {
@@ -36,9 +45,11 @@ public class CustomerTabController implements Initializable {
     @FXML
     private TableColumn<Customer,Address> addressColumn;
     @FXML
-    private TableColumn<Customer,Byte> activeColumn;
+    private TableColumn<Customer,Boolean> activeColumn;
     @FXML
     private TableColumn<Customer,Timestamp> createDateColumn;
+
+
     @FXML
     private TextField firstNameConstructor;
     @FXML
@@ -50,14 +61,17 @@ public class CustomerTabController implements Initializable {
     @FXML
     private ChoiceBox<Address> addressChoiceBox;
     @FXML
-    private CheckBox isActive;
+    private ChoiceBox<Boolean> booleanChoiceBox = new ChoiceBox<>();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setUpCustomerTableView();
+        updateBooleanChoiceBox();
         updateAddressChoiceBox();
+        setUpCustomerTableView();
         updateStoreChoiceBox();
+
+
     }
 
     public void setUpCustomerTableView(){
@@ -67,12 +81,19 @@ public class CustomerTabController implements Initializable {
         storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
         customerFirstNameColumnn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         customerFirstNameColumnn.setCellFactory(TextFieldTableCell.forTableColumn());
+
         customerLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         customerLastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         emailColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-        activeColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
+        addressColumn.setCellFactory(ChoiceBoxTableCell.forTableColumn(addressChoiceBox.getItems()));
+
+        activeColumn.setCellValueFactory(param -> param.getValue().getObsBoolean());
+        activeColumn.setCellFactory(ChoiceBoxTableCell.forTableColumn(booleanChoiceBox.getItems()));
+
         createDateColumn.setCellValueFactory(new PropertyValueFactory<>("createDate"));
         lastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         customerTableView.getItems().addAll();
@@ -93,7 +114,7 @@ public class CustomerTabController implements Initializable {
                     emailConstructor.getText(),
                     addressChoiceBox.getSelectionModel().getSelectedItem(),
                     storeChoiceBox.getSelectionModel().getSelectedItem(),
-                    (byte) 1);
+                    true );
 
             new CustomerDAO().create(customer);
             updateCustomerTableView();
@@ -131,6 +152,28 @@ public class CustomerTabController implements Initializable {
         updateCustomerTableView();
     }
 
+    public void editAddress(TableColumn.CellEditEvent<Customer, Address> customerAddressCellEditEvent) {
+        customerTableView.getSelectionModel().getSelectedItem().setAddress(customerAddressCellEditEvent.getNewValue());
+        customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
+        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        updateCustomerTableView();
+    }
+
+    public void editActive(TableColumn.CellEditEvent<Customer, Boolean> customerBooleanCellEditEvent){
+        customerTableView.getSelectionModel().getSelectedItem().setActive(customerBooleanCellEditEvent.getNewValue());
+        customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
+        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        updateCustomerTableView();
+    }
+
+
+    public void updateBooleanChoiceBox(){
+        List<Boolean> booleans = new ArrayList<>();
+        booleans.add(true);
+        booleans.add(false);
+        booleanChoiceBox.setItems(FXCollections.observableArrayList(booleans));
+    }
+
     public void updateAddressChoiceBox(){
         addressChoiceBox.setItems(FXCollections.observableArrayList(new AddressDAO().read()));
     }
@@ -138,6 +181,7 @@ public class CustomerTabController implements Initializable {
     public void updateStoreChoiceBox(){
         storeChoiceBox.setItems(FXCollections.observableArrayList(new StoreDAO().read()));
     }
+
 
 
 
