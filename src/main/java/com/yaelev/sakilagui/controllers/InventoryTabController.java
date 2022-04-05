@@ -46,17 +46,7 @@ public class InventoryTabController implements Initializable {
         updateInventoryTableView();
         updateFilmComboBox();
     }
-    public void filmIdUpdate(){
-
-    }
-
-    public void storeIdUpdate(){
-
-    }
-
-    public void latestUpdate(){
-
-    }
+    
 
     public void updateFilmComboBox(){
         filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
