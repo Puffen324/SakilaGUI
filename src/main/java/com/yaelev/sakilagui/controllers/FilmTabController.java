@@ -1,11 +1,13 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.FilmDAO;
+import com.yaelev.sakilagui.entity.Actor;
 import com.yaelev.sakilagui.entity.Film;
 import com.yaelev.sakilagui.entity.Language;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,8 +25,6 @@ public class FilmTabController implements Initializable {
     @FXML
     private TableColumn<Film,String> titleColumn;
     @FXML
-    private TableColumn<Film,String> descriptionColumn;
-    @FXML
     private TableColumn<Film, Language> languageColumn;
     @FXML
     private TableColumn<Film,Integer> releaseYearColumn;
@@ -34,25 +34,6 @@ public class FilmTabController implements Initializable {
     private TableColumn<Film,String> ratingColumn;
     @FXML
     private TableColumn<Film, Timestamp> lastUpdateColumn;
-    @Override
-
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateFilmTableView();
-        updateRentalDetailsTableView();
-        updateFilmDescriptionTableView();
-    }
-    public void updateFilmTableView(){
-        filmTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
-        filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        languageColumn.setCellValueFactory(new PropertyValueFactory<>("language"));
-        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
-        playTimeColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
-        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        lastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-        filmTableView.getItems().addAll();
-    }
     @FXML
     private TableView<Film> rentalDetailsTableViews;
     @FXML
@@ -65,6 +46,42 @@ public class FilmTabController implements Initializable {
     private TableColumn<Film,Integer> lengthColumn;
     @FXML
     private TableColumn<Film,Timestamp> rentalLastUpdateColumn;
+    @FXML
+    private TableView<Film> filmDescriptionTableView;
+    @FXML
+    private TableColumn<Film,Integer> filmDescriptionFilmIdColumn;
+    @FXML
+    private TableColumn<Film,String> filmDescriptionColumn;
+
+    @FXML
+    private TableView<Actor> filmActorTableView;
+    @FXML
+    private TableColumn<Film, Integer> actorIdListColumn;
+    @FXML
+    private TableColumn<Film, String> actorFirstNameColumn;
+    @FXML
+    private TableColumn<Film, String> actorLastNameColumn;
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateFilmTableView();
+        updateRentalDetailsTableView();
+        updateFilmDescriptionTableView();
+    }
+
+    public void updateFilmTableView(){
+        filmTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        languageColumn.setCellValueFactory(new PropertyValueFactory<>("language"));
+        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
+        playTimeColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        lastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
+        filmTableView.getItems().addAll();
+    }
 
     public void updateRentalDetailsTableView(){
         rentalDetailsTableViews.setItems(FXCollections.observableList(new FilmDAO().read()));
@@ -75,13 +92,6 @@ public class FilmTabController implements Initializable {
         rentalLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         rentalDetailsTableViews.getItems().addAll();
     }
-    @FXML
-    private TableView<Film> filmDescriptionTableView;
-    @FXML
-    private TableColumn<Film,Integer> filmDescriptionFilmIdColumn;
-    @FXML
-    private TableColumn<Film,String> filmDescriptionColumn;
-
 
     public void updateFilmDescriptionTableView(){
         filmDescriptionTableView.setItems(FXCollections.observableList(new FilmDAO().read()));
@@ -90,4 +100,20 @@ public class FilmTabController implements Initializable {
         filmDescriptionTableView.getItems().addAll();
 
     }
+
+    public void updateFilmActorTableView(){
+        if(filmTableView.getSelectionModel().getSelectedItem() != null){
+            filmActorTableView.setItems(
+                    FXCollections.observableArrayList(
+                            filmTableView.getSelectionModel()
+                                    .getSelectedItem()
+                                    .getActorList()));
+            actorIdListColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
+            actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            actorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        }
+    }
+
+
+
 }

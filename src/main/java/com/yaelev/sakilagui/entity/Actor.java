@@ -25,6 +25,12 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @ManyToMany(mappedBy = "actorList")
+    private List<Film> filmList;
+
+    @Transient
+    private Boolean participating = false;
+
 
 
     public Actor(String firstName, String lastName) {
@@ -35,6 +41,14 @@ public class Actor {
 
     public Actor() {
 
+    }
+
+    public Boolean getParticipating() {
+        return participating;
+    }
+
+    public void setParticipating(Boolean participating) {
+        this.participating = participating;
     }
 
     public int getActorId() {
@@ -69,5 +83,12 @@ public class Actor {
         this.lastUpdate = lastUpdate;
     }
 
+    public List<Film> getFilmList() {
+        return filmList;
+    }
+
+    public void setFilmList(List<Film> filmList) {
+        this.filmList = filmList;
+    }
 
 }

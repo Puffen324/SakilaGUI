@@ -2,7 +2,11 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "film")
@@ -48,8 +52,15 @@ public class Film {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Film() {
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "film_actor",
+            joinColumns = { @JoinColumn(name = "film_id")},
+            inverseJoinColumns = { @JoinColumn(name = "actor_id")})
+    private List<Actor> actorList;
 
+    public Film() {
+        this.actorList = new ArrayList<>();
+        this.lastUpdate = Timestamp.from(Instant.now());
     }
 
     public Film(int filmId, String title, String description,
@@ -68,6 +79,7 @@ public class Film {
         this.replacementCost = replacementCost;
         this.rating = rating;
         this.specialFeatures = specialFeatures;
+        this.lastUpdate = Timestamp.from(Instant.now());
     }
 
     @Override
@@ -82,6 +94,14 @@ public class Film {
                 ", " + specialFeatures;
 
 
+    }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public void setActorList(List<Actor> actorList) {
+        this.actorList = actorList;
     }
 
     public int getFilmId() {
