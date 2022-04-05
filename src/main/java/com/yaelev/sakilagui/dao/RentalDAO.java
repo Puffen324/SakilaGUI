@@ -17,7 +17,7 @@ public class RentalDAO extends GenericDAO<Rental>{
 
     }
 
-    public List<City> read() {
+    public List<Rental> read() {
         return entityManager.createNativeQuery("SELECT * FROM Rental", Rental.class).getResultList();
     }
 
