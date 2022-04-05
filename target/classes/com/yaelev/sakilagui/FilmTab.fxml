@@ -70,13 +70,13 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView prefHeight="463.0" prefWidth="800.0">
+                                <TableView fx:id="rentalDetailsTableViews" prefHeight="463.0" prefWidth="800.0">
                                     <columns>
-                                        <TableColumn prefWidth="201.0" text="Film ID" />
-                                        <TableColumn prefWidth="103.0" text="Hyresperiod" />
-                                        <TableColumn prefWidth="102.0" text="Hyreskostnad" />
-                              <TableColumn prefWidth="102.0" text="Längd" />
-                              <TableColumn prefWidth="102.0" text="Senast uppdatering" />
+                                        <TableColumn fx:id="filmidRentDetailsColumn" prefWidth="201.0" text="Film ID" />
+                                        <TableColumn fx:id="rentalPeriodColumn" prefWidth="103.0" text="Hyresperiod" />
+                                        <TableColumn fx:id="rentalCostColumn" prefWidth="102.0" text="Hyreskostnad" />
+                              <TableColumn fx:id="lenghtColumn" prefWidth="102.0" text="Längd" />
+                              <TableColumn fx:id="rentalLastUpdateColumn" prefWidth="102.0" text="Senast uppdatering" />
                               <TableColumn prefWidth="102.0" text="Senast uppdatering" />
                                     </columns>
                                 </TableView>
