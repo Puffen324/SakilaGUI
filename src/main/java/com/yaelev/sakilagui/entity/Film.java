@@ -30,9 +30,11 @@ public class Film {
 
     //@Column(name = "original_language_id")
    // private int originalLanguageId;
+
     @Basic
     @Column(name = "rental_duration")
     private int rentalDuration;
+
     @Basic
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
@@ -52,7 +54,10 @@ public class Film {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Film(){}
+    public Film(){
+
+    }
+
     public Film(int filmId,
                 String title,
                 String description,

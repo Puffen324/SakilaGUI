@@ -1,5 +1,8 @@
 package com.yaelev.sakilagui.entity;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -22,7 +25,7 @@ public class Customer {
     private String email;
     @Basic
     @Column(name = "active")
-    private byte active;
+    private Boolean active;
     @Basic
     @Column(name = "create_date")
     private Timestamp createDate;
@@ -45,11 +48,13 @@ public class Customer {
     private List<Rental> rentals;
 
 
+
+
     public Customer(){
 
     }
 
-    public Customer(int customerId, Store store, String firstName, String lastName, String email, Address address, byte active, Timestamp createDate, Timestamp lastUpdate) {
+    public Customer(int customerId, Store store, String firstName, String lastName, String email, Address address, Boolean active, Timestamp createDate, Timestamp lastUpdate) {
         this.customerId = customerId;
         this.store = store;
         this.firstName = firstName;
@@ -61,7 +66,7 @@ public class Customer {
         this.lastUpdate = lastUpdate;
     }
 
-    public Customer(String firstName, String lastName, String email, Address address, Store store, byte active) {
+    public Customer(String firstName, String lastName, String email, Address address, Store store, Boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -135,11 +140,16 @@ public class Customer {
         this.address = address;
     }
 
-    public byte getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(byte active) {
+    public ObservableValue<Boolean> getObsBoolean(){
+        ObservableValue<Boolean> obsBoolean = new SimpleBooleanProperty(this.active).asObject();
+        return obsBoolean;
+    }
+
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
