@@ -39,10 +39,10 @@ public class Address {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
     private List<Store> stores;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
     private List<Customer> customers;
 
 

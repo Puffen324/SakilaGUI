@@ -43,13 +43,13 @@ public class Staff {
     private Store store;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff")
     private List<Payment> paymentList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff")
     private List<Rental> rentalList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "staff")
     private List<Store> storeList;
 
     public Staff() {

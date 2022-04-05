@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "language")
@@ -16,6 +17,9 @@ public class Language {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "language")
+    private List<Film> filmList;
 
     public int getLanguageId() {
         return languageId;
@@ -41,5 +45,8 @@ public class Language {
         this.lastUpdate = lastUpdate;
     }
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }
