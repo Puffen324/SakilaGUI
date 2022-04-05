@@ -142,15 +142,6 @@ public class Staff {
 
     @Override
     public String toString() {
-        return
-               staffId +
-                " " + firstName +
-                " " + lastName +
-                " " + address +
-                " " + email +
-                " " + store +
-                " " + active +
-                " " + username;
-
+        return staffId + "";
     }
 }
