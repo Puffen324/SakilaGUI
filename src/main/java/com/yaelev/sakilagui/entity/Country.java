@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "country")
@@ -16,6 +17,8 @@ public class Country {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+    @OneToMany(fetch =FetchType.LAZY,mappedBy = "country")
+    private List<City> cityList;
 
     public int getCountryId() {
         return countryId;
@@ -41,11 +44,17 @@ public class Country {
         this.lastUpdate = lastUpdate;
     }
 
+    public Country(int countryId, String country, Timestamp lastUpdate) {
+        this.countryId = countryId;
+        this.country = country;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Country() {
+    }
 
     @Override
     public String toString() {
-        return " " +
-                " " + countryId +
-                " " + country ;
+        return country;
     }
 }

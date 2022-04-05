@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "city")
@@ -13,12 +14,28 @@ public class City {
     @Basic
     @Column(name = "city")
     private String city;
-    @Basic
-    @Column(name = "country_id")
-    private int countryId;
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country  country;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    public City(int cityId, String city, Country country, Timestamp lastUpdate) {
+        this.cityId = cityId;
+        this.city = city;
+        this.country = country;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public City() {
+    }
+
+    public City(String city, Country country) {
+        this.city = city;
+        this.country = country;
+        this.lastUpdate=Timestamp.from(Instant.now());
+    }
 
     public int getCityId() {
         return cityId;
@@ -36,12 +53,13 @@ public class City {
         this.city = city;
     }
 
-    public int getCountryId() {
-        return countryId;
+
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public Timestamp getLastUpdate() {
@@ -52,12 +70,14 @@ public class City {
         this.lastUpdate = lastUpdate;
     }
 
+    
+    
 
     @Override
     public String toString() {
         return  cityId +
                 " " + city  +
-                " " + countryId;
+                " " + country;
 
     }
 }
