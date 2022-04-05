@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.FilmDAO;
 import com.yaelev.sakilagui.dao.InventoryDAO;
+import com.yaelev.sakilagui.dao.StoreDAO;
 import com.yaelev.sakilagui.entity.Film;
 import com.yaelev.sakilagui.entity.Inventory;
 import com.yaelev.sakilagui.entity.Store;
@@ -31,6 +32,8 @@ public class InventoryTabController implements Initializable {
     private ComboBox<Film> filmComboBox;
     @FXML
     private TableColumn<Inventory, Timestamp> latestUpdateColumn;
+    @FXML
+    private ComboBox<Store> storeCombobox;
 
     public void updateInventoryTableView(){
         inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
@@ -45,6 +48,7 @@ public class InventoryTabController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateInventoryTableView();
         updateFilmComboBox();
+        updateStoreComboBox();
     }
     public void filmIdUpdate(){
 
@@ -61,5 +65,9 @@ public class InventoryTabController implements Initializable {
     public void updateFilmComboBox(){
         filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
         filmComboBox.getItems().addAll();
+    }
+    public void updateStoreComboBox(){
+        storeCombobox.setItems(FXCollections.observableList(new StoreDAO().read()));
+        storeCombobox.getItems().addAll();
     }
 }
