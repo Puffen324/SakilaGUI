@@ -52,7 +52,10 @@ public class Film {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Film(){}
+    public Film(){
+
+    }
+
     public Film(int filmId,
                 String title,
                 String description,

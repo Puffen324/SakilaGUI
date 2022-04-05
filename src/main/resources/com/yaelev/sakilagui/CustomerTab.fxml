@@ -15,13 +15,13 @@
         <columns>
           <TableColumn fx:id="customerIdColumn" prefWidth="50.0" text="Kund ID" />
           <TableColumn fx:id="storeColumn" prefWidth="55.0" text="Butik ID" />
-            <TableColumn fx:id="customerFirstNameColumnn" onEditCommit="#editFirstName" prefWidth="85.0" text="Förnamn" />
-            <TableColumn fx:id="customerLastNameColumn" onEditCommit="#editLastName" prefWidth="90.0" text="Efternamn" />
-            <TableColumn fx:id="emailColumn" onEditCommit="#editEmail" prefWidth="165.0" text="Epost" />
-            <TableColumn fx:id="addressColumn" prefWidth="79.0" text="AdressID" />
-            <TableColumn fx:id="activeColumn" prefWidth="46.0" text="Aktiv" />
-            <TableColumn fx:id="createDateColumn" prefWidth="102.0" text="Skapad" />
-            <TableColumn fx:id="lastUpdateColumn" prefWidth="127.0" text="Senast uppdaterad" />
+            <TableColumn fx:id="customerFirstNameColumnn" onEditCommit="#editFirstName" prefWidth="74.0" text="Förnamn" />
+            <TableColumn fx:id="customerLastNameColumn" onEditCommit="#editLastName" text="Efternamn" />
+            <TableColumn fx:id="emailColumn" onEditCommit="#editEmail" prefWidth="130.0" text="Epost" />
+            <TableColumn fx:id="addressColumn" onEditCommit="#editAddress" prefWidth="122.0" text="Adress" />
+            <TableColumn fx:id="activeColumn" onEditCommit="#editActive" prefWidth="48.0" text="Aktiv" />
+            <TableColumn fx:id="createDateColumn" prefWidth="109.0" text="Skapad" />
+            <TableColumn fx:id="lastUpdateColumn" prefWidth="131.0" text="Senast uppdaterad" />
         </columns>
       </TableView>
       <TextField fx:id="firstNameConstructor" layoutX="14.0" layoutY="431.0" promptText="Förnamn" />
