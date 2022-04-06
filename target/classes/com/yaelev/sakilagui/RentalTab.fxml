@@ -13,7 +13,7 @@
 
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
                         <children>
-                            <TableView prefHeight="355.0" prefWidth="800.0">
+                            <TableView fx:id="rentalTableView" prefHeight="355.0" prefWidth="800.0">
                                 <columns>
                                     <TableColumn fx:id="rentalIdColumn" prefWidth="47.0" text="ID" />
                                     <TableColumn fx:id="rentalDateColumn" onEditCommit="#updateRentalDate" prefWidth="157.0" text="Uthyrnings Datum" />
@@ -21,7 +21,7 @@
                            <TableColumn fx:id="customerIdColumn" minWidth="0.0" onEditCommit="#customerIdUpdate" prefWidth="76.0" text="Kund_ID" />
                            <TableColumn fx:id="returnDateColumn" minWidth="0.0" onEditCommit="#returnDateUpdate" prefWidth="181.0" text="TIllbaka" />
                            <TableColumn fx:id="staffIdColumn" minWidth="0.0" onEditCommit="#staffIdUpdate" prefWidth="93.0" text="Personal_ID" />
-                           <TableColumn fx:id="latestUpdateColumn" minWidth="0.0" onEditCommit="#updateLastUpdate" prefWidth="149.0" text="Senast Uppdaterad" />
+                           <TableColumn fx:id="latestUpdateColumn" prefWidth="225.0" text="Senast uppdatering" />
                                 </columns>
                             </TableView>
                             <Button layoutX="28.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till Lån" />
