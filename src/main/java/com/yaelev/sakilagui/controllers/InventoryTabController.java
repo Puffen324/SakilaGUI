@@ -1,14 +1,17 @@
 package com.yaelev.sakilagui.controllers;
 
+import com.yaelev.sakilagui.dao.AddressDAO;
 import com.yaelev.sakilagui.dao.FilmDAO;
 import com.yaelev.sakilagui.dao.InventoryDAO;
 import com.yaelev.sakilagui.dao.StoreDAO;
+import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Film;
 import com.yaelev.sakilagui.entity.Inventory;
 import com.yaelev.sakilagui.entity.Store;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ResourceBundle;
 
 public class InventoryTabController implements Initializable {
@@ -59,5 +63,19 @@ public class InventoryTabController implements Initializable {
     public void updateStoreComboBox(){
         storeCombobox.setItems(FXCollections.observableList(new StoreDAO().read()));
         storeCombobox.getItems().addAll();
+    }
+    public void addToInventroyEvent(){
+         Inventory inventory = new Inventory();
+         inventory.setFilmId(filmComboBox.getSelectionModel().getSelectedItem().getFilmId());
+         inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
+         inventory.setLastUpdate(Timestamp.from(Instant.now()));
+         new InventoryDAO().create(inventory);
+         updateInventoryTableView();
+
+    }
+    public void removeFromInventoryEvent(){
+        Inventory inventory= inventoryTableView.getSelectionModel().getSelectedItem();
+        new InventoryDAO().delete((inventory));
+        updateInventoryTableView();
     }
 }
