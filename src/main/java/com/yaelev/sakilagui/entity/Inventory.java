@@ -4,8 +4,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-import static javax.persistence.CascadeType.ALL;
-
 @Entity
 @Table(name = "inventory")
 public class Inventory {
@@ -28,6 +26,9 @@ public class Inventory {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "inventory")
     private List<Rental> rentalList;
 
+    @Transient
+    private Film film;
+
     public List<Rental> getRentalList() {
         return rentalList;
     }
@@ -45,6 +46,7 @@ public class Inventory {
         this.store = store;
         this.lastUpdate = lastUpdate;
     }
+    public String getFilm(){return film.toString();}
 
     public int getInventoryId() {
         return inventoryId;
@@ -79,4 +81,11 @@ public class Inventory {
     }
 
 
+    @Override
+    public String toString() {
+        return
+                inventoryId+"";
+
+
+    }
 }
