@@ -33,7 +33,7 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "store_id")
     private Store store;
 
