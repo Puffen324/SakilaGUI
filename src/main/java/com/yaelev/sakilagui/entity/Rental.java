@@ -36,6 +36,17 @@ public class Rental {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    public Rental(int rentalId, Timestamp rentalDate, Timestamp returnDate, Timestamp lastUpdate, Staff staff, Inventory inventory, Customer customer) {
+        this.rentalId = rentalId;
+        this.rentalDate = rentalDate;
+        this.returnDate = returnDate;
+        this.lastUpdate = lastUpdate;
+        this.staff = staff;
+        this.inventory = inventory;
+        this.customer = customer;
+    }
+    public Rental(){}
+
     public int getRentalId() {
         return rentalId;
     }

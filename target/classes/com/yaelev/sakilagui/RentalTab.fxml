@@ -17,21 +17,21 @@
                                 <columns>
                                     <TableColumn fx:id="rentalIdColumn" prefWidth="47.0" text="ID" />
                                     <TableColumn fx:id="rentalDateColumn" onEditCommit="#updateRentalDate" prefWidth="157.0" text="Uthyrnings Datum" />
-                                    <TableColumn fx:id="inventoryIdColumn" minWidth="0.0" onEditCommit="#inventoryIdUpdate" prefWidth="96.0" text="Inventory_ID" />
-                           <TableColumn fx:id="customerIdColumn" minWidth="0.0" onEditCommit="#customerIdUpdate" prefWidth="76.0" text="Kund_ID" />
-                           <TableColumn fx:id="returnDateColumn" minWidth="0.0" onEditCommit="#returnDateUpdate" prefWidth="181.0" text="TIllbaka" />
-                           <TableColumn fx:id="staffIdColumn" minWidth="0.0" onEditCommit="#staffIdUpdate" prefWidth="93.0" text="Personal_ID" />
-                           <TableColumn fx:id="latestUpdateColumn" prefWidth="225.0" text="Senast uppdatering" />
+                                    <TableColumn fx:id="inventoryIdColumn" minWidth="0.0" onEditCommit="#inventoryIdUpdate" prefWidth="66.0" text="Lager ID" />
+                           <TableColumn fx:id="customerIdColumn" minWidth="0.0" onEditCommit="#customerIdUpdate" prefWidth="161.0" text="Kund" />
+                           <TableColumn fx:id="returnDateColumn" minWidth="0.0" onEditCommit="#returnDateUpdate" prefWidth="93.0" text="Återlämnas" />
+                           <TableColumn fx:id="staffIdColumn" minWidth="0.0" onEditCommit="#staffIdUpdate" prefWidth="110.0" text="Personal" />
+                           <TableColumn fx:id="latestUpdateColumn" prefWidth="165.0" text="Senast uppdatering" />
                                 </columns>
                             </TableView>
-                            <Button layoutX="28.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till Lån" />
-                            <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" text="Radera makerad Lån" />
-                     <ComboBox layoutX="610.0" layoutY="439.0" prefWidth="150.0" promptText="Personal ID" />
-                     <DatePicker layoutX="249.0" layoutY="439.0" promptText="Retur Datum" />
+                            <Button layoutX="28.0" layoutY="506.0" mnemonicParsing="false" onAction="#createRental" text="Lägg till Lån" />
+                            <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" onAction="#deleteRental" text="Radera makerad Lån" />
+                     <ComboBox fx:id="staffBox" layoutX="610.0" layoutY="439.0" prefWidth="150.0" promptText="Personal ID" />
+                     <DatePicker fx:id="pickADate" layoutX="249.0" layoutY="439.0" promptText="Retur Datum" />
                      <Label layoutX="36.0" layoutY="443.0" text="Låne Datum" />
                      <Label fx:id="todaysDate" layoutX="127.0" layoutY="443.0" prefHeight="17.0" prefWidth="114.0" text="Dagens Datum" />
-                     <ComboBox layoutX="439.0" layoutY="439.0" prefWidth="150.0" promptText="Kund ID" />
-                     <ComboBox layoutX="249.0" layoutY="383.0" prefHeight="25.0" prefWidth="232.0" promptText="Inventory ID" />
+                     <ComboBox fx:id="customerBox" layoutX="439.0" layoutY="439.0" prefWidth="150.0" promptText="Kund ID" />
+                     <ComboBox fx:id="invetoryBox" layoutX="249.0" layoutY="383.0" prefHeight="25.0" prefWidth="232.0" promptText="Inventory ID" />
                         </children>
                     </AnchorPane>
 
