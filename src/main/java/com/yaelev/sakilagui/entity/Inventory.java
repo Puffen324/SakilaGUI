@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Table(name = "inventory")
 public class Inventory {
@@ -19,7 +21,7 @@ public class Inventory {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.REMOVE)
     @JoinColumn(name = "store_id")
     private Store store;
 

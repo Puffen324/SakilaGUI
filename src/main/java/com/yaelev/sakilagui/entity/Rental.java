@@ -1,5 +1,7 @@
 package com.yaelev.sakilagui.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -26,7 +28,7 @@ public class Rental {
     @JoinColumn(name = "staff_id")
     private Staff staff;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 

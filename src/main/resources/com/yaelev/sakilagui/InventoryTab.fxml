@@ -22,7 +22,7 @@
                 </TableView>
                 <Button fx:id="addToInventroy" layoutX="14.0" layoutY="435.0" mnemonicParsing="false" onAction="#addToInventroyEvent" text="Lägg till Film" />
                 <Button fx:id="removeFromInventory" layoutX="651.0" layoutY="435.0" mnemonicParsing="false" onAction="#removeFromInventoryEvent" text="Ta bort vald FIlm" />
-                <ComboBox fx:id="storeCombobox" layoutX="195.0" layoutY="435.0" prefHeight="25.0" prefWidth="120.0" promptText="Store" />
+                <ComboBox fx:id="storeCombobox" layoutX="327.0" layoutY="435.0" prefHeight="25.0" prefWidth="120.0" promptText="Store" />
             <ComboBox fx:id="filmComboBox" layoutX="100.0" layoutY="377.0" prefHeight="25.0" prefWidth="620.0" promptText="Film" />
             </children>
         </AnchorPane>
