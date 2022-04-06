@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -9,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.ActorTabController">
    <children>
@@ -18,43 +18,42 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
-                        <TableView fx:id="actorTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
+                        <TableView fx:id="actorTableView" editable="true" layoutY="25.0" onMouseClicked="#updateActorFilmTableView" prefHeight="350.0" prefWidth="400.0">
                           <columns>
-                            <TableColumn fx:id="actorIdColumn" prefWidth="75.0" text="ID" />
-                            <TableColumn fx:id="actorFirstNameColumn" onEditCommit="#updateActorFirstName" prefWidth="248.0" text="Förnamn" />
-                              <TableColumn fx:id="actorLastNameColumn" onEditCommit="#updateActorLastName" prefWidth="296.0" text="Efternamn" />
-                              <TableColumn fx:id="actorLastUpdateColumn" prefWidth="180.0" text="Senast uppdatering" />
+                            <TableColumn fx:id="actorIdColumn" prefWidth="37.0" text="ID" />
+                            <TableColumn fx:id="actorFirstNameColumn" onEditCommit="#updateActorFirstName" prefWidth="86.0" text="Förnamn" />
+                              <TableColumn fx:id="actorLastNameColumn" onEditCommit="#updateActorLastName" prefWidth="108.0" text="Efternamn" />
+                              <TableColumn fx:id="actorLastUpdateColumn" prefWidth="168.0" text="Senast uppdatering" />
                           </columns>
                         </TableView>
                         <TextField fx:id="actorFirstNameConstr" layoutX="15.0" layoutY="427.0" promptText="Förnamn" />
                         <TextField fx:id="actorLastNameConstr" layoutX="15.0" layoutY="467.0" promptText="Efternamn" />
                         <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#createActor" text="Lägg till skådespelare" />
-                        <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteActor" text="Ta bort vald skådespelare" />
+                        <Button layoutX="635.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#removeFilmFromActor" text="Ta bort markerad filmroll" />
+                        <TableView fx:id="actorFilmTableView" editable="true" layoutX="400.0" layoutY="25.0" prefHeight="350.0" prefWidth="400.0">
+                           <columns>
+                              <TableColumn fx:id="actorFilmIdColumn" prefWidth="43.0" text="Film Id" />
+                              <TableColumn fx:id="actorFilmTitleColumn" onEditCommit="#updateActorFirstName" prefWidth="188.0" text="Titel" />
+                              <TableColumn fx:id="actorFilmLanguageColumn" onEditCommit="#updateActorLastName" prefWidth="84.0" text="Språk" />
+                              <TableColumn fx:id="actorFilmReleaseYearColumn" prefWidth="84.0" text="Lanseringsår" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="145.0" layoutY="-2.0" text="Skådespelare">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="437.0" layoutY="-2.0" text="Markerad skådespelares filmroller">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteButton" layoutX="634.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteActor" text="Ta bort vald skådespelare" />
+                        <Button layoutX="472.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#test" text="Button" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab onSelectionChanged="#updateActorFilmTableView" text="Filmroller">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
-                     <children>
-                        <TableView fx:id="actorFilmTableView" prefHeight="355.0" prefWidth="800.0">
-                           <columns>
-                              <TableColumn fx:id="actorFilmIdColumn" prefWidth="201.0" text="Skådespelare ID" />
-                              <TableColumn fx:id="filmActorIdColumn" prefWidth="302.0" text="Film ID" />
-                              <TableColumn fx:id="actorFilmLastUpdateColumn" prefWidth="296.0" text="Senast uppdatering" />
-                           </columns>
-                        </TableView>
-                        <Button layoutX="36.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till koppling" />
-                        <Button layoutX="681.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort koppling" />
-                        <ChoiceBox layoutX="14.0" layoutY="422.0" prefWidth="150.0" />
-                        <ChoiceBox layoutX="15.0" layoutY="476.0" prefWidth="150.0" />
-                        <Label layoutX="43.0" layoutY="405.0" text="Välj skådespelare" />
-                        <Label layoutX="68.0" layoutY="459.0" text="Välj film" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
         </tabs>
       </TabPane>
    </children>
