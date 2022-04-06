@@ -12,6 +12,7 @@
 
             <property name="javax.persistence.jdbc.password" value="Banan"/>
 
+
             <property name="hibernate.show_sql" value="true"/>
         </properties>
 
