@@ -1,5 +1,7 @@
 package com.yaelev.sakilagui.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -57,6 +59,17 @@ public class Film {
             joinColumns = { @JoinColumn(name = "film_id")},
             inverseJoinColumns = { @JoinColumn(name = "actor_id")})
     private List<Actor> actorList;
+
+    @Transient
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Film() {
         this.actorList = new ArrayList<>();

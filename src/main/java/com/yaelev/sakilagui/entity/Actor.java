@@ -1,12 +1,11 @@
 package com.yaelev.sakilagui.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "Actor")
 @Table(name = "actor")
@@ -37,6 +36,7 @@ public class Actor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastUpdate = Timestamp.from(Instant.now());
+        this.filmList = new ArrayList<>();
     }
 
     public Actor() {

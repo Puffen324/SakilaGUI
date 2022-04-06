@@ -2,9 +2,11 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.ActorDAO;
+import com.yaelev.sakilagui.dao.CategoryDAO;
 import com.yaelev.sakilagui.dao.FilmDAO;
 import com.yaelev.sakilagui.dao.LanguageDAO;
 import com.yaelev.sakilagui.entity.Actor;
+import com.yaelev.sakilagui.entity.Category;
 import com.yaelev.sakilagui.entity.Film;
 import com.yaelev.sakilagui.entity.Language;
 import javafx.beans.binding.Bindings;
@@ -61,6 +63,9 @@ public class FilmCreationController implements Initializable {
     private ChoiceBox<String> specialFeatureChoiceBox;
 
     @FXML
+    private ChoiceBox<Category> categoryChoiceBox;
+
+    @FXML
     private Spinner<Integer> lengthSpinner;
 
     @FXML
@@ -104,6 +109,7 @@ public class FilmCreationController implements Initializable {
         setRentalPeriod();
         setLength();
         setDescription();
+        setCategory();
         setActors(filmCreationTableView.getItems());
         new FilmDAO().create(film);
         film = new Film();
@@ -112,6 +118,7 @@ public class FilmCreationController implements Initializable {
         languageChoiceBox.setValue(null);
         ratingChoiceBox.setValue(null);
         specialFeatureChoiceBox.setValue(null);
+        categoryChoiceBox.setValue(null);
     }
 
     public void bindings() {
@@ -151,15 +158,28 @@ public class FilmCreationController implements Initializable {
 
         }, specialFeatureChoiceBox.valueProperty());
 
+        BooleanBinding categoryChoiceBoxValid = Bindings.createBooleanBinding(() -> {
+            if (categoryChoiceBox.getSelectionModel().getSelectedItem() != null) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }, categoryChoiceBox.valueProperty());
+
+
+
         createButton.disableProperty().bind(
                          titleTextFieldValid.not()
                         .or(languageChoiceBoxValid.not())
                         .or(ratingChoiceBoxValid.not())
+                        .or(categoryChoiceBoxValid.not())
                         .or(specialFeatureChoiceBoxValid.not()));
     }
 
     public void setupTableView(ObservableList<Actor> actorList) {
         filmCreationTableView.setItems(actorList);
+
         checkBoxColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Actor, CheckBox>, ObservableValue<CheckBox>>() {
             @Override
             public ObservableValue<CheckBox> call(
@@ -179,6 +199,7 @@ public class FilmCreationController implements Initializable {
                 return new SimpleObjectProperty<CheckBox>(checkBox);
             }
         });
+
         actorIdColumn.setCellValueFactory(new PropertyValueFactory<>("actorId"));
         actorFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         actorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -186,6 +207,7 @@ public class FilmCreationController implements Initializable {
 
     public void setupChoiceBoxes() {
         languageChoiceBox.setItems(FXCollections.observableArrayList(new LanguageDAO().read()));
+        categoryChoiceBox.setItems(FXCollections.observableArrayList(new CategoryDAO().read()));
         ratingChoiceBox.setItems(FXCollections.observableArrayList(ratingList));
         specialFeatureChoiceBox.setItems(FXCollections.observableArrayList(specialFeatureList));
     }
@@ -242,6 +264,10 @@ public class FilmCreationController implements Initializable {
 
     public void setDescription() {
         film.setDescription(descriptionTextArea.getText());
+    }
+
+    public void setCategory(){
+        film.setCategory(categoryChoiceBox.getSelectionModel().getSelectedItem());
     }
 
     public void setActors(List<Actor> actorList){
