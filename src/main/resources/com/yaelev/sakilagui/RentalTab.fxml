@@ -31,8 +31,9 @@
                      <Label layoutX="36.0" layoutY="443.0" text="Låne Datum" />
                      <Label fx:id="todaysDate" layoutX="127.0" layoutY="443.0" prefHeight="17.0" prefWidth="114.0" text="Dagens Datum" />
                      <ComboBox fx:id="customerBox" layoutX="33.0" layoutY="381.0" prefWidth="150.0" promptText="Kund ID" />
-                     <ComboBox fx:id="invetoryBox" layoutX="457.0" layoutY="439.0" prefHeight="25.0" prefWidth="114.0" promptText="Inventory ID" />
+                     <ComboBox fx:id="invetoryBox" layoutX="617.0" layoutY="439.0" prefHeight="25.0" prefWidth="114.0" promptText="Inventory ID" />
             <ComboBox fx:id="filmComboBox" layoutX="423.0" layoutY="381.0" prefHeight="25.0" prefWidth="348.0" promptText="Film" />
+            <ComboBox fx:id="storeComboBox" layoutX="458.0" layoutY="439.0" prefHeight="25.0" prefWidth="114.0" promptText="Butik" />
                         </children>
                     </AnchorPane>
 

@@ -1,17 +1,11 @@
 package com.yaelev.sakilagui.controllers;
 
 import com.yaelev.sakilagui.dao.*;
-import com.yaelev.sakilagui.entity.Customer;
-import com.yaelev.sakilagui.entity.Inventory;
-import com.yaelev.sakilagui.entity.Rental;
-import com.yaelev.sakilagui.entity.Staff;
+import com.yaelev.sakilagui.entity.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
@@ -47,6 +41,12 @@ public class RentalTabController implements Initializable {
     private ComboBox<Customer> customerBox;
     @FXML
     private ComboBox<Inventory> invetoryBox;
+    @FXML
+    private ComboBox<Film> filmComboBox;
+    @FXML
+    private ComboBox<Store> storeComboBox;
+    @FXML
+    private DatePicker pickADate;
 
     public void updateRentalTableView() {
         rentalTableView.setItems(FXCollections.observableList(new RentalDAO().read()));
@@ -73,6 +73,14 @@ public class RentalTabController implements Initializable {
         invetoryBox.setItems(FXCollections.observableList((new InventoryDAO().read())));
         invetoryBox.getItems().addAll();
     }
+    private void fillFilmComboBox(){
+        filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmComboBox.getItems();
+    }
+    private void fillStoreComboBox(){
+        storeComboBox.setItems(FXCollections.observableList(new StoreDAO().read()));
+        storeComboBox.getItems().addAll();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -82,20 +90,26 @@ public class RentalTabController implements Initializable {
         fillStaffBox();
         fillCustomerBox();
         fillInventoryBox();
+        fillFilmComboBox();
+        fillStoreComboBox();
         //updateStaffEntityTableView();
     }
         //Backended ÄR inte klart ännu
     public void createRental(){
         Rental rental = new Rental();
         rental.setRentalDate(Timestamp.from(Instant.now()));
-        //rental.setFilmId(invetoryBox.getSelectionModel().getSelectedItem().getFilmId());
+        rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
+        rental.setReturnDate(Timestamp.valueOf(pickADate.getValue().atStartOfDay()));
        // inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
-        //inventory.setLastUpdate(Timestamp.from(Instant.now()));
+        rental.setStaff(staffBox.getSelectionModel().getSelectedItem());
+        rental.setInventory(invetoryBox.getSelectionModel().getSelectedItem());
+        rental.setLastUpdate(Timestamp.from(Instant.now()));
         new RentalDAO().create(rental);
+        updateRentalTableView();
 
     }
     public void deleteRental(){
-
+        
     }
 
 
