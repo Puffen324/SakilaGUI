@@ -8,10 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CountryTabController">
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab text="Land">
-                    <content>
+
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
                                 <TableView fx:id="countryTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
@@ -23,9 +20,6 @@
                                 </TableView>
                             </children>
                         </AnchorPane>
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
+        
     </children>
 </AnchorPane>
