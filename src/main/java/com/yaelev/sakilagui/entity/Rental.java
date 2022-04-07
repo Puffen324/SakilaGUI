@@ -28,7 +28,7 @@ public class Rental {
     @JoinColumn(name = "staff_id")
     private Staff staff;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
