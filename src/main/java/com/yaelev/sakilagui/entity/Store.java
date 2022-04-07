@@ -41,7 +41,7 @@ public class Store {
         this.address = address;
         this.lastUpdate = Timestamp.from(Instant.now());
     }
-
+public Store getStore(){return this;}
 
 
     @Override

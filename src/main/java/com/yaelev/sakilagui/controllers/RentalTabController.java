@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RentalTabController implements Initializable {
@@ -35,14 +36,13 @@ public class RentalTabController implements Initializable {
     private TableColumn<Rental,Staff> staffIdColumn;
     @FXML
     private TableColumn<Rental,Timestamp> latestUpdateColumn;
-    @FXML
-    private ComboBox<Staff> staffBox;
+
     @FXML
     private ComboBox<Customer> customerBox;
     @FXML
     private ComboBox<Inventory> invetoryBox;
     @FXML
-    private ComboBox<Film> filmComboBox;
+    private ComboBox<Inventory> filmComboBox;
     @FXML
     private ComboBox<Store> storeComboBox;
     @FXML
@@ -60,23 +60,24 @@ public class RentalTabController implements Initializable {
 
         rentalTableView.getItems().addAll();
     }
-    private void fillStaffBox(){
-        staffBox.setItems(FXCollections.observableList((new StaffDAO().read())));
-        staffBox.getItems().addAll();
-    }
+@FXML
     private void fillCustomerBox(){
         customerBox.setItems(FXCollections.observableList((new CustomerDAO().read())));
         customerBox.getItems().addAll();
     }
+    @FXML
     private void fillInventoryBox(){
         //Inventory rental = new Inventory();
         invetoryBox.setItems(FXCollections.observableList((new InventoryDAO().read())));
         invetoryBox.getItems().addAll();
     }
+    @FXML
     private void fillFilmComboBox(){
-        filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
+       // filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmComboBox.setItems(FXCollections.observableArrayList(storeComboBox.getSelectionModel().getSelectedItem().getInventoryList()));
         filmComboBox.getItems();
     }
+    @FXML
     private void fillStoreComboBox(){
         storeComboBox.setItems(FXCollections.observableList(new StoreDAO().read()));
         storeComboBox.getItems().addAll();
@@ -87,12 +88,9 @@ public class RentalTabController implements Initializable {
         updateRentalTableView();
         LocalDate date = LocalDate.now();
         todaysDate.setText(date.toString());
-        fillStaffBox();
-        fillCustomerBox();
-        fillInventoryBox();
-        fillFilmComboBox();
-        fillStoreComboBox();
-        //updateStaffEntityTableView();
+        List<Film> filmList= FXCollections.observableArrayList(new FilmDAO().read());
+
+
     }
         //Backended ÄR inte klart ännu
     public void createRental(){
@@ -101,7 +99,8 @@ public class RentalTabController implements Initializable {
         rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
         rental.setReturnDate(Timestamp.valueOf(pickADate.getValue().atStartOfDay()));
        // inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
-        rental.setStaff(staffBox.getSelectionModel().getSelectedItem());
+        //rental.setStaff(staffBox.getSelectionModel().getSelectedItem());
+        rental.setStaff(storeComboBox.getSelectionModel().getSelectedItem().getStaff());
         rental.setInventory(invetoryBox.getSelectionModel().getSelectedItem());
         rental.setLastUpdate(Timestamp.from(Instant.now()));
         new RentalDAO().create(rental);
