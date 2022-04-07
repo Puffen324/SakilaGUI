@@ -83,8 +83,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return
-                inventoryId+" "+ filmId;
+        return inventoryId +"";
 
 
     }
