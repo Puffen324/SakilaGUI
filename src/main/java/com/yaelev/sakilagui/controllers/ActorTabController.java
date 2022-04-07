@@ -89,11 +89,6 @@ public class ActorTabController implements Initializable {
                 actorFilmLanguageColumn.setCellValueFactory(new PropertyValueFactory<>("language"));
                 actorFilmReleaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
         }
-        public void test(){
-                if (actorTableView.getSelectionModel().getSelectedItem().getFilmList().isEmpty()){
-                        System.out.println("TRUE");
-                }
-        }
 
         public void updateActorTableView() {
                 actorTableView.setItems(FXCollections.observableList(new ActorDAO().read()));

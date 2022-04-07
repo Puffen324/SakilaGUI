@@ -56,14 +56,12 @@ public class RentalTabController implements Initializable {
         returnDateColumn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
         staffIdColumn.setCellValueFactory(new PropertyValueFactory<>("staff"));
         latestUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-
         rentalTableView.getItems().addAll();
     }
 
     @FXML
     private void fillCustomerBox() {
         customerBox.setItems(FXCollections.observableList((new CustomerDAO().read())));
-        customerBox.getItems().addAll();
     }
 
     @FXML
@@ -90,20 +88,17 @@ public class RentalTabController implements Initializable {
         if (storeComboBox.getSelectionModel().getSelectedItem() != null) {
             List<Film> filmList = new FilmDAO().read();
             List<Inventory> storeInventoryList = storeComboBox.getSelectionModel().getSelectedItem().getInventoryList();
-
             List<Film> filteredList = filmList.stream()
                     .filter(film -> storeInventoryList.stream()
                             .anyMatch(inventory -> inventory.getFilmId() == (film.getFilmId())))
                     .collect(Collectors.toList());
             filmComboBox.setItems(FXCollections.observableArrayList(filteredList));
-            filmComboBox.getItems();
         }
     }
 
     @FXML
     private void fillStoreComboBox() {
         storeComboBox.setItems(FXCollections.observableList(new StoreDAO().read()));
-        storeComboBox.getItems().addAll();
     }
 
     @Override
@@ -117,17 +112,17 @@ public class RentalTabController implements Initializable {
     public void createRental() {
         Rental rental = new Rental();
         rental.setRentalDate(Timestamp.from(Instant.now()));
-        rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
         rental.setReturnDate(Timestamp.valueOf(pickADate.getValue().atStartOfDay()));
+        rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
         rental.setStaff(storeComboBox.getSelectionModel().getSelectedItem().getStaff());
         rental.setInventory(inventoryComboBox.getSelectionModel().getSelectedItem());
         rental.setLastUpdate(Timestamp.from(Instant.now()));
         new RentalDAO().create(rental);
         updateRentalTableView();
-
     }
 
     public void deleteRental() {
+
 
         Rental rental = rentalTableView.getSelectionModel().getSelectedItem();
         new RentalDAO().delete(rental);

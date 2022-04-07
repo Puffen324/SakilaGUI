@@ -49,7 +49,6 @@
                            </font>
                         </Label>
                         <Button fx:id="deleteButton" layoutX="634.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteActor" text="Ta bort vald skådespelare" />
-                        <Button layoutX="472.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#test" text="Button" />
                      </children>
                   </AnchorPane>
             </content>

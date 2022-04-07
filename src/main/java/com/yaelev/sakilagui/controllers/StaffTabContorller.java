@@ -1,6 +1,8 @@
 package com.yaelev.sakilagui.controllers;
 
+import com.yaelev.sakilagui.dao.ActorDAO;
 import com.yaelev.sakilagui.dao.StaffDAO;
+import com.yaelev.sakilagui.entity.Actor;
 import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Staff;
 import com.yaelev.sakilagui.entity.Store;
@@ -56,6 +58,13 @@ public class StaffTabContorller implements Initializable {
 
         updateStaffEntityTableView();
     }
+
+    public void removeStaff(){
+        Staff staff = StaffTableView.getSelectionModel().getSelectedItem();
+        new StaffDAO().delete(staff);
+        updateStaffEntityTableView();
+    }
+
     public void updateStaffName(){
 
     }
