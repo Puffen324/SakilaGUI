@@ -3,31 +3,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CategoryTabController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.yaelev.sakilagui.controllers.CategoryTabController">
 
     <children>
 
 
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
-                            <children>
-                                <TableView fx:id="categoryEntityTableView" onMouseClicked="#updateCategoryFilmTable" prefHeight="355.0" prefWidth="400.0">
-                                    <columns>
-                                        <TableColumn fx:id="categoryIdColumn" prefWidth="50.0" text="ID" />
-                                        <TableColumn fx:id="categoryNameColumn" prefWidth="120.0" text="Kategori" />
-                                        <TableColumn fx:id="categoryLastUpdateColumn" minWidth="0.0" prefWidth="250.0" text="Senast uppdatering" />
-                                    </columns>
-                                </TableView>
-                        <TableView fx:id="filmCategoryTable" layoutX="394.0" prefHeight="355.0" prefWidth="400.0">
-                           <columns>
-                              <TableColumn fx:id="filmIdColumn" prefWidth="50.0" text="ID" />
-                              <TableColumn fx:id="filmTitleColumn" prefWidth="350.0" text="Title" />
-                           </columns>
-                        </TableView>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
+            <children>
+                <TableView fx:id="categoryEntityTableView" onMouseClicked="#updateCategoryFilmTable" prefHeight="355.0"
+                           prefWidth="400.0">
+                    <columns>
+                        <TableColumn fx:id="categoryIdColumn" prefWidth="50.0" text="ID"/>
+                        <TableColumn fx:id="categoryNameColumn" prefWidth="120.0" text="Kategori"/>
+                        <TableColumn fx:id="categoryLastUpdateColumn" minWidth="0.0" prefWidth="250.0"
+                                     text="Senast uppdatering"/>
+                    </columns>
+                </TableView>
+                <TableView fx:id="filmCategoryTable" layoutX="394.0" prefHeight="355.0" prefWidth="400.0">
+                    <columns>
+                        <TableColumn fx:id="filmIdColumn" prefWidth="50.0" text="ID"/>
+                        <TableColumn fx:id="filmTitleColumn" prefWidth="350.0" text="Titel"/>
+                    </columns>
+                </TableView>
 
-                            </children>
-                        </AnchorPane>
+            </children>
+        </AnchorPane>
 
-       
+
     </children>
 
 

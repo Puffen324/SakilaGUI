@@ -33,6 +33,10 @@ public class FilmCreationController implements Initializable {
     private Film film;
     private List<String> ratingList = Arrays.asList("PG", "G", "NC-17", "PG-13", "R");
     private List<String> specialFeatureList = Arrays.asList("Trailers", "Behind the Scenes", "Commentaries", "Deleted Scenes");
+    private ActorDAO actorDAO = new ActorDAO();
+    private FilmDAO filmDAO = new FilmDAO();
+    private LanguageDAO languageDAO = new LanguageDAO();
+    private CategoryDAO categoryDAO = new CategoryDAO();
 
 
     @FXML
@@ -90,7 +94,7 @@ public class FilmCreationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         film = new Film();
-        List<Actor> actorList = new ActorDAO().read();
+        List<Actor> actorList = actorDAO.read();
         setupTableView(FXCollections.observableArrayList(actorList));
         setupChoiceBoxes();
         setupSpinners();
@@ -111,7 +115,7 @@ public class FilmCreationController implements Initializable {
         setDescription();
         setCategory();
         setActors(filmCreationTableView.getItems());
-        new FilmDAO().create(film);
+        filmDAO.create(film);
         film = new Film();
         titleTextField.setText("");
         descriptionTextArea.setText("");
@@ -167,14 +171,12 @@ public class FilmCreationController implements Initializable {
 
         }, categoryChoiceBox.valueProperty());
 
-
-
         createButton.disableProperty().bind(
-                         titleTextFieldValid.not()
-                        .or(languageChoiceBoxValid.not())
-                        .or(ratingChoiceBoxValid.not())
-                        .or(categoryChoiceBoxValid.not())
-                        .or(specialFeatureChoiceBoxValid.not()));
+                titleTextFieldValid.not()
+                .or(languageChoiceBoxValid.not())
+                .or(ratingChoiceBoxValid.not())
+                .or(categoryChoiceBoxValid.not())
+                .or(specialFeatureChoiceBoxValid.not()));
     }
 
     public void setupTableView(ObservableList<Actor> actorList) {
@@ -206,24 +208,18 @@ public class FilmCreationController implements Initializable {
     }
 
     public void setupChoiceBoxes() {
-        languageChoiceBox.setItems(FXCollections.observableArrayList(new LanguageDAO().read()));
-        categoryChoiceBox.setItems(FXCollections.observableArrayList(new CategoryDAO().read()));
+        languageChoiceBox.setItems(FXCollections.observableArrayList(languageDAO.read()));
+        categoryChoiceBox.setItems(FXCollections.observableArrayList(categoryDAO.read()));
         ratingChoiceBox.setItems(FXCollections.observableArrayList(ratingList));
         specialFeatureChoiceBox.setItems(FXCollections.observableArrayList(specialFeatureList));
     }
 
     public void setupSpinners() {
         releaseYearSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1950, 2022, 2000));
-        releaseYearSpinner.setEditable(true);
         rentalCostSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.99, 4.99, 2.5));
-        rentalCostSpinner.setEditable(true);
         replacementCostSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(9.99, 29.99, 15.0));
-        replacementCostSpinner.setEditable(true);
         rentalPeriodSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 7, 5));
-        rentalPeriodSpinner.setEditable(true);
         lengthSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(45, 190, 100));
-        lengthSpinner.setEditable(true);
-
     }
 
     public void setTitle() {
@@ -268,13 +264,13 @@ public class FilmCreationController implements Initializable {
 
     public void setCategory(){
 
-        film.getCategoryList().add(categoryChoiceBox.getSelectionModel().getSelectedItem());
+        film.getCategorySet().add(categoryChoiceBox.getSelectionModel().getSelectedItem());
     }
 
     public void setActors(List<Actor> actorList){
         for(Actor a : actorList){
             if(a.getParticipating() == true){
-                film.getActorList().add(a);
+                film.getActorSet().add(a);
             }
         }
 

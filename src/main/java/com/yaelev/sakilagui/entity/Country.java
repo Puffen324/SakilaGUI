@@ -17,7 +17,7 @@ public class Country {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(fetch =FetchType.LAZY,mappedBy = "country")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     private List<City> cityList;
 
     public int getCountryId() {

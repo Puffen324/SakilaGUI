@@ -33,7 +33,7 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "store_id")
     private Store store;
 
@@ -48,9 +48,7 @@ public class Customer {
     private List<Rental> rentals;
 
 
-
-
-    public Customer(){
+    public Customer() {
 
     }
 
@@ -144,7 +142,7 @@ public class Customer {
         return active;
     }
 
-    public ObservableValue<Boolean> getObsBoolean(){
+    public ObservableValue<Boolean> getObsBoolean() {
         ObservableValue<Boolean> obsBoolean = new SimpleBooleanProperty(this.active).asObject();
         return obsBoolean;
     }
@@ -171,6 +169,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return customerId + " "+ firstName +" "+lastName;
+        return customerId + " " + firstName + " " + lastName;
     }
 }

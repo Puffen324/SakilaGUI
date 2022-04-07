@@ -8,7 +8,9 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "film")
@@ -58,25 +60,19 @@ public class Film {
     @JoinTable(name = "film_actor",
             joinColumns = { @JoinColumn(name = "film_id")},
             inverseJoinColumns = { @JoinColumn(name = "actor_id")})
-    private List<Actor> actorList;
+    private Set<Actor> actorSet;
 
 
-    @ManyToMany(fetch = FetchType.LAZY )
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "film_category",
             joinColumns = { @JoinColumn(name = "film_id")},
             inverseJoinColumns = { @JoinColumn(name = "category_id")})
-    private List<Category> categoryList ;
+    private Set<Category> categorySet ;
 
-    public List<Category> getCategoryList() {
-        return categoryList;
-    }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
-    }
 
     public Film() {
-        this.actorList = new ArrayList<>();
+        this.actorSet = new HashSet<>();
         this.lastUpdate = Timestamp.from(Instant.now());
     }
 
@@ -113,12 +109,20 @@ public class Film {
 
     }
 
-    public List<Actor> getActorList() {
-        return actorList;
+    public Set<Actor> getActorSet() {
+        return actorSet;
     }
 
-    public void setActorList(List<Actor> actorList) {
-        this.actorList = actorList;
+    public void setActorSet(Set<Actor> actorSet) {
+        this.actorSet = actorSet;
+    }
+
+    public Set<Category> getCategorySet() {
+        return categorySet;
+    }
+
+    public void setCategorySet(Set<Category> categorySet) {
+        this.categorySet = categorySet;
     }
 
     public int getFilmId() {

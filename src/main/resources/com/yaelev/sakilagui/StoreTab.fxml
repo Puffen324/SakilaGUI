@@ -14,9 +14,9 @@
                 <TableView fx:id="storeTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
                     <columns>
                         <TableColumn fx:id="storeIdColumn" prefWidth="101.0" text="ID" />
-                  <TableColumn fx:id="staffColumn" onEditCommit="#managerStaffIdUpdate" prefWidth="182.0" text="Chefs ID" />
-                  <TableColumn fx:id="addressColumn" onEditCommit="#addressIdUpdate" prefWidth="272.0" text="Adress ID" />
-                  <TableColumn fx:id="latestUpdateColumn111" onEditCommit="#latestUpdate" prefWidth="243.0" text="Senast Uppdaterad" />
+                  <TableColumn fx:id="staffColumn" prefWidth="182.0" text="Chefs ID" />
+                  <TableColumn fx:id="addressColumn" prefWidth="272.0" text="Adress ID" />
+                  <TableColumn fx:id="latestUpdateColumn111" prefWidth="243.0" text="Senast Uppdaterad" />
                        
                     </columns>
                 </TableView>

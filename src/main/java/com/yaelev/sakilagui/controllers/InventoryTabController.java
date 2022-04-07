@@ -12,12 +12,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ResourceBundle;
 
 public class InventoryTabController implements Initializable {
+
+    private InventoryDAO inventoryDAO = new InventoryDAO();
+    private FilmDAO filmDAO = new FilmDAO();
+    private StoreDAO storeDAO = new StoreDAO();
+
     @FXML
     private TableView<Inventory> inventoryTableView;
     @FXML
@@ -41,7 +47,7 @@ public class InventoryTabController implements Initializable {
     }
 
     public void setupTableView() {
-        inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
+        inventoryTableView.setItems(FXCollections.observableList(inventoryDAO.read()));
         inventoryIdColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryId"));
         filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
         storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
@@ -50,17 +56,17 @@ public class InventoryTabController implements Initializable {
     }
 
     public void updateInventoryTableView() {
-        inventoryTableView.setItems(FXCollections.observableList(new InventoryDAO().read()));
+        inventoryTableView.setItems(FXCollections.observableList(inventoryDAO.read()));
         inventoryTableView.getItems().addAll();
     }
 
     public void updateFilmComboBox() {
-        filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
+        filmComboBox.setItems(FXCollections.observableList(filmDAO.read()));
         filmComboBox.getItems().addAll();
     }
 
     public void updateStoreComboBox() {
-        storeCombobox.setItems(FXCollections.observableList(new StoreDAO().read()));
+        storeCombobox.setItems(FXCollections.observableList(storeDAO.read()));
         storeCombobox.getItems().addAll();
     }
 
@@ -69,18 +75,17 @@ public class InventoryTabController implements Initializable {
         inventory.setFilmId(filmComboBox.getSelectionModel().getSelectedItem().getFilmId());
         inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
         inventory.setLastUpdate(Timestamp.from(Instant.now()));
-        new InventoryDAO().create(inventory);
+        inventoryDAO.create(inventory);
         updateInventoryTableView();
     }
 
     public void deleteInventory() {
-        InventoryDAO inventoryDAO = new InventoryDAO();
         Inventory inventory = inventoryTableView.getSelectionModel().getSelectedItem();
         inventoryDAO.executeInsideTransaction(entityManager ->
                 entityManager.createNativeQuery("DELETE FROM rental WHERE inventory_id = ? ")
                         .setParameter(1, inventory.getInventoryId())
                         .executeUpdate());
-        new InventoryDAO().delete((inventory));
+        inventoryDAO.delete((inventory));
         updateInventoryTableView();
     }
 }

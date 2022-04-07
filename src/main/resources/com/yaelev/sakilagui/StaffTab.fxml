@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.StaffTabContorller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.StaffTabController">
     <children>
 
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
@@ -17,7 +17,7 @@
                                         <TableColumn fx:id="staffIdColumn" prefWidth="38.0" text="ID" />
                                         <TableColumn fx:id="staffNameColumn" onEditCommit="#updateStaffName" prefWidth="87.0" text="Namn" />
                                         <TableColumn fx:id="staffLastnameColumn" onEditCommit="#updateStaffLastName" prefWidth="117.0" text="Efternamn" />
-                                        <TableColumn fx:id="addressColumn" onEditCommit="#updateStaffaddress_id" prefWidth="96.0" text="Address_id" />
+                                        <TableColumn fx:id="addressColumn" onEditCommit="#updateStaffAddress" prefWidth="96.0" text="Address_id" />
                                         <TableColumn fx:id="staffEmailColumn1" onEditCommit="#updateStaffEmail" prefWidth="123.0" text="e_mail" />
                                         <TableColumn fx:id="storeColumn" maxWidth="5001.0" onEditCommit="#updateStoreID" prefWidth="68.0" text="Store_ID" />
                                         <TableColumn fx:id="userColumn" onEditCommit="#updateUser" prefWidth="79.0" text="Användare" />

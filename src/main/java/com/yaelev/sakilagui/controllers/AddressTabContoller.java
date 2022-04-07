@@ -18,7 +18,7 @@ import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
-public class AddressTabContoller  implements Initializable {
+public class AddressTabContoller implements Initializable {
     @FXML
     private TableView<Address> addressTableView;
     @FXML
@@ -46,7 +46,14 @@ public class AddressTabContoller  implements Initializable {
     @FXML
     private TextField postalCodeTextField;
 
-    public void setUpAddressTableView(){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        setUpAddressTableView();
+        updateCityBox();
+    }
+
+    public void setUpAddressTableView() {
         addressTableView.setItems(FXCollections.observableList(new AddressDAO().read()));
         addressIdColumn.setCellValueFactory(new PropertyValueFactory<>("addressId"));
         addressNameColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -58,27 +65,21 @@ public class AddressTabContoller  implements Initializable {
         addressTableView.getItems().addAll();
     }
 
-    public void updateAddressTableView(){
+    public void updateAddressTableView() {
         addressTableView.setItems(FXCollections.observableList(new AddressDAO().read()));
         addressTableView.getItems().addAll();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        setUpAddressTableView();
-        updateCityBox();
-    }
-
-    public void updateCityBox(){
+    public void updateCityBox() {
         cityComboBox.setItems(FXCollections.observableList(new CityDAO().read()));
         cityComboBox.getItems().addAll();
     }
 
-    // Avvaktar svar från Fredde/Tompa. Fokusera på annat tills vi vet mer.
-    public void createAddress(){
 
-        if(addressTextField != null && cityComboBox != null){
+    public void createAddress() {
+
+        if (addressTextField != null && cityComboBox != null) {
             Address address = new Address(addressTextField.getText(),
                     districtTextField.getText(),
                     cityComboBox.getSelectionModel().getSelectedItem().getCityId(),
@@ -92,27 +93,34 @@ public class AddressTabContoller  implements Initializable {
             phoneTextField.setText("");
         }
     }
-    public void deleteAddress(){
+
+    public void deleteAddress() {
         Address address = addressTableView.getSelectionModel().getSelectedItem();
         new AddressDAO().delete(address);
         updateAddressTableView();
     }
-    public void updateAddress(){
+
+    public void updateAddress() {
 
     }
-    public void updateDistrict(){
+
+    public void updateDistrict() {
 
     }
-    public void updateCity_id(){
+
+    public void updateCity_id() {
 
     }
-    public void updatePostalCode(){
+
+    public void updatePostalCode() {
 
     }
-    public void updatePhone(){
+
+    public void updatePhone() {
 
     }
-    public void updateLocation(){
+
+    public void updateLocation() {
 
     }
 

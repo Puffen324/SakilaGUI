@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,23 +15,22 @@
                             <TableView fx:id="rentalTableView" prefHeight="355.0" prefWidth="800.0">
                                 <columns>
                                     <TableColumn fx:id="rentalIdColumn" prefWidth="47.0" text="ID" />
-                                    <TableColumn fx:id="rentalDateColumn" onEditCommit="#updateRentalDate" prefWidth="157.0" text="Uthyrnings Datum" />
-                                    <TableColumn fx:id="inventoryIdColumn" minWidth="0.0" onEditCommit="#inventoryIdUpdate" prefWidth="66.0" text="Lager ID" />
-                           <TableColumn fx:id="customerIdColumn" minWidth="0.0" onEditCommit="#customerIdUpdate" prefWidth="161.0" text="Kund" />
-                           <TableColumn fx:id="returnDateColumn" minWidth="0.0" onEditCommit="#returnDateUpdate" prefWidth="93.0" text="Återlämnas" />
-                           <TableColumn fx:id="staffIdColumn" minWidth="0.0" onEditCommit="#staffIdUpdate" prefWidth="110.0" text="Personal" />
-                           <TableColumn fx:id="latestUpdateColumn" prefWidth="165.0" text="Senast uppdatering" />
+                                    <TableColumn fx:id="rentalDateColumn" prefWidth="157.0" text="Uthyrnings Datum" />
+                                    <TableColumn fx:id="inventoryIdColumn" minWidth="0.0" prefWidth="66.0" text="Lager ID" />
+                           <TableColumn fx:id="customerIdColumn" minWidth="0.0" prefWidth="161.0" text="Kund" />
+                           <TableColumn fx:id="returnDateColumn" minWidth="0.0" prefWidth="93.0" text="Återlämnas" />
+                           <TableColumn fx:id="staffIdColumn" minWidth="0.0" prefWidth="110.0" text="Personal" />
+                           <TableColumn fx:id="lastUpdateColumn" prefWidth="165.0" text="Senast uppdatering" />
                                 </columns>
                             </TableView>
-                            <Button layoutX="28.0" layoutY="542.0" mnemonicParsing="false" onAction="#createRental" text="Lägg till Lån" />
+                            <Button layoutX="25.0" layoutY="542.0" mnemonicParsing="false" onAction="#createRental" text="Lägg till Lån" />
                             <Button layoutX="641.0" layoutY="542.0" mnemonicParsing="false" onAction="#deleteRental" text="Radera makerad Lån" />
-                     <DatePicker fx:id="pickADate" layoutX="159.0" layoutY="499.0" promptText="Retur Datum" />
-                     <Label layoutX="36.0" layoutY="355.0" text="Låne Datum" />
-                     <Label fx:id="todaysDate" layoutX="142.0" layoutY="355.0" prefHeight="17.0" prefWidth="114.0" text="Dagens Datum" />
-                     <ComboBox fx:id="customerBox" layoutX="33.0" layoutY="381.0" onMouseClicked="#fillCustomerBox" prefWidth="150.0" promptText="Kund ID" />
-                     <ComboBox fx:id="inventoryComboBox" layoutX="28.0" layoutY="499.0" onMouseClicked="#fillInventoryBox" prefHeight="25.0" prefWidth="114.0" promptText="Inventory ID" />
-            <ComboBox fx:id="filmComboBox" layoutX="28.0" layoutY="464.0" onMouseClicked="#fillFilmComboBox" prefHeight="25.0" prefWidth="348.0" promptText="Film" />
-            <ComboBox fx:id="storeComboBox" layoutX="33.0" layoutY="427.0" onMouseClicked="#fillStoreComboBox" prefHeight="25.0" prefWidth="114.0" promptText="Butik" />
+                     <Label layoutX="28.0" layoutY="364.0" text="Låne Datum" />
+                     <Label fx:id="date" layoutX="100.0" layoutY="364.0" prefHeight="17.0" prefWidth="114.0" text="Dagens Datum" />
+                     <ComboBox fx:id="customerBox" layoutX="25.0" layoutY="381.0" onMouseClicked="#updateCustomerComboBox" prefWidth="150.0" promptText="Kund ID" />
+                     <ComboBox fx:id="inventoryComboBox" layoutX="25.0" layoutY="499.0" onMouseClicked="#updateInventoryComboBox" prefHeight="25.0" prefWidth="150.0" promptText="Inventory ID" />
+            <ComboBox fx:id="filmComboBox" layoutX="25.0" layoutY="458.0" onMouseClicked="#updateFilmComboBox" prefHeight="25.0" prefWidth="150.0" promptText="Film" />
+            <ComboBox fx:id="storeComboBox" layoutX="25.0" layoutY="421.0" onMouseClicked="#updateStoreComboBox" prefHeight="25.0" prefWidth="150.0" promptText="Butik" />
                         </children>
                     </AnchorPane>
 

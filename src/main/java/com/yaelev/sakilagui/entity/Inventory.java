@@ -47,7 +47,10 @@ public class Inventory {
         this.store = store;
         this.lastUpdate = lastUpdate;
     }
-    public String getFilm(){return film.toString();}
+
+    public String getFilm() {
+        return film.toString();
+    }
 
     public int getInventoryId() {
         return inventoryId;
@@ -84,7 +87,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return inventoryId +"";
+        return inventoryId + "";
 
 
     }

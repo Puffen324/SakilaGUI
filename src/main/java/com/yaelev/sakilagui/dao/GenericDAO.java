@@ -1,9 +1,6 @@
 package com.yaelev.sakilagui.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.function.Consumer;
 
 public abstract class GenericDAO<E> {
@@ -26,9 +23,6 @@ public abstract class GenericDAO<E> {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } finally{
-            entityManager.close();
+        }
     }
-}
-
 }

@@ -59,7 +59,7 @@ public class CategoryTabController  implements Initializable {
         }
         public void updateCategoryFilmTable(){
            if (categoryEntityTableView.getSelectionModel().getSelectedItem() != null) {
-                   filmCategoryTable.setItems(FXCollections.observableArrayList(categoryEntityTableView.getSelectionModel().getSelectedItem().getFilmList()));
+                   filmCategoryTable.setItems(FXCollections.observableArrayList(categoryEntityTableView.getSelectionModel().getSelectedItem().getFilmSet()));
                    filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
                    filmTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
                    categoryEntityTableView.getItems().addAll();
