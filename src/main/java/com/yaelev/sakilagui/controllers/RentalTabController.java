@@ -7,15 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class RentalTabController implements Initializable {
     @FXML
@@ -27,22 +26,22 @@ public class RentalTabController implements Initializable {
     @FXML
     private TableColumn<Rental, Timestamp> rentalDateColumn;
     @FXML
-    private TableColumn<Rental,Inventory> inventoryIdColumn;
+    private TableColumn<Rental, Inventory> inventoryIdColumn;
     @FXML
-    private TableColumn<Rental,Customer> customerIdColumn;
+    private TableColumn<Rental, Customer> customerIdColumn;
     @FXML
-    private TableColumn<Rental,Timestamp> returnDateColumn;
+    private TableColumn<Rental, Timestamp> returnDateColumn;
     @FXML
-    private TableColumn<Rental,Staff> staffIdColumn;
+    private TableColumn<Rental, Staff> staffIdColumn;
     @FXML
-    private TableColumn<Rental,Timestamp> latestUpdateColumn;
+    private TableColumn<Rental, Timestamp> latestUpdateColumn;
 
     @FXML
     private ComboBox<Customer> customerBox;
     @FXML
-    private ComboBox<Inventory> invetoryBox;
+    private ComboBox<Inventory> inventoryComboBox;
     @FXML
-    private ComboBox<Inventory> filmComboBox;
+    private ComboBox<Film> filmComboBox;
     @FXML
     private ComboBox<Store> storeComboBox;
     @FXML
@@ -60,25 +59,43 @@ public class RentalTabController implements Initializable {
 
         rentalTableView.getItems().addAll();
     }
-@FXML
-    private void fillCustomerBox(){
+
+    @FXML
+    private void fillCustomerBox() {
         customerBox.setItems(FXCollections.observableList((new CustomerDAO().read())));
         customerBox.getItems().addAll();
     }
+
     @FXML
-    private void fillInventoryBox(){
-        //Inventory rental = new Inventory();
-        invetoryBox.setItems(FXCollections.observableList((new InventoryDAO().read())));
-        invetoryBox.getItems().addAll();
+    private void fillInventoryBox() {
+
+        if(filmComboBox.getSelectionModel().getSelectedItem() != null){
+            inventoryComboBox.setItems(FXCollections.observableArrayList(new InventoryDAO().read()));
+        }
+
+
+
+        /*invetoryBox.setItems(FXCollections.observableList((new InventoryDAO().read())));
+        invetoryBox.getItems().addAll();*/
     }
+
     @FXML
-    private void fillFilmComboBox(){
-       // filmComboBox.setItems(FXCollections.observableList(new FilmDAO().read()));
-        filmComboBox.setItems(FXCollections.observableArrayList(storeComboBox.getSelectionModel().getSelectedItem().getInventoryList()));
-        filmComboBox.getItems();
+    private void fillFilmComboBox() {
+        if (storeComboBox.getSelectionModel().getSelectedItem() != null) {
+            List<Film> filmList = new FilmDAO().read();
+            List<Inventory> storeInventoryList = storeComboBox.getSelectionModel().getSelectedItem().getInventoryList();
+
+            List<Film> filteredList = filmList.stream()
+                    .filter(film -> storeInventoryList.stream()
+                            .anyMatch(inventory -> inventory.getFilmId() == (film.getFilmId())))
+                    .collect(Collectors.toList());
+            filmComboBox.setItems(FXCollections.observableArrayList(filteredList));
+            filmComboBox.getItems();
+        }
     }
+
     @FXML
-    private void fillStoreComboBox(){
+    private void fillStoreComboBox() {
         storeComboBox.setItems(FXCollections.observableList(new StoreDAO().read()));
         storeComboBox.getItems().addAll();
     }
@@ -88,39 +105,47 @@ public class RentalTabController implements Initializable {
         updateRentalTableView();
         LocalDate date = LocalDate.now();
         todaysDate.setText(date.toString());
-        List<Film> filmList= FXCollections.observableArrayList(new FilmDAO().read());
-
-
     }
-        //Backended ÄR inte klart ännu
-    public void createRental(){
+
+    //Backended ÄR inte klart ännu
+    public void createRental() {
         Rental rental = new Rental();
         rental.setRentalDate(Timestamp.from(Instant.now()));
         rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
         rental.setReturnDate(Timestamp.valueOf(pickADate.getValue().atStartOfDay()));
-       // inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
+        // inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
         //rental.setStaff(staffBox.getSelectionModel().getSelectedItem());
         rental.setStaff(storeComboBox.getSelectionModel().getSelectedItem().getStaff());
-        rental.setInventory(invetoryBox.getSelectionModel().getSelectedItem());
+        rental.setInventory(inventoryComboBox.getSelectionModel().getSelectedItem());
         rental.setLastUpdate(Timestamp.from(Instant.now()));
         new RentalDAO().create(rental);
         updateRentalTableView();
 
     }
-    public void deleteRental(){
 
-            Rental rental = rentalTableView.getSelectionModel().getSelectedItem();
-            new RentalDAO().delete(rental);
-            updateRentalTableView();
+    public void deleteRental() {
+
+        Rental rental = rentalTableView.getSelectionModel().getSelectedItem();
+        new RentalDAO().delete(rental);
+        updateRentalTableView();
     }
 
 
+    public void updateRentalDate() {
+    }
 
+    public void inventoryIdUpdate() {
+    }
 
-    public void updateRentalDate(){}
-    public void inventoryIdUpdate(){}
-    public void customerIdUpdate(){}
-    public void returnDateUpdate(){}
-    public void staffIdUpdate(){}
-    public void updateLastUpdate(){}
+    public void customerIdUpdate() {
+    }
+
+    public void returnDateUpdate() {
+    }
+
+    public void staffIdUpdate() {
+    }
+
+    public void updateLastUpdate() {
+    }
 }
