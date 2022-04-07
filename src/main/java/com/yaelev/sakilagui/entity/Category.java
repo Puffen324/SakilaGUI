@@ -2,6 +2,7 @@ package com.yaelev.sakilagui.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
@@ -16,6 +17,16 @@ public class Category {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+    @ManyToMany( mappedBy = "categoryList")
+    private List<Film> filmList ;
+
+    public List<Film> getFilmList() {
+        return filmList;
+    }
+
+    public void setFilmList(List<Film> filmList) {
+        this.filmList = filmList;
+    }
 
     public int getCategoryId() {
         return categoryId;

@@ -6,47 +6,28 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.CategoryTabController">
 
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab text="Kategori">
-                    <content>
+
+
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView fx:id="categoryEntityTableView" prefHeight="355.0" prefWidth="800.0">
+                                <TableView fx:id="categoryEntityTableView" onMouseClicked="#updateCategoryFilmTable" prefHeight="355.0" prefWidth="400.0">
                                     <columns>
-                                        <TableColumn fx:id="categoryIdColumn" prefWidth="174.0" text="categoryId" />
-                                        <TableColumn  fx:id="categoryNameColumn" prefWidth="335.0" text="categoryName" />
-                                        <TableColumn fx:id="categoryLastUpdateColumn" minWidth="0.0" prefWidth="290.0" text="Senast uppdatering" />
+                                        <TableColumn fx:id="categoryIdColumn" prefWidth="50.0" text="ID" />
+                                        <TableColumn fx:id="categoryNameColumn" prefWidth="120.0" text="Kategori" />
+                                        <TableColumn fx:id="categoryLastUpdateColumn" minWidth="0.0" prefWidth="250.0" text="Senast uppdatering" />
                                     </columns>
                                 </TableView>
+                        <TableView fx:id="filmCategoryTable" layoutX="394.0" prefHeight="355.0" prefWidth="400.0">
+                           <columns>
+                              <TableColumn fx:id="filmIdColumn" prefWidth="50.0" text="ID" />
+                              <TableColumn fx:id="filmTitleColumn" prefWidth="350.0" text="Title" />
+                           </columns>
+                        </TableView>
 
                             </children>
                         </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Filmer">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
-                            <children>
-                                <TableView prefHeight="355.0" prefWidth="800.0">
-                                    <columns>
-                                        <TableColumn prefWidth="201.0" text="Kategori ID" />
-                                        <TableColumn prefWidth="302.0" text="Film ID" />
-                                        <TableColumn prefWidth="296.0" text="Senast uppdatering" />
-                                    </columns>
-                                </TableView>
-                                <Button layoutX="36.0" layoutY="506.0" mnemonicParsing="false" text="Lägg till koppling" />
-                                <Button layoutX="681.0" layoutY="506.0" mnemonicParsing="false" text="Ta bort koppling" />
-                                <ChoiceBox layoutX="14.0" layoutY="422.0" prefWidth="150.0" />
-                                <ChoiceBox layoutX="15.0" layoutY="476.0" prefWidth="150.0" />
-                                <Label layoutX="57.0" layoutY="405.0" text="Välj kategori" />
-                                <Label layoutX="68.0" layoutY="459.0" text="Välj film" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
+
+       
     </children>
 
 

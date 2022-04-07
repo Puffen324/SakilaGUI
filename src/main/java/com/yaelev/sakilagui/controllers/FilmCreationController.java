@@ -267,7 +267,8 @@ public class FilmCreationController implements Initializable {
     }
 
     public void setCategory(){
-        film.setCategory(categoryChoiceBox.getSelectionModel().getSelectedItem());
+
+        film.getCategoryList().add(categoryChoiceBox.getSelectionModel().getSelectedItem());
     }
 
     public void setActors(List<Actor> actorList){
