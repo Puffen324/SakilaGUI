@@ -22,6 +22,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerTabController implements Initializable {
+
+    private AddressDAO addressDAO = new AddressDAO();
+    private StoreDAO storeDAO = new StoreDAO();
+    private CustomerDAO customerDAO = new CustomerDAO();
+
     @FXML
     private TableView<Customer> customerTableView;
     @FXML
@@ -70,7 +75,6 @@ public class CustomerTabController implements Initializable {
 
     public void setUpCustomerTableView() {
         customerTableView.setItems(FXCollections.observableList(new CustomerDAO().read()));
-        customerTableView.setEditable(true);
         customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
         customerFirstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -94,7 +98,7 @@ public class CustomerTabController implements Initializable {
     }
 
     public void updateCustomerTableView() {
-        customerTableView.setItems(FXCollections.observableList(new CustomerDAO().read()));
+        customerTableView.setItems(FXCollections.observableList(customerDAO.read()));
         customerTableView.getItems().addAll();
     }
 
@@ -121,42 +125,42 @@ public class CustomerTabController implements Initializable {
 
     public void deleteCustomer() {
         Customer customer = customerTableView.getSelectionModel().getSelectedItem();
-        new CustomerDAO().delete(customer);
+        customerDAO.delete(customer);
         updateCustomerTableView();
     }
 
     public void editFirstName(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         customerTableView.getSelectionModel().getSelectedItem().setFirstName(customerStringCellEditEvent.getNewValue());
         customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
-        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        customerDAO.update(customerTableView.getSelectionModel().getSelectedItem());
         updateCustomerTableView();
     }
 
     public void editLastName(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         customerTableView.getSelectionModel().getSelectedItem().setLastName(customerStringCellEditEvent.getNewValue());
         customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
-        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        customerDAO.update(customerTableView.getSelectionModel().getSelectedItem());
         updateCustomerTableView();
     }
 
     public void editEmail(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         customerTableView.getSelectionModel().getSelectedItem().setEmail(customerStringCellEditEvent.getNewValue());
         customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
-        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        customerDAO.update(customerTableView.getSelectionModel().getSelectedItem());
         updateCustomerTableView();
     }
 
     public void editAddress(TableColumn.CellEditEvent<Customer, Address> customerAddressCellEditEvent) {
         customerTableView.getSelectionModel().getSelectedItem().setAddress(customerAddressCellEditEvent.getNewValue());
         customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
-        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        customerDAO.update(customerTableView.getSelectionModel().getSelectedItem());
         updateCustomerTableView();
     }
 
     public void editActive(TableColumn.CellEditEvent<Customer, Boolean> customerBooleanCellEditEvent) {
         customerTableView.getSelectionModel().getSelectedItem().setActive(customerBooleanCellEditEvent.getNewValue());
         customerTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
-        new CustomerDAO().update(customerTableView.getSelectionModel().getSelectedItem());
+        customerDAO.update(customerTableView.getSelectionModel().getSelectedItem());
         updateCustomerTableView();
     }
 
@@ -169,11 +173,11 @@ public class CustomerTabController implements Initializable {
     }
 
     public void updateAddressChoiceBox() {
-        addressChoiceBox.setItems(FXCollections.observableArrayList(new AddressDAO().read()));
+        addressChoiceBox.setItems(FXCollections.observableArrayList(addressDAO.read()));
     }
 
     public void updateStoreChoiceBox() {
-        storeChoiceBox.setItems(FXCollections.observableArrayList(new StoreDAO().read()));
+        storeChoiceBox.setItems(FXCollections.observableArrayList(storeDAO.read()));
     }
 
 

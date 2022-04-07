@@ -21,11 +21,11 @@
                                 <TableView fx:id="filmTableView" onMouseClicked="#updateFilmActorTableView" prefHeight="313.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn fx:id="filmIdColumn" prefWidth="36.0" text="ID" />
-                                        <TableColumn fx:id="titleColumn" prefWidth="129.0" text="Titel" />
-                                        <TableColumn fx:id="languageColumn" prefWidth="82.0" text="Språk" />
-                                        <TableColumn fx:id="releaseYearColumn" prefWidth="95.0" text="Lanseringsår" />
-                                        <TableColumn fx:id="playTimeColumn" prefWidth="105.0" text="Speltid" />
-                                        <TableColumn fx:id="ratingColumn" prefWidth="136.0" text="Rating" />
+                                        <TableColumn fx:id="titleColumn" onEditCommit="#editTitle" prefWidth="129.0" text="Titel" />
+                                        <TableColumn fx:id="languageColumn" onEditCommit="#editLanguage" prefWidth="82.0" text="Språk" />
+                                        <TableColumn fx:id="releaseYearColumn" onEditCommit="#editReleaseYear" prefWidth="95.0" text="Lanseringsår" />
+                                        <TableColumn fx:id="playTimeColumn" onEditCommit="#editLength" prefWidth="105.0" text="Speltid" />
+                                        <TableColumn fx:id="ratingColumn" onEditCommit="#editRating" prefWidth="136.0" text="Rating" />
                                      <TableColumn fx:id="lastUpdateColumn" prefWidth="216.0" text="Senast uppdaterad" />
                                     </columns>
                                 </TableView>

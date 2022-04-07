@@ -14,7 +14,6 @@ public class CustomerDAO extends GenericDAO<Customer> {
 
     public void create(Customer customer) {
         executeInsideTransaction(entityManager -> entityManager.persist(customer));
-
     }
 
     public List<Customer> read() {

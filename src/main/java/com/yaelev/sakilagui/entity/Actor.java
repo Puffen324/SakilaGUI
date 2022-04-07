@@ -24,8 +24,8 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToMany(mappedBy = "actorList")
-    private List<Film> filmList;
+    @ManyToMany(mappedBy = "actorSet", fetch = FetchType.LAZY)
+    private Set<Film> filmSet;
 
     @Transient
     private Boolean participating = false;
@@ -36,7 +36,7 @@ public class Actor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastUpdate = Timestamp.from(Instant.now());
-        this.filmList = new ArrayList<>();
+        this.filmSet = new HashSet<>();
     }
 
     public Actor() {
@@ -83,12 +83,11 @@ public class Actor {
         this.lastUpdate = lastUpdate;
     }
 
-    public List<Film> getFilmList() {
-        return filmList;
+    public Set<Film> getFilmSet() {
+        return filmSet;
     }
 
-    public void setFilmList(List<Film> filmList) {
-        this.filmList = filmList;
+    public void setFilmSet(Set<Film> filmSet) {
+        this.filmSet = filmSet;
     }
-
 }

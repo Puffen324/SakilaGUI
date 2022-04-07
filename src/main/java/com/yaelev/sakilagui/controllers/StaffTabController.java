@@ -15,7 +15,10 @@ import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
-public class StaffTabContorller implements Initializable {
+public class StaffTabController implements Initializable {
+
+    private StaffDAO staffDAO = new StaffDAO();
+
     @FXML
     private TableView<Staff> StaffTableView;
     @FXML
@@ -37,8 +40,18 @@ public class StaffTabContorller implements Initializable {
     @FXML
     private TableColumn<Staff, Timestamp> staffLastUpdateColumn;
 
-    public void updateStaffEntityTableView(){
-        StaffTableView.setItems(FXCollections.observableList(new StaffDAO().read()));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setupStaffTableView();
+    }
+
+    public void updateStaffTableView(){
+        StaffTableView.setItems(FXCollections.observableList(staffDAO.read()));
+        StaffTableView.getItems().addAll();
+    }
+
+    public void setupStaffTableView(){
+        StaffTableView.setItems(FXCollections.observableList(staffDAO.read()));
         staffIdColumn.setCellValueFactory(new PropertyValueFactory<>("staffId"));
         staffNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         staffLastnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -49,20 +62,22 @@ public class StaffTabContorller implements Initializable {
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
         staffLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
         StaffTableView.getItems().addAll();
-
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        updateStaffEntityTableView();
+
+    public void removeStaff(){
+        Staff staff = StaffTableView.getSelectionModel().getSelectedItem();
+        staffDAO.delete(staff);
+        updateStaffTableView();
     }
+
     public void updateStaffName(){
 
     }
     public void updateStaffLastName(){
 
     }
-    public void updateStaffaddress_id(){
+    public void updateStaffAddress(){
 
     }
     public void updateStaffEmail(){

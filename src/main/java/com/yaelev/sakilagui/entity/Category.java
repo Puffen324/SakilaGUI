@@ -3,6 +3,7 @@ package com.yaelev.sakilagui.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -17,15 +18,16 @@ public class Category {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @ManyToMany( mappedBy = "categoryList")
-    private List<Film> filmList ;
 
-    public List<Film> getFilmList() {
-        return filmList;
+    @ManyToMany( mappedBy = "categorySet", fetch = FetchType.LAZY)
+    private Set<Film> filmSet ;
+
+    public Set<Film> getFilmSet() {
+        return filmSet;
     }
 
-    public void setFilmList(List<Film> filmList) {
-        this.filmList = filmList;
+    public void setFilmSet(Set<Film> filmSet) {
+        this.filmSet = filmSet;
     }
 
     public int getCategoryId() {

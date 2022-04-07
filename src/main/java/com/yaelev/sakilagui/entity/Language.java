@@ -18,7 +18,7 @@ public class Language {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "language")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "language")
     private List<Film> filmList;
 
     public int getLanguageId() {

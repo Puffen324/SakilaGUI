@@ -17,12 +17,14 @@ import javafx.util.converter.BigDecimalStringConverter;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.time.Instant;
 import java.util.ResourceBundle;
 
 public class PaymentTabController implements Initializable {
 
+    private PaymentDAO paymentDAO = new PaymentDAO();
+    private CustomerDAO customerDAO = new CustomerDAO();
+    private StaffDAO staffDAO = new StaffDAO();
     @FXML
     private TableView<Payment> paymentTableView;
     @FXML
@@ -58,7 +60,7 @@ public class PaymentTabController implements Initializable {
     }
 
     public void setUpTableView() {
-        paymentTableView.setItems(FXCollections.observableList(new PaymentDAO().read()));
+        paymentTableView.setItems(FXCollections.observableList(paymentDAO.read()));
         paymentIdColumn.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
         paymentCustomerColumn.setCellValueFactory(new PropertyValueFactory<>("customer"));
         paymentStaffColumn.setCellValueFactory(new PropertyValueFactory<>("staff"));
@@ -71,13 +73,13 @@ public class PaymentTabController implements Initializable {
     }
 
     public void updatePaymentTableView() {
-        paymentTableView.setItems(FXCollections.observableList(new PaymentDAO().read()));
+        paymentTableView.setItems(FXCollections.observableList(paymentDAO.read()));
         paymentTableView.getItems().addAll();
     }
 
     public void deletePayment() {
         Payment payment = paymentTableView.getSelectionModel().getSelectedItem();
-        new PaymentDAO().delete(payment);
+        paymentDAO.delete(payment);
         updatePaymentTableView();
     }
 
@@ -86,16 +88,14 @@ public class PaymentTabController implements Initializable {
         if (customerChoiceBox.getSelectionModel().getSelectedItem() != null &&
                 staffChoiceBox.getSelectionModel().getSelectedItem() != null &&
                 amountTextField.getText().length() > 0) {
-            try{
+            try {
                 Payment payment = new Payment(BigDecimal.valueOf(Long.parseLong(amountTextField.getText())), customerChoiceBox.getSelectionModel().getSelectedItem(),
                         staffChoiceBox.getSelectionModel().getSelectedItem());
-                new PaymentDAO().create(payment);
-            }catch (Exception e){
+                paymentDAO.create(payment);
+            } catch (Exception e) {
                 e.printStackTrace();
                 ExceptionLabel.setText("Felaktig inmatning!");
             }
-
-
             updatePaymentTableView();
             amountTextField.setText("");
         }
@@ -105,17 +105,17 @@ public class PaymentTabController implements Initializable {
         if (paymentTableView.getSelectionModel().getSelectedItem() != null) {
             paymentTableView.getSelectionModel().getSelectedItem().setAmount(paymentBigDecimalCellEditEvent.getNewValue());
             paymentTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
-            new PaymentDAO().update(paymentTableView.getSelectionModel().getSelectedItem());
+            paymentDAO.update(paymentTableView.getSelectionModel().getSelectedItem());
             updatePaymentTableView();
         }
     }
 
     public void updateCustomerChoiceBox() {
-        customerChoiceBox.setItems(FXCollections.observableArrayList(new CustomerDAO().read()));
+        customerChoiceBox.setItems(FXCollections.observableArrayList(customerDAO.read()));
     }
 
     public void updateStaffChoiceBox() {
-        staffChoiceBox.setItems(FXCollections.observableArrayList(new StaffDAO().read()));
+        staffChoiceBox.setItems(FXCollections.observableArrayList(staffDAO.read()));
     }
 
 }

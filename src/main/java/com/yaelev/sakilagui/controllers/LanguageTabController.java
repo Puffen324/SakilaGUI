@@ -1,6 +1,5 @@
 package com.yaelev.sakilagui.controllers;
 
-import com.yaelev.sakilagui.dao.AddressDAO;
 import com.yaelev.sakilagui.dao.LanguageDAO;
 import com.yaelev.sakilagui.entity.Language;
 import javafx.collections.FXCollections;
@@ -15,28 +14,27 @@ import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class LanguageTabController implements Initializable {
+
+    private LanguageDAO languageDAO = new LanguageDAO();
     @FXML
     private TableView<Language> languageTableView;
     @FXML
-    private TableColumn<Language, Integer> launguageIdColumn;
+    private TableColumn<Language, Integer> languageColumn;
     @FXML
     private TableColumn<Language,String> langColumn;
     @FXML
     private TableColumn<Language, Timestamp> lastUpdateColumn;
 
-    public void updatelanguageTableView(){
-            languageTableView.setItems(FXCollections.observableList(new LanguageDAO().read()));
-            launguageIdColumn.setCellValueFactory(new PropertyValueFactory<>("languageId"));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateLanguageTableView();
+    }
+
+    public void updateLanguageTableView(){
+            languageTableView.setItems(FXCollections.observableList(languageDAO.read()));
+            languageColumn.setCellValueFactory(new PropertyValueFactory<>("languageId"));
             langColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
             lastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
             languageTableView.getItems().addAll();
-
-
      }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        updatelanguageTableView();
-    }
-
 }

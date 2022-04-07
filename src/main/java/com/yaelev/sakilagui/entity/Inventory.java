@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
+
 @Table(name = "inventory")
 public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,7 @@ public class Inventory {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
 
@@ -46,7 +47,10 @@ public class Inventory {
         this.store = store;
         this.lastUpdate = lastUpdate;
     }
-    public String getFilm(){return film.toString();}
+
+    public String getFilm() {
+        return film.toString();
+    }
 
     public int getInventoryId() {
         return inventoryId;
@@ -83,7 +87,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return inventoryId +"";
+        return inventoryId + "";
 
 
     }

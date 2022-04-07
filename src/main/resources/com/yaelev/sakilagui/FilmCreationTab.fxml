@@ -20,23 +20,23 @@
             </font>
         </TextField>
         <ChoiceBox fx:id="languageChoiceBox" layoutX="15.0" layoutY="56.0" prefHeight="25.0" prefWidth="150.0" />
-        <Spinner fx:id="releaseYearSpinner" layoutX="15.0" layoutY="224.0" prefHeight="25.0" prefWidth="150.0" />
+        <Spinner fx:id="releaseYearSpinner" editable="true" layoutX="15.0" layoutY="224.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="75.0" layoutY="39.0" text="Språk" />
         <Label layoutX="51.0" layoutY="375.0" text="Lanseringsår" />
         <ChoiceBox fx:id="ratingChoiceBox" layoutX="16.0" layoutY="98.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="72.0" layoutY="81.0" text="Rating" />
         <Label layoutX="53.0" layoutY="123.0" text="Extra material" />
         <ChoiceBox fx:id="specialFeatureChoiceBox" layoutX="17.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
-        <Spinner fx:id="rentalCostSpinner" layoutX="17.0" layoutY="392.0" prefHeight="25.0" prefWidth="150.0" />
+        <Spinner fx:id="rentalCostSpinner" editable="true" layoutX="17.0" layoutY="392.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="53.0" layoutY="207.0" text="Hyreskostnad" />
         <Label layoutX="48.0" layoutY="249.0" text="Utbyteskostnad" />
-        <Spinner fx:id="replacementCostSpinner" layoutX="16.0" layoutY="266.0" prefHeight="25.0" prefWidth="150.0" />
+        <Spinner fx:id="replacementCostSpinner" editable="true" layoutX="16.0" layoutY="266.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="23.0" layoutY="291.0" text="Uthyrningsperiod i dagar" />
-        <Spinner fx:id="rentalPeriodSpinner" layoutX="16.0" layoutY="308.0" prefHeight="25.0" prefWidth="150.0" />
+        <Spinner fx:id="rentalPeriodSpinner" editable="true" layoutX="16.0" layoutY="308.0" prefHeight="25.0" prefWidth="150.0" />
         <TextArea fx:id="descriptionTextArea" layoutX="17.0" layoutY="434.0" prefHeight="17.0" prefWidth="190.0" />
         <Label layoutX="75.0" layoutY="417.0" text="Beskrivning" />
         <Label layoutX="45.0" layoutY="333.0" text="Speltid i minuter" />
-        <Spinner fx:id="lengthSpinner" layoutX="16.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" />
+        <Spinner fx:id="lengthSpinner" editable="true" layoutX="16.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" />
         <TableView fx:id="filmCreationTableView" layoutX="287.0" layoutY="41.0" prefHeight="475.0" prefWidth="499.0">
             <columns>
                 <TableColumn fx:id="checkBoxColumn" prefWidth="75.0" text="Deltar" />

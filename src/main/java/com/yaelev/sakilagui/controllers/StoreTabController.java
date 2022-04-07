@@ -7,7 +7,6 @@ import com.yaelev.sakilagui.dao.StoreDAO;
 import com.yaelev.sakilagui.entity.Address;
 import com.yaelev.sakilagui.entity.Staff;
 import com.yaelev.sakilagui.entity.Store;
-
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,72 +21,71 @@ import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class StoreTabController implements Initializable {
+
+    private StoreDAO storeDAO = new StoreDAO();
+    private AddressDAO addressDAO = new AddressDAO();
+    private StaffDAO staffDAO = new StaffDAO();
+
     @FXML
     private TableView<Store> storeTableView;
-
     @FXML
     private TableColumn<Store, Integer> storeIdColumn;
-
     @FXML
     private TableColumn<Store, Staff> staffColumn;
     @FXML
     private TableColumn<Store, Address> addressColumn;
     @FXML
     private TableColumn<Store, Timestamp> latestUpdateColumn111;
-
     @FXML
-    private ComboBox <Address> addressComboBox;
+    private ComboBox<Address> addressComboBox;
     @FXML
-    private ComboBox <Staff> managerCombobox;
-    @FXML
-    private Button deleteStoreBtn,createStoreBtn;
+    private ComboBox<Staff> managerCombobox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        updateStoreEntityTableView();
+        setupStoreTableView();
         updateAddressBox();
         updateManagerBox();
     }
-    public void updateStoreEntityTableView(){
 
-            storeTableView.setItems(FXCollections.observableList(new StoreDAO().read()));
-            storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
-            staffColumn.setCellValueFactory(new PropertyValueFactory<>("staff"));
-            addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-            latestUpdateColumn111.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-            storeTableView.getItems().addAll();
-
-
+    public void updateStoreTableView() {
+        storeTableView.setItems(FXCollections.observableList(storeDAO.read()));
+        storeTableView.getItems().addAll();
     }
-    public void updateAddressBox(){
-        addressComboBox.setItems((FXCollections.observableList(new AddressDAO().read())));
+
+    public void setupStoreTableView() {
+        storeTableView.setItems(FXCollections.observableList(storeDAO.read()));
+        storeIdColumn.setCellValueFactory(new PropertyValueFactory<>("storeId"));
+        staffColumn.setCellValueFactory(new PropertyValueFactory<>("staff"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        latestUpdateColumn111.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
+        storeTableView.getItems().addAll();
+    }
+
+    public void updateAddressBox() {
+        addressComboBox.setItems((FXCollections.observableList(addressDAO.read())));
         addressComboBox.getItems().addAll();
     }
-    public void updateManagerBox(){
-        managerCombobox.setItems((FXCollections.observableList(new StaffDAO().read().stream().filter(staff -> !staff.isActive()).toList())));
+
+    public void updateManagerBox() {
+        managerCombobox.setItems((FXCollections.observableList(staffDAO.read().stream().filter(staff -> !staff.isActive()).toList())));
         managerCombobox.getItems().addAll();
 
     }
-    public void createStoreBtn(){}
-    public void deleteBtn(){
-        deleteStore();
-    }
-    public void createStore(){
+
+
+    public void createStore() {
         Store store = new Store(managerCombobox.getSelectionModel().getSelectedItem()
-                ,addressComboBox.getSelectionModel().getSelectedItem());
-        new StoreDAO().create(store);
+                , addressComboBox.getSelectionModel().getSelectedItem());
+        storeDAO.create(store);
         managerCombobox.getSelectionModel().getSelectedItem().setActive(true);
         updateManagerBox();
-        updateStoreEntityTableView();
+        updateStoreTableView();
     }
 
-    public void deleteStore(){
+    public void deleteStore() {
         Store store = storeTableView.getSelectionModel().getSelectedItem();
-        new StoreDAO().delete(store);
-        updateStoreEntityTableView();
+        storeDAO.delete(store);
+        updateStoreTableView();
     }
-    public void managerStaffIdUpdate(){}
-    public void addressIdUpdate(){}
-    public void latestUpdate(){}
 }

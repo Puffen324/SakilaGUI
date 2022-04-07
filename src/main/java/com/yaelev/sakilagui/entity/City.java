@@ -14,12 +14,13 @@ public class City {
     @Basic
     @Column(name = "city")
     private String city;
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country  country;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
+    private Country country;
 
     public City(int cityId, String city, Country country, Timestamp lastUpdate) {
         this.cityId = cityId;
@@ -34,7 +35,7 @@ public class City {
     public City(String city, Country country) {
         this.city = city;
         this.country = country;
-        this.lastUpdate=Timestamp.from(Instant.now());
+        this.lastUpdate = Timestamp.from(Instant.now());
     }
 
     public int getCityId() {
@@ -70,13 +71,11 @@ public class City {
         this.lastUpdate = lastUpdate;
     }
 
-    
-    
 
     @Override
     public String toString() {
-        return  cityId +
-                " " + city  +
+        return cityId +
+                " " + city +
                 " " + country;
 
     }
