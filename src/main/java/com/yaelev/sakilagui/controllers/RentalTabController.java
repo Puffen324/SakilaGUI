@@ -68,15 +68,21 @@ public class RentalTabController implements Initializable {
 
     @FXML
     private void fillInventoryBox() {
-
-        if(filmComboBox.getSelectionModel().getSelectedItem() != null){
-            inventoryComboBox.setItems(FXCollections.observableArrayList(new InventoryDAO().read()));
+        if (filmComboBox.getSelectionModel().getSelectedItem() != null) {
+            List<Inventory> inventoryList = new InventoryDAO()
+                    .read()
+                    .stream()
+                    .filter(e -> e.getFilmId() ==
+                            filmComboBox.getSelectionModel()
+                                    .getSelectedItem()
+                                    .getFilmId()
+                            &&
+                            e.getStore().getStoreId() ==
+                                    storeComboBox.getSelectionModel()
+                                    .getSelectedItem().getStoreId())
+                    .collect(Collectors.toList());
+            inventoryComboBox.setItems(FXCollections.observableArrayList(inventoryList));
         }
-
-
-
-        /*invetoryBox.setItems(FXCollections.observableList((new InventoryDAO().read())));
-        invetoryBox.getItems().addAll();*/
     }
 
     @FXML
@@ -113,8 +119,6 @@ public class RentalTabController implements Initializable {
         rental.setRentalDate(Timestamp.from(Instant.now()));
         rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
         rental.setReturnDate(Timestamp.valueOf(pickADate.getValue().atStartOfDay()));
-        // inventory.setStore(storeCombobox.getSelectionModel().getSelectedItem());
-        //rental.setStaff(staffBox.getSelectionModel().getSelectedItem());
         rental.setStaff(storeComboBox.getSelectionModel().getSelectedItem().getStaff());
         rental.setInventory(inventoryComboBox.getSelectionModel().getSelectedItem());
         rental.setLastUpdate(Timestamp.from(Instant.now()));
