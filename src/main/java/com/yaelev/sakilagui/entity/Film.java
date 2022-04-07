@@ -60,15 +60,19 @@ public class Film {
             inverseJoinColumns = { @JoinColumn(name = "actor_id")})
     private List<Actor> actorList;
 
-    @Transient
-    private Category category;
 
-    public Category getCategory() {
-        return category;
+    @ManyToMany(fetch = FetchType.LAZY )
+    @JoinTable(name = "film_category",
+            joinColumns = { @JoinColumn(name = "film_id")},
+            inverseJoinColumns = { @JoinColumn(name = "category_id")})
+    private List<Category> categoryList ;
+
+    public List<Category> getCategoryList() {
+        return categoryList;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     public Film() {

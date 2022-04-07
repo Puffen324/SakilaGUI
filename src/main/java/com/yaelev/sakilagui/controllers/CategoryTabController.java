@@ -2,7 +2,9 @@ package com.yaelev.sakilagui.controllers;
 
 
 import com.yaelev.sakilagui.dao.CategoryDAO;
+import com.yaelev.sakilagui.dao.FilmDAO;
 import com.yaelev.sakilagui.entity.Category;
+import com.yaelev.sakilagui.entity.Film;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,6 +29,12 @@ public class CategoryTabController  implements Initializable {
 
         @FXML
         private TableColumn<Category, Timestamp> categoryLastUpdateColumn;
+        @FXML
+        private TableView<Film> filmCategoryTable;
+        @FXML
+        private TableColumn<Film,Integer> filmIdColumn;
+        @FXML
+        private TableColumn<Film,String> filmTitleColumn;
 
         public void updateCategoryEntityTableView(){
                 categoryEntityTableView.setItems(FXCollections.observableList(new CategoryDAO().read()));
@@ -48,6 +56,14 @@ public class CategoryTabController  implements Initializable {
 
         public void updateLastUpdate(){
 
+        }
+        public void updateCategoryFilmTable(){
+           if (categoryEntityTableView.getSelectionModel().getSelectedItem() != null) {
+                   filmCategoryTable.setItems(FXCollections.observableArrayList(categoryEntityTableView.getSelectionModel().getSelectedItem().getFilmList()));
+                   filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
+                   filmTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+                   categoryEntityTableView.getItems().addAll();
+           }
         }
     }
 
