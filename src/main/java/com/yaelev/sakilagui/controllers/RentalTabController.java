@@ -109,7 +109,10 @@ public class RentalTabController implements Initializable {
 
     }
     public void deleteRental(){
-        
+
+            Rental rental = rentalTableView.getSelectionModel().getSelectedItem();
+            new RentalDAO().delete(rental);
+            updateRentalTableView();
     }
 
 

@@ -2,12 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.AddressTabContoller">
     <children>
@@ -17,31 +15,28 @@
 
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView fx:id="addressTableView" editable="true" layoutY="29.0" prefHeight="352.0" prefWidth="800.0">
+                                <TableView fx:id="addressTableView" editable="true" prefHeight="355.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn fx:id="addressIdColumn" prefWidth="38.0" text="ID" />
-                                        <TableColumn fx:id="addressNameColumn" onEditCommit="#updateAddress" prefWidth="151.0" text="Adress" />
-                                        <TableColumn fx:id="districtColumn" onEditCommit="#updateDistrict" prefWidth="130.0" text="Ort" />
-                              <TableColumn fx:id="postalCodeColumn" onEditCommit="#updatePostalCode" prefWidth="97.0" text="Postkod" />
-                              <TableColumn fx:id="phoneColumn" maxWidth="5001.0" onEditCommit="#updatePhone" prefWidth="138.0" text="Telefon" />
-                                        <TableColumn fx:id="cityIdColumn" onEditCommit="#updateCity_id" prefWidth="97.0" text="Stad ID" />
-                              <TableColumn fx:id="addressLastUpdateColumn" maxWidth="1.7976931348623157E308" prefWidth="148.0" text="Senast uppdaterad" />
+                                        <TableColumn fx:id="addressNameColumn" onEditCommit="#updateAddress" prefWidth="145.0" text="Adress" />
+                                        <TableColumn fx:id="districtColumn" onEditCommit="#updateDistrict" prefWidth="95.0" text="Ort" />
+                                        <TableColumn fx:id="cityIdColumn" onEditCommit="#updateCity_id" prefWidth="63.0" text="Stad ID" />
+                              <TableColumn fx:id="postalCodeColumn" onEditCommit="#updatePostalCode" prefWidth="63.0" text="Postkod" />
+                              <TableColumn fx:id="phoneColumn" maxWidth="5001.0" onEditCommit="#updatePhone" prefWidth="152.0" text="Telefon" />
+                              <TableColumn fx:id="locationColumn" onEditCommit="#updateLocation" prefWidth="100.0" text="Plats" />
+                              <TableColumn fx:id="addressLastUpdateColumn" maxWidth="1.7976931348623157E308" prefWidth="136.0" text="uppdaterad" />
                                     </columns>
                                 </TableView>
-            <Label layoutX="14.0" layoutY="-2.0" text="Adress">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
+                                <TextField fx:id="phoneTextField" layoutX="15.0" layoutY="453.0" promptText="Telefon" />
+                                <TextField fx:id="postalCodeTextField" layoutX="15.0" layoutY="415.0" promptText="Postkod" />
+                                <Button layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#createAddress" text="Lägg till Address" />
+                                <Button layoutX="635.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteAddress" text="Ta bort vald Address" />
+                        <TextField fx:id="addressTextField" layoutX="15.0" layoutY="380.0" promptText="Adress" />
+                        <TextField fx:id="locationTextField" layoutX="506.0" layoutY="415.0" promptText="Plats" />
+                        <TextField fx:id="districtTextField" layoutX="177.0" layoutY="415.0" promptText="Ort" />
+                        <ComboBox fx:id="cityComboBox" layoutX="340.0" layoutY="415.0" prefWidth="150.0" promptText="Stads_ID" />
                             </children>
                         </AnchorPane>
-                          <TextField fx:id="phoneTextField" layoutX="28.0" layoutY="468.0" promptText="Telefon" />
-                          <TextField fx:id="postalCodeTextField" layoutX="28.0" layoutY="430.0" promptText="Postkod" />
-                          <Button layoutX="28.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#createAddress" text="Lägg till Address" />
-                          <Button layoutX="648.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#deleteAddress" text="Ta bort vald Address" />
-                  <TextField fx:id="addressTextField" layoutX="28.0" layoutY="395.0" promptText="Adress" />
-                  <TextField fx:id="districtTextField" layoutX="190.0" layoutY="430.0" promptText="Ort" />
-                  <ComboBox fx:id="cityComboBox" layoutX="353.0" layoutY="430.0" prefWidth="150.0" promptText="Stad ID" />
 
 
 
