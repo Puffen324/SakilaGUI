@@ -13,7 +13,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainController.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
 
-        stage.setTitle("Hello!");
+        stage.setTitle("SakilaGUI");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

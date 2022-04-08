@@ -12,10 +12,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yaelev.sakilagui.controllers.ActorTabController">
    <children>
-      <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Skådespelare">
-            <content>
+
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
                         <TableView fx:id="actorTableView" editable="true" layoutY="25.0" onMouseClicked="#updateActorFilmTableView" prefHeight="350.0" prefWidth="400.0">
@@ -51,9 +48,6 @@
                         <Button fx:id="deleteButton" layoutX="634.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#deleteActor" text="Ta bort vald skådespelare" />
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
+    
    </children>
 </AnchorPane>
