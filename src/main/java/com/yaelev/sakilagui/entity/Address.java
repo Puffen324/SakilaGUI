@@ -26,9 +26,10 @@ public class Address {
     @Basic
     @Column(name = "district")
     private String district;
-    @Basic
-    @Column(name = "city_id")
-    private int cityId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City cityId;
     @Basic
     @Column(name = "postal_code")
     private String postalCode;
@@ -54,21 +55,21 @@ public class Address {
     public Address(){}
 
 
-    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone) {
+    public Address(int addressId, String address, String address2, String district, City city, String postalCode, String phone) {
         this.addressId = addressId;
         this.address = address;
         this.address2 = address2;
         this.district = district;
-        this.cityId = cityId;
+        this.cityId = city;
         this.postalCode = postalCode;
         this.phone = phone;
         this.lastUpdate = Timestamp.from(Instant.now());
     }
 
-    public Address(String address, String district, int cityId, String postalCode, String phone) {
+    public Address(String address, String district, City city, String postalCode, String phone) {
         this.address = address;
         this.district = district;
-        this.cityId = cityId;
+        this.cityId = city;
         this.postalCode = postalCode;
         this.phone = phone;
         this.lastUpdate = Timestamp.from(Instant.now());
@@ -124,11 +125,11 @@ public class Address {
         this.district = district;
     }
 
-    public int getCityId() {
+    public City getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(City cityId) {
         this.cityId = cityId;
     }
 

@@ -31,10 +31,10 @@ public class CountryTabController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setupCountyTableView();
+        setupCountryTableView();
     }
 
-    public void setupCountyTableView(){
+    public void setupCountryTableView(){
         countryTableView.setItems(FXCollections.observableList(countryDAO.read()));
         countryIdColumn.setCellValueFactory(new PropertyValueFactory<>("countryId"));
         countryNameColumn.setCellValueFactory(new PropertyValueFactory<>("country"));

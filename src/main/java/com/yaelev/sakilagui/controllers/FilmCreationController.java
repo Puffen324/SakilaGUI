@@ -27,6 +27,8 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FilmCreationController implements Initializable {
 
@@ -99,7 +101,6 @@ public class FilmCreationController implements Initializable {
         setupChoiceBoxes();
         setupSpinners();
         bindings();
-
     }
 
     public void createNewFilm() {
@@ -173,10 +174,10 @@ public class FilmCreationController implements Initializable {
 
         createButton.disableProperty().bind(
                 titleTextFieldValid.not()
-                .or(languageChoiceBoxValid.not())
-                .or(ratingChoiceBoxValid.not())
-                .or(categoryChoiceBoxValid.not())
-                .or(specialFeatureChoiceBoxValid.not()));
+                        .or(languageChoiceBoxValid.not())
+                        .or(ratingChoiceBoxValid.not())
+                        .or(categoryChoiceBoxValid.not())
+                        .or(specialFeatureChoiceBoxValid.not()));
     }
 
     public void setupTableView(ObservableList<Actor> actorList) {
@@ -262,18 +263,14 @@ public class FilmCreationController implements Initializable {
         film.setDescription(descriptionTextArea.getText());
     }
 
-    public void setCategory(){
-
+    public void setCategory() {
         film.getCategorySet().add(categoryChoiceBox.getSelectionModel().getSelectedItem());
     }
 
-    public void setActors(List<Actor> actorList){
-        for(Actor a : actorList){
-            if(a.getParticipating() == true){
-                film.getActorSet().add(a);
-            }
-        }
-
+    public void setActors(List<Actor> actorList) {
+        film.setActorSet(actorList.stream()
+                .filter(actor -> actor.getParticipating().equals(true))
+                .collect(Collectors.toSet()));
     }
 
 }

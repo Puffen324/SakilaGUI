@@ -22,13 +22,13 @@
         <ChoiceBox fx:id="languageChoiceBox" layoutX="15.0" layoutY="56.0" prefHeight="25.0" prefWidth="150.0" />
         <Spinner fx:id="releaseYearSpinner" editable="true" layoutX="15.0" layoutY="224.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="75.0" layoutY="39.0" text="Språk" />
-        <Label layoutX="51.0" layoutY="375.0" text="Lanseringsår" />
+        <Label layoutX="52.0" layoutY="207.0" text="Lanseringsår" />
         <ChoiceBox fx:id="ratingChoiceBox" layoutX="16.0" layoutY="98.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="72.0" layoutY="81.0" text="Rating" />
         <Label layoutX="53.0" layoutY="123.0" text="Extra material" />
         <ChoiceBox fx:id="specialFeatureChoiceBox" layoutX="17.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
         <Spinner fx:id="rentalCostSpinner" editable="true" layoutX="17.0" layoutY="392.0" prefHeight="25.0" prefWidth="150.0" />
-        <Label layoutX="53.0" layoutY="207.0" text="Hyreskostnad" />
+        <Label layoutX="49.0" layoutY="375.0" text="Hyreskostnad" />
         <Label layoutX="48.0" layoutY="249.0" text="Utbyteskostnad" />
         <Spinner fx:id="replacementCostSpinner" editable="true" layoutX="16.0" layoutY="266.0" prefHeight="25.0" prefWidth="150.0" />
         <Label layoutX="23.0" layoutY="291.0" text="Uthyrningsperiod i dagar" />
