@@ -67,13 +67,14 @@ public class Film {
     @JoinTable(name = "film_category",
             joinColumns = { @JoinColumn(name = "film_id")},
             inverseJoinColumns = { @JoinColumn(name = "category_id")})
-    private Set<Category> categorySet ;
+    private Set<Category> categorySet;
 
 
 
     public Film() {
         this.actorSet = new HashSet<>();
         this.lastUpdate = Timestamp.from(Instant.now());
+        this.categorySet = new HashSet<>();
     }
 
     public Film(int filmId, String title, String description,
