@@ -27,7 +27,6 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FilmCreationController implements Initializable {
@@ -252,7 +251,7 @@ public class FilmCreationController implements Initializable {
     }
 
     public void setRentalPeriod() {
-        film.setRentalDuration(rentalPeriodSpinner.getValue());
+        film.setRentalPeriod(rentalPeriodSpinner.getValue());
     }
 
     public void setLength() {

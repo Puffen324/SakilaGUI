@@ -18,7 +18,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView fx:id="filmTableView" onMouseClicked="#updateFilmActorTableView" prefHeight="313.0" prefWidth="800.0">
+                                <TableView fx:id="filmTableView" editable="true" onMouseClicked="#updateFilmActorTableView" prefHeight="313.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn fx:id="filmIdColumn" prefWidth="36.0" text="ID" />
                                         <TableColumn fx:id="titleColumn" onEditCommit="#editTitle" prefWidth="129.0" text="Titel" />
@@ -50,12 +50,12 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                             <children>
-                                <TableView fx:id="rentalDetailsTableViews" prefHeight="463.0" prefWidth="800.0">
+                                <TableView fx:id="rentalDetailsTableView" editable="true" prefHeight="463.0" prefWidth="800.0">
                                     <columns>
                                         <TableColumn fx:id="filmIdRentDetailsColumn" prefWidth="97.0" text="Film ID" />
-                                        <TableColumn fx:id="rentalPeriodColumn" prefWidth="183.0" text="Hyresperiod" />
-                                        <TableColumn fx:id="rentalCostColumn" prefWidth="138.0" text="Hyreskostnad" />
-                              <TableColumn fx:id="lengthColumn" prefWidth="160.0" text="Utbyteskostnad" />
+                                        <TableColumn fx:id="rentalPeriodColumn" onEditCommit="#editRentalPeriod" prefWidth="183.0" text="Hyresperiod" />
+                                        <TableColumn fx:id="rentalCostColumn" onEditCommit="#editRentalRate" prefWidth="138.0" text="Hyreskostnad" />
+                              <TableColumn fx:id="replacementCost" onEditCommit="#editReplacementCost" prefWidth="160.0" text="Utbyteskostnad" />
                               <TableColumn fx:id="rentalLastUpdateColumn" prefWidth="221.0" text="Senast uppdatering" />
                                     </columns>
                                 </TableView>
@@ -67,10 +67,10 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="800.0">
                      <children>
-                        <TableView fx:id="filmDescriptionTableView" prefHeight="473.0" prefWidth="800.0">
+                        <TableView fx:id="filmDescriptionTableView" editable="true" prefHeight="473.0" prefWidth="800.0">
                            <columns>
                               <TableColumn fx:id="filmDescriptionFilmIdColumn" prefWidth="148.0" text="Film ID" />
-                              <TableColumn fx:id="filmDescriptionColumn" prefWidth="646.0" text="Beskrivning" />
+                              <TableColumn fx:id="filmDescriptionColumn" onEditCommit="#editDescription" prefWidth="646.0" text="Beskrivning" />
                            </columns>
                         </TableView>
                      </children>

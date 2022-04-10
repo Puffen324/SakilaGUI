@@ -1,15 +1,10 @@
 package com.yaelev.sakilagui.entity;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,47 +23,36 @@ public class Film {
     @Basic
     @Column(name = "release_year")
     private int releaseYear;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "language_id")
     private Language language;
-
-    @Basic
-    @Column(name = "rental_duration")
-    private int rentalDuration;
-
-    @Basic
-    @Column(name = "rental_rate")
-    private BigDecimal rentalRate;
-    @Basic
     @Column(name = "length")
     private int length;
-    @Basic
+    @Column(name = "rental_duration")
+    private int rentalPeriod;
+    @Column(name = "rental_rate")
+    private BigDecimal rentalRate;
     @Column(name = "replacement_cost")
     private BigDecimal replacementCost;
-    @Basic
     @Column(name = "rating")
     private String rating;
-    @Basic
     @Column(name = "special_features")
     private String specialFeatures;
-    @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "film_actor",
-            joinColumns = { @JoinColumn(name = "film_id")},
-            inverseJoinColumns = { @JoinColumn(name = "actor_id")})
+            joinColumns = {@JoinColumn(name = "film_id")},
+            inverseJoinColumns = {@JoinColumn(name = "actor_id")})
     private Set<Actor> actorSet;
 
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "film_category",
-            joinColumns = { @JoinColumn(name = "film_id")},
-            inverseJoinColumns = { @JoinColumn(name = "category_id")})
+            joinColumns = {@JoinColumn(name = "film_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")})
     private Set<Category> categorySet;
-
 
 
     public Film() {
@@ -80,14 +64,13 @@ public class Film {
     public Film(int filmId, String title, String description,
                 int releaseYear, Language languageId, int rentalDuration,
                 BigDecimal rentalRate, int length, BigDecimal replacementCost,
-                String rating, String specialFeatures)
-    {
+                String rating, String specialFeatures) {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
         this.language = languageId;
-        this.rentalDuration = rentalDuration;
+        this.rentalPeriod = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;
         this.replacementCost = replacementCost;
@@ -99,9 +82,9 @@ public class Film {
     @Override
     public String toString() {
         return filmId +
-                "," + title  +
-                ", " +releaseYear +
-                ", " +language +
+                "," + title +
+                ", " + releaseYear +
+                ", " + language +
                 ", " + length +
                 ", " + replacementCost +
                 ", " + rating +
@@ -166,12 +149,12 @@ public class Film {
         this.language = languageId;
     }
 
-    public int getRentalDuration() {
-        return rentalDuration;
+    public int getRentalPeriod() {
+        return rentalPeriod;
     }
 
-    public void setRentalDuration(int rentalDuration) {
-        this.rentalDuration = rentalDuration;
+    public void setRentalPeriod(int rentalDuration) {
+        this.rentalPeriod = rentalDuration;
     }
 
     public BigDecimal getRentalRate() {
@@ -221,7 +204,6 @@ public class Film {
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
-
 
 
 }
