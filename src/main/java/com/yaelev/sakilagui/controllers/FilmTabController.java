@@ -12,9 +12,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -44,15 +45,15 @@ public class FilmTabController implements Initializable {
     @FXML
     private TableColumn<Film, Timestamp> lastUpdateColumn;
     @FXML
-    private TableView<Film> rentalDetailsTableViews;
+    private TableView<Film> rentalDetailsTableView;
     @FXML
     private TableColumn<Film, Integer> filmIdRentDetailsColumn;
     @FXML
     private TableColumn<Film, Integer> rentalPeriodColumn;
     @FXML
-    private TableColumn<Film, BigInteger> rentalCostColumn;
+    private TableColumn<Film, BigDecimal> rentalCostColumn;
     @FXML
-    private TableColumn<Film, Integer> lengthColumn;
+    private TableColumn<Film, BigDecimal> replacementCost;
     @FXML
     private TableColumn<Film, Timestamp> rentalLastUpdateColumn;
     @FXML
@@ -72,7 +73,7 @@ public class FilmTabController implements Initializable {
     @FXML
     private ChoiceBox<String> ratingChoiceBox = new ChoiceBox<>();
     @FXML
-    private ChoiceBox<Language> languageChoiceBox= new ChoiceBox<>();
+    private ChoiceBox<Language> languageChoiceBox = new ChoiceBox<>();
 
     private List<String> ratingList = Arrays.asList("PG", "G", "NC-17", "PG-13", "R");
 
@@ -85,7 +86,6 @@ public class FilmTabController implements Initializable {
     public void setupTableViews() {
         // Film TableView settings
         filmTableView.setItems(FXCollections.observableList(filmDAO.read()));
-        filmTableView.setEditable(true);
         filmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         titleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -101,18 +101,22 @@ public class FilmTabController implements Initializable {
         filmTableView.getItems().addAll();
 
         // Rental detail TablewView settings
-        rentalDetailsTableViews.setItems(FXCollections.observableList(filmDAO.read()));
+        rentalDetailsTableView.setItems(FXCollections.observableList(filmDAO.read()));
         filmIdRentDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
-        rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalDuration"));
+        rentalPeriodColumn.setCellValueFactory(new PropertyValueFactory<>("rentalPeriod"));
+        rentalPeriodColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         rentalCostColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
-        lengthColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
+        rentalCostColumn.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
+        replacementCost.setCellValueFactory(new PropertyValueFactory<>("replacementCost"));
+        replacementCost.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
         rentalLastUpdateColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdate"));
-        rentalDetailsTableViews.getItems().addAll();
+        rentalDetailsTableView.getItems().addAll();
 
         // Film description TablewView settings
         filmDescriptionTableView.setItems(FXCollections.observableList(filmDAO.read()));
         filmDescriptionFilmIdColumn.setCellValueFactory(new PropertyValueFactory<>("filmId"));
         filmDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        filmDescriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         filmDescriptionTableView.getItems().addAll();
 
         // Film actor TablewView settings
@@ -121,7 +125,7 @@ public class FilmTabController implements Initializable {
         actorLastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
     }
 
-    public void setupChoiceBoxes(){
+    public void setupChoiceBoxes() {
         ratingChoiceBox.setItems(FXCollections.observableArrayList(ratingList));
         languageChoiceBox.setItems(FXCollections.observableArrayList(languageDAO.read()));
     }
@@ -131,44 +135,72 @@ public class FilmTabController implements Initializable {
         filmTableView.getItems().addAll();
     }
 
-    public void editTitle(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+    public void editTitle(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         filmTableView.getSelectionModel().getSelectedItem().setTitle(customerStringCellEditEvent.getNewValue());
         filmTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
         filmDAO.update(filmTableView.getSelectionModel().getSelectedItem());
         updateFilmTableView();
     }
 
-    public void editLanguage(TableColumn.CellEditEvent<Customer, Language> customerAddressCellEditEvent){
+    public void editLanguage(TableColumn.CellEditEvent<Customer, Language> customerAddressCellEditEvent) {
         filmTableView.getSelectionModel().getSelectedItem().setLanguage(customerAddressCellEditEvent.getNewValue());
         filmTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
         filmDAO.update(filmTableView.getSelectionModel().getSelectedItem());
         updateFilmTableView();
     }
 
-    public void editReleaseYear(TableColumn.CellEditEvent<Customer, Integer> customerIntegerCellEditEvent){
+    public void editReleaseYear(TableColumn.CellEditEvent<Customer, Integer> customerIntegerCellEditEvent) {
         filmTableView.getSelectionModel().getSelectedItem().setReleaseYear(customerIntegerCellEditEvent.getNewValue());
         filmTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
         filmDAO.update(filmTableView.getSelectionModel().getSelectedItem());
         updateFilmTableView();
     }
 
-    public void editLength(TableColumn.CellEditEvent<Customer, Integer> customerIntegerCellEditEvent){
+    public void editLength(TableColumn.CellEditEvent<Customer, Integer> customerIntegerCellEditEvent) {
         filmTableView.getSelectionModel().getSelectedItem().setLength(customerIntegerCellEditEvent.getNewValue());
         filmTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
         filmDAO.update(filmTableView.getSelectionModel().getSelectedItem());
         updateFilmTableView();
     }
 
-    public void editRating(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent){
+    public void editRating(TableColumn.CellEditEvent<Customer, String> customerStringCellEditEvent) {
         filmTableView.getSelectionModel().getSelectedItem().setRating(customerStringCellEditEvent.getNewValue());
         filmTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
         filmDAO.update(filmTableView.getSelectionModel().getSelectedItem());
         updateFilmTableView();
     }
 
+    public void editRentalPeriod(TableColumn.CellEditEvent<Customer, Integer> filmIntegerCellEditEvent) {
+        rentalDetailsTableView.getSelectionModel().getSelectedItem().setRentalPeriod(filmIntegerCellEditEvent.getNewValue());
+        rentalDetailsTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
+        filmDAO.update(rentalDetailsTableView.getSelectionModel().getSelectedItem());
+        updateRentalDetailsTableView();
+    }
+
+    public void editRentalRate(TableColumn.CellEditEvent<Customer, BigDecimal> filmBigDecimalCellEditEvent) {
+        rentalDetailsTableView.getSelectionModel().getSelectedItem().setRentalRate(filmBigDecimalCellEditEvent.getNewValue());
+        rentalDetailsTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
+        filmDAO.update(rentalDetailsTableView.getSelectionModel().getSelectedItem());
+        updateRentalDetailsTableView();
+    }
+
+    public void editReplacementCost(TableColumn.CellEditEvent<Customer, BigDecimal> filmBigDecimalCellEditEvent) {
+        rentalDetailsTableView.getSelectionModel().getSelectedItem().setReplacementCost(filmBigDecimalCellEditEvent.getNewValue());
+        rentalDetailsTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
+        filmDAO.update(rentalDetailsTableView.getSelectionModel().getSelectedItem());
+        updateRentalDetailsTableView();
+    }
+
     public void updateRentalDetailsTableView() {
-        rentalDetailsTableViews.setItems(FXCollections.observableList(filmDAO.read()));
-        rentalDetailsTableViews.getItems().addAll();
+        rentalDetailsTableView.setItems(FXCollections.observableList(filmDAO.read()));
+        rentalDetailsTableView.getItems().addAll();
+    }
+
+    public void editDescription(TableColumn.CellEditEvent<Customer, String> filmStringCellEditEvent) {
+        filmDescriptionTableView.getSelectionModel().getSelectedItem().setDescription(filmStringCellEditEvent.getNewValue());
+        filmDescriptionTableView.getSelectionModel().getSelectedItem().setLastUpdate(Timestamp.from(Instant.now()));
+        filmDAO.update(filmDescriptionTableView.getSelectionModel().getSelectedItem());
+        updateFilmDescriptionTableView();
     }
 
     public void updateFilmDescriptionTableView() {
@@ -179,13 +211,9 @@ public class FilmTabController implements Initializable {
 
     public void updateFilmActorTableView() {
         if (filmTableView.getSelectionModel().getSelectedItem() != null) {
-            filmActorTableView.setItems(
-                    FXCollections.observableArrayList(
-                            filmTableView.getSelectionModel()
-                                    .getSelectedItem()
-                                    .getActorSet()));
+            filmActorTableView.setItems(FXCollections.observableArrayList(filmTableView.getSelectionModel()
+                    .getSelectedItem()
+                    .getActorSet()));
         }
     }
-
-
 }

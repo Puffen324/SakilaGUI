@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -84,17 +83,10 @@ public class RentalTabController implements Initializable {
     @FXML
     private void updateInventoryComboBox() {
         if (filmComboBox.getSelectionModel().getSelectedItem() != null) {
-            List<Inventory> inventoryList = inventoryDAO
-                    .read()
+            List<Inventory> inventoryList = inventoryDAO.read()
                     .stream()
-                    .filter(e -> e.getFilmId() ==
-                            filmComboBox.getSelectionModel()
-                                    .getSelectedItem()
-                                    .getFilmId()
-                            &&
-                            e.getStore().getStoreId() ==
-                                    storeComboBox.getSelectionModel()
-                                    .getSelectedItem().getStoreId())
+                    .filter(e -> e.getFilmId() == filmComboBox.getSelectionModel().getSelectedItem().getFilmId()
+                            && e.getStore().getStoreId() == storeComboBox.getSelectionModel().getSelectedItem().getStoreId())
                     .collect(Collectors.toList());
             inventoryComboBox.setItems(FXCollections.observableArrayList(inventoryList));
         }
@@ -103,10 +95,12 @@ public class RentalTabController implements Initializable {
     @FXML
     private void updateFilmComboBox() {
         if (storeComboBox.getSelectionModel().getSelectedItem() != null) {
-            List<Film> filmList = filmDAO.read();
+           // List<Film> filmList = filmDAO.read();
             List<Inventory> storeInventoryList = storeComboBox.getSelectionModel().getSelectedItem().getInventoryList();
-            List<Film> filteredList = filmList.stream()
-                    .filter(film -> storeInventoryList.stream()
+            List<Film> filteredList = filmDAO.read()
+                    .stream()
+                    .filter(film -> storeInventoryList
+                            .stream()
                             .anyMatch(inventory -> inventory.getFilmId() == (film.getFilmId())))
                     .collect(Collectors.toList());
             filmComboBox.setItems(FXCollections.observableArrayList(filteredList));
@@ -125,7 +119,7 @@ public class RentalTabController implements Initializable {
         rental.setCustomer(customerBox.getSelectionModel().getSelectedItem());
         rental.setStaff(storeComboBox.getSelectionModel().getSelectedItem().getStaff());
         rental.setInventory(inventoryComboBox.getSelectionModel().getSelectedItem());
-        rental.setReturnDate(Timestamp.from(Instant.now().plus(filmComboBox.getSelectionModel().getSelectedItem().getRentalDuration(), ChronoUnit.DAYS)));
+        rental.setReturnDate(Timestamp.from(Instant.now().plus(filmComboBox.getSelectionModel().getSelectedItem().getRentalPeriod(), ChronoUnit.DAYS)));
         rental.setLastUpdate(Timestamp.from(Instant.now()));
         rentalDAO.create(rental);
         updateRentalTableView();
